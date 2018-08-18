@@ -7,24 +7,22 @@
   
   <title>Git merge 和 Git rebase 区别 | Blog of wanz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同        Git mergegit merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情  优点：记录了真实的commit情况，包括每个分支的详情 缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI too">
+  <meta name="description" content="git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同  Git mergegit merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情  优点：记录了真实的commit情况，包括每个分支的详情 缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI tools，特别是">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git merge 和 Git rebase 区别">
 <meta property="og:url" content="http://yoursite.com/2018/08/18/git_merge_and_rebase/index.html">
 <meta property="og:site_name" content="Blog of wanz">
-<meta property="og:description" content="git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同        Git mergegit merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情  优点：记录了真实的commit情况，包括每个分支的详情 缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI too">
+<meta property="og:description" content="git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同  Git mergegit merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情  优点：记录了真实的commit情况，包括每个分支的详情 缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI tools，特别是">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Class.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test.png">
-<meta property="og:image" content="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Branch.png">
-<meta property="og:image" content="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Merge.png">
-<meta property="og:image" content="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Rebase.png">
-<meta property="og:updated_time" content="2018-08-18T05:52:38.925Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Branch.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Merge.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Rebase.png">
+<meta property="og:updated_time" content="2018-08-18T06:20:56.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git merge 和 Git rebase 区别">
-<meta name="twitter:description" content="git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同        Git mergegit merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情  优点：记录了真实的commit情况，包括每个分支的详情 缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI too">
-<meta name="twitter:image" content="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Class.png">
+<meta name="twitter:description" content="git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同  Git mergegit merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情  优点：记录了真实的commit情况，包括每个分支的详情 缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI tools，特别是">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Branch.png">
   
     <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
   
@@ -94,13 +92,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同</p>
-<div align="center">
-
-<p><img src="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Class.png" alt="Git"></p>
-<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test.png" alt="Git-test"></p>
-<p><img src="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Branch.png" alt="Branch"></p>
-<div align="left">
-
+<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Branch.png" alt="Branch"></p>
 <h2 id="Git-merge"><a href="#Git-merge" class="headerlink" title="Git merge"></a>Git merge</h2><p>git merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情</p>
 <ul>
 <li>优点：记录了真实的commit情况，包括每个分支的详情</li>
@@ -108,7 +100,7 @@
 </ul>
 <div align="center">
 
-<p><img src="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Merge.png" alt="Merge"></p>
+<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Merge.png" alt="Merge"></p>
 <div align="left">
 
 <h2 id="Git-rebase"><a href="#Git-rebase" class="headerlink" title="Git rebase"></a>Git rebase</h2><p>git rebase 的本质是变基，合并之前的commit历史，将分支的所有commit按提交顺序转移到干路末端</p>
@@ -125,7 +117,7 @@
 <p>（如果第三步无效可以执行  git rebase –skip）</p>
 <div align="center">
 
-<p><img src="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Rebase.png" alt="Rebase.png"></p>
+<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Rebase.png" alt="Rebase.png"></p>
 <div align="left">
 
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/f23f72251abc" target="_blank" rel="noopener">https://www.jianshu.com/p/f23f72251abc</a></p>
@@ -135,11 +127,11 @@
 <li>想得到干净直观的线性历史树，用git rebase</li>
 <li>想保留完整的历史记录，避免重写commit的风险，用git merge</li>
 </ul>
-</div></div></div></div></div></div>
+</div></div></div></div>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/18/git_merge_and_rebase/" data-id="cjkz0akbg0001lsskmepciipo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/18/git_merge_and_rebase/" data-id="cjkz1b4lx0001jkskhcz31uu8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
