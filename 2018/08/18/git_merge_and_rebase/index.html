@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Git merge 和 Git rebase 区别 | Blog of wanz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同        Git mergegit merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情  优点：记录了真实的commit情况，包括每个分支的详情 缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI too">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git merge 和 Git rebase 区别">
+<meta property="og:url" content="http://yoursite.com/2018/08/18/git_merge_and_rebase/index.html">
+<meta property="og:site_name" content="Blog of wanz">
+<meta property="og:description" content="git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同        Git mergegit merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情  优点：记录了真实的commit情况，包括每个分支的详情 缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI too">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Class.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test.png">
+<meta property="og:image" content="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Branch.png">
+<meta property="og:image" content="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Merge.png">
+<meta property="og:image" content="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Rebase.png">
+<meta property="og:updated_time" content="2018-08-18T05:52:38.925Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git merge 和 Git rebase 区别">
+<meta name="twitter:description" content="git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同        Git mergegit merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情  优点：记录了真实的commit情况，包括每个分支的详情 缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI too">
+<meta name="twitter:image" content="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Class.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog of wanz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git_merge_and_rebase" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/18/git_merge_and_rebase/" class="article-date">
+  <time datetime="2018-08-18T05:18:52.000Z" itemprop="datePublished">2018-08-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git merge 和 Git rebase 区别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同</p>
+<div align="center">
+
+<p><img src="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Class.png" alt="Git"></p>
+<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test.png" alt="Git-test"></p>
+<p><img src="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Branch.png" alt="Branch"></p>
+<div align="left">
+
+<h2 id="Git-merge"><a href="#Git-merge" class="headerlink" title="Git merge"></a>Git merge</h2><p>git merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情</p>
+<ul>
+<li>优点：记录了真实的commit情况，包括每个分支的详情</li>
+<li>缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI tools，特别是commit比较频繁时，看到分支很杂乱</li>
+</ul>
+<div align="center">
+
+<p><img src="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Merge.png" alt="Merge"></p>
+<div align="left">
+
+<h2 id="Git-rebase"><a href="#Git-rebase" class="headerlink" title="Git rebase"></a>Git rebase</h2><p>git rebase 的本质是变基，合并之前的commit历史，将分支的所有commit按提交顺序转移到干路末端</p>
+<ul>
+<li>优点：得到更简洁的项目历史，去掉了merge commit</li>
+<li>缺点：如果合并出现代码问题不容易定位，因为rewrite了history</li>
+</ul>
+<p>合并时如果出现冲突需要按照如下步骤解决:</p>
+<ul>
+<li>修改冲突部分</li>
+<li>git add</li>
+<li>git rebase –continue</li>
+</ul>
+<p>（如果第三步无效可以执行  git rebase –skip）</p>
+<div align="center">
+
+<p><img src="https://github.com/pandorawanz/pandorawanz.github.io/blob/gh-pages/pic/2018/08/Rebase.png" alt="Rebase.png"></p>
+<div align="left">
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/f23f72251abc" target="_blank" rel="noopener">https://www.jianshu.com/p/f23f72251abc</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>git rebase尽可能不要在公共分支上使用，由于他人在master上的共同开发，可能会引起许多冲突</li>
+<li>git rebase的使用需注意其对提交历史的破坏性，如果有人需要观测开发的历史过程，尽量避免使用rebase</li>
+<li>想得到干净直观的线性历史树，用git rebase</li>
+<li>想保留完整的历史记录，避免重写commit的风险，用git merge</li>
+</ul>
+</div></div></div></div></div></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/18/git_merge_and_rebase/" data-id="cjkz0akbg0001lsskmepciipo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/16/git operation/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">基于Git的工作流程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 10px;">Git</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/18/git_merge_and_rebase/">Git merge 和 Git rebase 区别</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/git operation/">基于Git的工作流程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 wanz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
