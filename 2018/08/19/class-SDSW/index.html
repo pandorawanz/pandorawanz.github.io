@@ -7,19 +7,19 @@
   
   <title>动静、强弱变量类型 | Blog of wanz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="静态类型vs动态类型静态类型 静态类型是指在编译时就能确定变量类型的类型  例如，C++语言中定义变量: int a = 5; float b = 5.5; double pi = 3.1415926; char c[] = &amp;quot;Hello&amp;quot;; string d(&amp;quot;World&amp;quot;); 以上变量都在编译时决定了类型，类型的定义本身就决定了变量本身可操作的集合，因此">
-<meta name="keywords" content="Class">
+  <meta name="description" content="静态类型vs动态类型静态类型 静态类型是指在编译时就能确定变量类型的类型  例如，C++语言中定义变量: 12345int a = 5;float b = 5.5;double pi = 3.1415926;char c[] = &amp;quot;Hello&amp;quot;;string d(&amp;quot;World&amp;quot;); 以上变量都在编译时决定了类型，类型的定义本身就决定了变量本身可操作的集合，因">
+<meta name="keywords" content="Other">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动静、强弱变量类型">
 <meta property="og:url" content="http://yoursite.com/2018/08/19/class-SDSW/index.html">
 <meta property="og:site_name" content="Blog of wanz">
-<meta property="og:description" content="静态类型vs动态类型静态类型 静态类型是指在编译时就能确定变量类型的类型  例如，C++语言中定义变量: int a = 5; float b = 5.5; double pi = 3.1415926; char c[] = &amp;quot;Hello&amp;quot;; string d(&amp;quot;World&amp;quot;); 以上变量都在编译时决定了类型，类型的定义本身就决定了变量本身可操作的集合，因此">
+<meta property="og:description" content="静态类型vs动态类型静态类型 静态类型是指在编译时就能确定变量类型的类型  例如，C++语言中定义变量: 12345int a = 5;float b = 5.5;double pi = 3.1415926;char c[] = &amp;quot;Hello&amp;quot;;string d(&amp;quot;World&amp;quot;); 以上变量都在编译时决定了类型，类型的定义本身就决定了变量本身可操作的集合，因">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Class.png">
-<meta property="og:updated_time" content="2018-08-19T03:57:37.993Z">
+<meta property="og:updated_time" content="2018-08-22T15:12:28.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动静、强弱变量类型">
-<meta name="twitter:description" content="静态类型vs动态类型静态类型 静态类型是指在编译时就能确定变量类型的类型  例如，C++语言中定义变量: int a = 5; float b = 5.5; double pi = 3.1415926; char c[] = &amp;quot;Hello&amp;quot;; string d(&amp;quot;World&amp;quot;); 以上变量都在编译时决定了类型，类型的定义本身就决定了变量本身可操作的集合，因此">
+<meta name="twitter:description" content="静态类型vs动态类型静态类型 静态类型是指在编译时就能确定变量类型的类型  例如，C++语言中定义变量: 12345int a = 5;float b = 5.5;double pi = 3.1415926;char c[] = &amp;quot;Hello&amp;quot;;string d(&amp;quot;World&amp;quot;); 以上变量都在编译时决定了类型，类型的定义本身就决定了变量本身可操作的集合，因">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Class.png">
   
     <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
@@ -93,12 +93,8 @@
 <li><strong>静态类型是指在编译时就能确定变量类型的类型</strong></li>
 </ul>
 <p>例如，C++语言中定义变量:</p>
-<pre><code>int a = 5;
-float b = 5.5;
-double pi = 3.1415926;
-char c[] = &quot;Hello&quot;;
-string d(&quot;World&quot;);
-</code></pre><p>以上变量都在编译时决定了类型，类型的定义本身就决定了变量本身可操作的集合，因此代码在编译过程中就可以较早地发现类型错误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a = 5;</span><br><span class="line">float b = 5.5;</span><br><span class="line">double pi = 3.1415926;</span><br><span class="line">char c[] = &quot;Hello&quot;;</span><br><span class="line">string d(&quot;World&quot;);</span><br></pre></td></tr></table></figure>
+<p>以上变量都在编译时决定了类型，类型的定义本身就决定了变量本身可操作的集合，因此代码在编译过程中就可以较早地发现类型错误。</p>
 <ul>
 <li><strong>优点</strong>：能在编译时发现类型错误，在代码发布运行之前找到问题并提前解决</li>
 <li><strong>缺点</strong>：静态类型必须在声明中表达出来，编译器无法智能识别类型</li>
@@ -107,8 +103,8 @@ string d(&quot;World&quot;);
 <li><strong>动态类型是指在运行时才能确定一个变量类型的类型</strong></li>
 </ul>
 <p>例如，JavaScript语言中的语句：</p>
-<pre><code>var name = student.getName();
-</code></pre><p>这行代码只有在被执行的时候才知道 name 是字符串类型的，甚至是 null 或 undefined 类型；同时也没办法进行类型推导，因为 student.getName() 函数签名根本不包含返回值类型信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var name = student.getName();</span><br></pre></td></tr></table></figure>
+<p>这行代码只有在被执行的时候才知道 name 是字符串类型的，甚至是 null 或 undefined 类型；同时也没办法进行类型推导，因为 student.getName() 函数签名根本不包含返回值类型信息。</p>
 <ul>
 <li><strong>优点</strong>：设限较少，节约编程的时间成本，代码本身具有一定的灵活性</li>
 <li><strong>缺点</strong>：牺牲一定的可靠性，运行时可能会出现的错误概率较大，同时系统需要对变量类型进行识别，会耗费额外的时间</li>
@@ -117,11 +113,8 @@ string d(&quot;World&quot;);
 <h2 id="强类型vs弱类型"><a href="#强类型vs弱类型" class="headerlink" title="强类型vs弱类型"></a>强类型vs弱类型</h2><h3 id="强类型"><a href="#强类型" class="headerlink" title="强类型"></a>强类型</h3><ul>
 <li><strong>强类型的一个类型对象只有一种解释方式，不允许隐式转换</strong></li>
 </ul>
-<pre><code>&quot;1&quot;+2
-Traceback (most recent call last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
-TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects
-</code></pre><p>上述例子中，”1”为字符串类型str，2为整型int，表达式中的运算不允许隐式类型转换，出现forbidden behavior，该语言是强类型语言。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;1&quot;+2</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects</span><br></pre></td></tr></table></figure>
+<p>上述例子中，”1”为字符串类型str，2为整型int，表达式中的运算不允许隐式类型转换，出现forbidden behavior，该语言是强类型语言。</p>
 <ul>
 <li><strong>优点</strong>：类型固定、安全，内存大小固定，而且可以连续分配，方便管理，逻辑严谨</li>
 <li><strong>缺点</strong>：速度上可能略逊色于弱类型定义语言，编程时在类型中投入的精力增加</li>
@@ -129,9 +122,8 @@ TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects
 <h3 id="弱类型"><a href="#弱类型" class="headerlink" title="弱类型"></a>弱类型</h3><ul>
 <li><strong>弱类型的一个类型对象可以被解释成不同的类型，允许隐式转换</strong></li>
 </ul>
-<pre><code>&quot;1&quot;+2
-&apos;12&apos;
-</code></pre><p>上述例子中，”1”为字符串类型str，2为整型int，表达式在执行过程中，整型2被转换成字符串类型，输出结果呈现出字符串的拼接，该语言是弱类型语言。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;1&quot;+2</span><br><span class="line">&apos;12&apos;</span><br></pre></td></tr></table></figure>
+<p>上述例子中，”1”为字符串类型str，2为整型int，表达式在执行过程中，整型2被转换成字符串类型，输出结果呈现出字符串的拼接，该语言是弱类型语言。</p>
 <ul>
 <li><strong>优点</strong>：灵活、简单、方便使用，包容性较强，定义变量的过程中可以无需指定类型，且执行过程中也可以隐式地改变其类型</li>
 <li><strong>缺点</strong>：调试过程较困难，容易产生未知BUG，相对不适合大项目开发</li>
@@ -145,16 +137,25 @@ TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/19/class-SDSW/" data-id="cjl0b6yx80000o8skgrhpnoog" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/19/class-SDSW/" data-id="cjl5aeftd0001d4sk6ysbjuah" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Class/">Class</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
 
     </footer>
   </div>
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/08/22/java-basis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java基本语法
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/18/git_merge_and_rebase/" id="article-nav-older" class="article-nav-link-wrap">
@@ -178,7 +179,7 @@ TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li></ul>
     </div>
   </div>
 
@@ -188,7 +189,7 @@ TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a>
+      <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a>
     </div>
   </div>
 
@@ -208,6 +209,10 @@ TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/08/22/java-basis/">Java基本语法</a>
+          </li>
         
           <li>
             <a href="/2018/08/19/class-SDSW/">动静、强弱变量类型</a>
