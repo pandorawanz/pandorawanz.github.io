@@ -7,18 +7,18 @@
   
   <title>Java基本语法 | Blog of wanz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1 基本数据类型1.1 整数1个字节为8位2进制数，能容下的数据为28 = 256种，unsigned表示无符号变量，不存在负值，故unsigned int的范围是0 ~ 255，以此类推    类型 字节数 范围     byte 1 -128 ~ 127   short 2 -32768 ~ 32767   int 4 -2147439648 ~ 2147438647   long 8 /">
+  <meta name="description" content="本文将从基本数据类型、控制语句、类等方面来简述Java语言的基本语法。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基本语法">
 <meta property="og:url" content="http://yoursite.com/2018/08/22/java-basis/index.html">
 <meta property="og:site_name" content="Blog of wanz">
-<meta property="og:description" content="1 基本数据类型1.1 整数1个字节为8位2进制数，能容下的数据为28 = 256种，unsigned表示无符号变量，不存在负值，故unsigned int的范围是0 ~ 255，以此类推    类型 字节数 范围     byte 1 -128 ~ 127   short 2 -32768 ~ 32767   int 4 -2147439648 ~ 2147438647   long 8 /">
+<meta property="og:description" content="本文将从基本数据类型、控制语句、类等方面来简述Java语言的基本语法。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-22T15:21:42.375Z">
+<meta property="og:updated_time" content="2018-08-23T04:45:43.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基本语法">
-<meta name="twitter:description" content="1 基本数据类型1.1 整数1个字节为8位2进制数，能容下的数据为28 = 256种，unsigned表示无符号变量，不存在负值，故unsigned int的范围是0 ~ 255，以此类推    类型 字节数 范围     byte 1 -128 ~ 127   short 2 -32768 ~ 32767   int 4 -2147439648 ~ 2147438647   long 8 /">
+<meta name="twitter:description" content="本文将从基本数据类型、控制语句、类等方面来简述Java语言的基本语法。">
   
     <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
   
@@ -87,7 +87,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-基本数据类型"><a href="#1-基本数据类型" class="headerlink" title="1 基本数据类型"></a>1 基本数据类型</h2><h3 id="1-1-整数"><a href="#1-1-整数" class="headerlink" title="1.1 整数"></a>1.1 整数</h3><p>1个字节为8位2进制数，能容下的数据为2<sub>8 = 256种，unsigned表示无符号变量，不存在负值，故unsigned int的范围是0 ~ 255，以此类推</sub></p>
+        <p>本文将从基本数据类型、控制语句、类等方面来简述Java语言的基本语法。<br><a id="more"></a></p>
+<h2 id="1-基本数据类型"><a href="#1-基本数据类型" class="headerlink" title="1 基本数据类型"></a>1 基本数据类型</h2><h3 id="1-1-整数"><a href="#1-1-整数" class="headerlink" title="1.1 整数"></a>1.1 整数</h3><p>1个字节为8位2进制数，能容下的数据为2^8 = 256种，unsigned表示无符号变量，不存在负值，故unsigned int的范围是0 ~ 255，以此类推</p>
 <table>
 <thead>
 <tr>
@@ -197,11 +198,87 @@
 <li>break: 退出当前循环</li>
 <li>throw: 抛出异常</li>
 </ul>
-<h2 id="3-类"><a href="#3-类" class="headerlink" title="3 类"></a>3 类</h2>
+<h2 id="3-类型模型"><a href="#3-类型模型" class="headerlink" title="3 类型模型"></a>3 类型模型</h2><p><strong>类</strong>：一个模板，它描述一类对象的行为和状态<br><strong>对象</strong>：类的一个实例，有具体的状态<br><strong>方法</strong>：类中定义的该类的实例对象所具有的行为<br><strong>静态方法</strong>：隶属于类本身的方法</p>
+<h3 id="3-1-类"><a href="#3-1-类" class="headerlink" title="3.1 类"></a>3.1 类</h3><p>一般情况下，一个文件中存放一个public类，类的结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//程序包名</span><br><span class="line">package com.company;</span><br><span class="line"></span><br><span class="line">//类声明</span><br><span class="line">public class Student &#123;</span><br><span class="line">    //成员变量及方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-对象"><a href="#3-2-对象" class="headerlink" title="3.2 对象"></a>3.2 对象</h3><p>语义上是表达一个Java类的尸体，可以赋值到一个变量，通过new语句进行创建<br>以Student类为例，首先在Student类中定义成员变量及构造函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    //成员变量</span><br><span class="line">    private String name;</span><br><span class="line">    private int weight;</span><br><span class="line"></span><br><span class="line">    //无参的构造方法1</span><br><span class="line">    public Student() &#123;</span><br><span class="line">        this.name = &quot;default&quot;;</span><br><span class="line">        this.weight = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //含参的构造方法2</span><br><span class="line">    public Student(String name, int weight) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.weight = weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //静态构造方法</span><br><span class="line">    public static Student newStudent(String name, int weight)&#123;</span><br><span class="line">        return Student(name, weight);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Main函数中创建对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        //Student default，构造方法1</span><br><span class="line">        Student def = new Student();</span><br><span class="line"></span><br><span class="line">        //Student Jeff,构造方法2</span><br><span class="line">        Student jef = new Student(&quot;Jeff&quot;,120);</span><br><span class="line"></span><br><span class="line">        //Student Jimmy,静态构造方法</span><br><span class="line">        Student jimmy =Student.newStudent(&quot;Jimmy&quot;, 130);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-修饰符及方法"><a href="#3-3-修饰符及方法" class="headerlink" title="3.3 修饰符及方法"></a>3.3 修饰符及方法</h3><h4 id="3-3-1-访问修饰符"><a href="#3-3-1-访问修饰符" class="headerlink" title="3.3.1 访问修饰符"></a>3.3.1 访问修饰符</h4><p>修饰符用于控制变量和类的作用及其<strong>访问限制</strong>，作用关系如下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">public</th>
+<th style="text-align:center">protected</th>
+<th style="text-align:center">default</th>
+<th style="text-align:center">private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">同一个类</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">同一个包</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td style="text-align:center">子父类</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+</tr>
+<tr>
+<td style="text-align:center">不同包</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+<td style="text-align:center">×</td>
+</tr>
+</tbody>
+</table>
+<p>成员变量一般用private修饰，能增加其安全性，对其进行保护。这样外部方法就不能通过jef.name等方式直接访问成员变量。相对地，通过getter和setter函数为外部方法提供可读和可写接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    ...</span><br><span class="line">    //getter方法为外部提供可读接口</span><br><span class="line">    public String getName()&#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //setter方法为外部提供可写接口</span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从而外部方法可以通过以下方式对Student类的成员变量进行访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ...</span><br><span class="line">        //可读</span><br><span class="line">        System.out.println(def.getName());</span><br><span class="line">        //System.out.println(def.name);错误，不具有访问权限</span><br><span class="line"></span><br><span class="line">        //可写</span><br><span class="line">        jef.setName(&quot;David&quot;);</span><br><span class="line">        //jef.name = &quot;David&quot;;错误，不具有访问权限</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-2-静态修饰符"><a href="#3-3-2-静态修饰符" class="headerlink" title="3.3.2 静态修饰符"></a>3.3.2 静态修饰符</h4><ul>
+<li><strong>static</strong>：把方法或者成员变量设置为<strong>类共享</strong>，可以通过类名直接访问，声明方式：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    ...</span><br><span class="line">    //静态变量</span><br><span class="line">    public static int number = 0;</span><br><span class="line"></span><br><span class="line">    //构造方法改变静态变量，对创建的实例对象进行计数</span><br><span class="line">    public Student() &#123;</span><br><span class="line">        this.name = &quot;default&quot;;</span><br><span class="line">        this.weight = 0;</span><br><span class="line">        number++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Student(String name, int weight) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.weight = weight;</span><br><span class="line">        number++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //静态方法</span><br><span class="line">    public static int getNumber() &#123;</span><br><span class="line">        return number;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要<strong>注意</strong>的是，静态方法<strong>没有this</strong>,非静态变量不能在静态方法中访问，但静态变量可在非静态方法中访问</p>
+<h4 id="3-3-3-final修饰符"><a href="#3-3-3-final修饰符" class="headerlink" title="3.3.3 final修饰符"></a>3.3.3 final修饰符</h4><p>final修饰符主要有三个作用：</p>
+<ul>
+<li>final &lt;类&gt;; -&gt;防止类被继承</li>
+<li>final &lt;变量&gt;; -&gt;防止变量被修改引用到另外一个对象，可称为<strong>常量</strong></li>
+<li>final &lt;方法&gt;; -&gt;防止方法被重载<override></override></li>
+</ul>
+<p>final &lt;变量&gt; 必须在声明或者构造函数中定义，用声明定义示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    ...</span><br><span class="line">    final private String name = &quot;default&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用构造函数定义示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    ...</span><br><span class="line">    final private String name;</span><br><span class="line">    public Student(String name, int weight) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.weight = weight;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是，当声明中定义了final成员变量，就不可以在构造函数中修改其值及引用</p>
+<p>这里有个问题：<strong>常量指向的对象能否被修改？</strong><br>final &lt;对象&gt; 可以从下探究：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ...</span><br><span class="line">        final Student fin = new Student(&quot;FIN&quot;,150);</span><br><span class="line">        //fin = jef; 错误，重新引用</span><br><span class="line">        fin.setName(&quot;FII&quot;);  //正确，可以改变对象内成员</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此，常量指向的对象本身不可以被修改，但其成员变量可修改</p>
+<h3 id="3-4-注意"><a href="#3-4-注意" class="headerlink" title="3.4 注意"></a>3.4 注意</h3><p>对象不能直接赋值于对象，只能进行引用，即浅复制：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    ...</span><br><span class="line">    public void workout() &#123;</span><br><span class="line">        weight = weight - 5;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Main&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ...</span><br><span class="line">        Student jef = new Student(&quot;Jeff&quot;,120);</span><br><span class="line">        Student david = jef;</span><br><span class="line">        david.workout();</span><br><span class="line">        System.out.println(david.getWeight());</span><br><span class="line">        System.out.println(jef.getWeight()); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其结果均为115，可见jef和david均指向同一对象，其成员变量同时改变</p>
+<p>（深复制方法尚待补充）</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/22/java-basis/" data-id="cjl5aefuc000ad4skbac9pial" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/22/java-basis/" data-id="cjl636hhi0004pksk6fxq3xtz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>

@@ -84,121 +84,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-基本数据类型"><a href="#1-基本数据类型" class="headerlink" title="1 基本数据类型"></a>1 基本数据类型</h2><h3 id="1-1-整数"><a href="#1-1-整数" class="headerlink" title="1.1 整数"></a>1.1 整数</h3><p>1个字节为8位2进制数，能容下的数据为2<sub>8 = 256种，unsigned表示无符号变量，不存在负值，故unsigned int的范围是0 ~ 255，以此类推</sub></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">字节数</th>
-<th style="text-align:center">范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">byte</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">-128 ~ 127</td>
-</tr>
-<tr>
-<td style="text-align:center">short</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">-32768 ~ 32767</td>
-</tr>
-<tr>
-<td style="text-align:center">int</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">-2147439648 ~ 2147438647</td>
-</tr>
-<tr>
-<td style="text-align:center">long</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">/</td>
-</tr>
-<tr>
-<td style="text-align:center">unsigned byte</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">0 ~ 255</td>
-</tr>
-<tr>
-<td style="text-align:center">unsigned short</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">0 ~ 65535</td>
-</tr>
-<tr>
-<td style="text-align:center">unsigned int</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">0 ~ 4294967295</td>
-</tr>
-<tr>
-<td style="text-align:center">unsigned long</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">/</td>
-</tr>
-</tbody>
-</table>
-<h3 id="1-2-浮点数"><a href="#1-2-浮点数" class="headerlink" title="1.2 浮点数"></a>1.2 浮点数</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">字节数</th>
-<th style="text-align:center">指数位</th>
-<th style="text-align:center">符号位</th>
-<th style="text-align:center">尾数位</th>
-<th style="text-align:center">指数范围</th>
-<th style="text-align:center">数据范围</th>
-<th style="text-align:center">精度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">float</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">23</td>
-<td style="text-align:center">-128 ~ 127</td>
-<td style="text-align:center">±3.4E-38 ~ 3.4E38</td>
-<td style="text-align:center">6-7</td>
-</tr>
-<tr>
-<td style="text-align:center">double</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">11</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">52</td>
-<td style="text-align:center">-1024 ~ 1023</td>
-<td style="text-align:center">±1.7E-308 ~ 1.7E308</td>
-<td style="text-align:center">15-16</td>
-</tr>
-</tbody>
-</table>
-<p>尾数位计算2E23 = 8388608，故float最多能保留7位有效数字，绝对精准地保留6位；2E11 = 256，故float的指数范围为-128 ~ 127，因此2^127 = 3.4E38就是数据范围，可以此类推（没有unsigned）</p>
-<h3 id="1-3-字符和字符串"><a href="#1-3-字符和字符串" class="headerlink" title="1.3 字符和字符串"></a>1.3 字符和字符串</h3><ul>
-<li>字符类型char占1个字节，’1’,’a’,’#’,’ ‘等都是字符</li>
-<li>字符串类型String由长度决定占字节数，”asdas 124”是9个字节的字符串</li>
-</ul>
-<h3 id="1-4-boolean类型"><a href="#1-4-boolean类型" class="headerlink" title="1.4 boolean类型"></a>1.4 boolean类型</h3><ul>
-<li>只有true或false两种取值，表示真假</li>
-</ul>
-<h3 id="1-5-操作符"><a href="#1-5-操作符" class="headerlink" title="1.5 操作符"></a>1.5 操作符</h3><ul>
-<li>‘+’ , ‘-‘ , ‘*’ , ‘/‘ , ‘%’ , ‘&gt;’ , ‘==’等都是操作符</li>
-</ul>
-<h3 id="1-6-数组"><a href="#1-6-数组" class="headerlink" title="1.6 数组"></a>1.6 数组</h3><ul>
-<li>数组的声明与相关语句：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int array[100];</span><br><span class="line">int[] array = new int[100];</span><br><span class="line">array[0] = 5;</span><br><span class="line">int length = array.length();</span><br></pre></td></tr></table></figure>
-<h2 id="2-控制语句"><a href="#2-控制语句" class="headerlink" title="2 控制语句"></a>2 控制语句</h2><h3 id="2-1-逻辑判断"><a href="#2-1-逻辑判断" class="headerlink" title="2.1 逻辑判断"></a>2.1 逻辑判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (condition) &#123; action1; &#125; else &#123; action2; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-循环"><a href="#2-2-循环" class="headerlink" title="2.2 循环"></a>2.2 循环</h3><h4 id="2-2-1-循环体结构"><a href="#2-2-1-循环体结构" class="headerlink" title="2.2.1 循环体结构"></a>2.2.1 循环体结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (initial; condition; iteration) &#123;&#125;</span><br><span class="line">for (T iterator : Collection&lt;T&gt;) &#123;&#125;</span><br><span class="line">while (condition) &#123;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="2-2-2-控制语句"><a href="#2-2-2-控制语句" class="headerlink" title="2.2.2 控制语句"></a>2.2.2 控制语句</h4><ul>
-<li>return &lt;返回值&gt;: 从⽅法中返回</li>
-<li>break: 退出当前循环</li>
-<li>throw: 抛出异常</li>
-</ul>
-<h2 id="3-类"><a href="#3-类" class="headerlink" title="3 类"></a>3 类</h2>
+        <p>本文将从基本数据类型、控制语句、类等方面来简述Java语言的基本语法。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/22/java-basis/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/22/java-basis/" data-id="cjl5aefuc000ad4skbac9pial" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/22/java-basis/" data-id="cjl636hhi0004pksk6fxq3xtz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -233,54 +128,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="静态类型vs动态类型"><a href="#静态类型vs动态类型" class="headerlink" title="静态类型vs动态类型"></a>静态类型vs动态类型</h2><h3 id="静态类型"><a href="#静态类型" class="headerlink" title="静态类型"></a>静态类型</h3><ul>
-<li><strong>静态类型是指在编译时就能确定变量类型的类型</strong></li>
-</ul>
-<p>例如，C++语言中定义变量:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a = 5;</span><br><span class="line">float b = 5.5;</span><br><span class="line">double pi = 3.1415926;</span><br><span class="line">char c[] = &quot;Hello&quot;;</span><br><span class="line">string d(&quot;World&quot;);</span><br></pre></td></tr></table></figure>
-<p>以上变量都在编译时决定了类型，类型的定义本身就决定了变量本身可操作的集合，因此代码在编译过程中就可以较早地发现类型错误。</p>
-<ul>
-<li><strong>优点</strong>：能在编译时发现类型错误，在代码发布运行之前找到问题并提前解决</li>
-<li><strong>缺点</strong>：静态类型必须在声明中表达出来，编译器无法智能识别类型</li>
-</ul>
-<h3 id="动态类型"><a href="#动态类型" class="headerlink" title="动态类型"></a>动态类型</h3><ul>
-<li><strong>动态类型是指在运行时才能确定一个变量类型的类型</strong></li>
-</ul>
-<p>例如，JavaScript语言中的语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var name = student.getName();</span><br></pre></td></tr></table></figure>
-<p>这行代码只有在被执行的时候才知道 name 是字符串类型的，甚至是 null 或 undefined 类型；同时也没办法进行类型推导，因为 student.getName() 函数签名根本不包含返回值类型信息。</p>
-<ul>
-<li><strong>优点</strong>：设限较少，节约编程的时间成本，代码本身具有一定的灵活性</li>
-<li><strong>缺点</strong>：牺牲一定的可靠性，运行时可能会出现的错误概率较大，同时系统需要对变量类型进行识别，会耗费额外的时间</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通常情况下，建议把可能遇到的问题提前预防并解决，能使用静态类型就尽量使用静态类型，可以在编译时马上发现问题并解决，这不仅能减少运行时的工作量和降低错误出现的可能性，个人认为这也是良好的编程习惯。但并非就认为动态类型完全不可取，某些未知的环境下，动态类型的使用也是难以避免的。因此，静态类型和动态类型各有利弊，需做一定的权衡。</p>
-<h2 id="强类型vs弱类型"><a href="#强类型vs弱类型" class="headerlink" title="强类型vs弱类型"></a>强类型vs弱类型</h2><h3 id="强类型"><a href="#强类型" class="headerlink" title="强类型"></a>强类型</h3><ul>
-<li><strong>强类型的一个类型对象只有一种解释方式，不允许隐式转换</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;1&quot;+2</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects</span><br></pre></td></tr></table></figure>
-<p>上述例子中，”1”为字符串类型str，2为整型int，表达式中的运算不允许隐式类型转换，出现forbidden behavior，该语言是强类型语言。</p>
-<ul>
-<li><strong>优点</strong>：类型固定、安全，内存大小固定，而且可以连续分配，方便管理，逻辑严谨</li>
-<li><strong>缺点</strong>：速度上可能略逊色于弱类型定义语言，编程时在类型中投入的精力增加</li>
-</ul>
-<h3 id="弱类型"><a href="#弱类型" class="headerlink" title="弱类型"></a>弱类型</h3><ul>
-<li><strong>弱类型的一个类型对象可以被解释成不同的类型，允许隐式转换</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;1&quot;+2</span><br><span class="line">&apos;12&apos;</span><br></pre></td></tr></table></figure>
-<p>上述例子中，”1”为字符串类型str，2为整型int，表达式在执行过程中，整型2被转换成字符串类型，输出结果呈现出字符串的拼接，该语言是弱类型语言。</p>
-<ul>
-<li><strong>优点</strong>：灵活、简单、方便使用，包容性较强，定义变量的过程中可以无需指定类型，且执行过程中也可以隐式地改变其类型</li>
-<li><strong>缺点</strong>：调试过程较困难，容易产生未知BUG，相对不适合大项目开发</li>
-</ul>
-<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>从上述讨论开来，静态类型和强类型语言更为严谨，容易理解，能减少程序出错的可能性；而动态类型和弱类型语言更为灵活，但更容易出错</p>
-<h2 id="当前常见的语言分类"><a href="#当前常见的语言分类" class="headerlink" title="当前常见的语言分类"></a>当前常见的语言分类</h2><p><div align="center"><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Class.png" alt="class"></div></p>
-<div align="left">
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.zhihu.com/question/19918532/answer/58538334" target="_blank" rel="noopener">https://www.zhihu.com/question/19918532/answer/58538334</a><br><a href="https://segmentfault.com/a/1190000012372372" target="_blank" rel="noopener">https://segmentfault.com/a/1190000012372372</a></p>
-</div>
+<li><strong>静态类型是指在编译时就能确定变量类型的类型</strong>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/19/class-SDSW/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/19/class-SDSW/" data-id="cjl5aeftd0001d4sk6ysbjuah" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/19/class-SDSW/" data-id="cjl636hgu0000pkskqeagifxp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
@@ -316,45 +173,15 @@
       
         <p>git merge 和 git rebase 均具有合并分支的效果，但合并分支的机理不同</p>
 <p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Branch.png" alt="Branch"></p>
-<h2 id="Git-merge"><a href="#Git-merge" class="headerlink" title="Git merge"></a>Git merge</h2><p>git merge 是将本质上生成一个新的提交，如果合并的时候遇到冲突，仅需要修改后重新commit，保留了分支详情</p>
-<ul>
-<li>优点：记录了真实的commit情况，包括每个分支的详情</li>
-<li>缺点：因为每次merge会自动产生一个merge commit，所以在使用一些git 的GUI tools，特别是commit比较频繁时，看到分支很杂乱</li>
-</ul>
-<div align="center">
-
-<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Merge.png" alt="Merge"></p>
-<div align="left">
-
-<h2 id="Git-rebase"><a href="#Git-rebase" class="headerlink" title="Git rebase"></a>Git rebase</h2><p>git rebase 的本质是变基，合并之前的commit历史，将分支的所有commit按提交顺序转移到干路末端</p>
-<ul>
-<li>优点：得到更简洁的项目历史，去掉了merge commit</li>
-<li>缺点：如果合并出现代码问题不容易定位，因为rewrite了history</li>
-</ul>
-<p>合并时如果出现冲突需要按照如下步骤解决:</p>
-<ul>
-<li>修改冲突部分</li>
-<li>git add</li>
-<li>git rebase –continue</li>
-</ul>
-<p>（如果第三步无效可以执行  git rebase –skip）</p>
-<div align="center">
-
-<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Rebase.png" alt="Rebase.png"></p>
-<div align="left">
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/f23f72251abc" target="_blank" rel="noopener">https://www.jianshu.com/p/f23f72251abc</a></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>git rebase尽可能不要在公共分支上使用，由于他人在master上的共同开发，可能会引起许多冲突</li>
-<li>git rebase的使用需注意其对提交历史的破坏性，如果有人需要观测开发的历史过程，尽量避免使用rebase</li>
-<li>想得到干净直观的线性历史树，用git rebase</li>
-<li>想保留完整的历史记录，避免重写commit的风险，用git merge</li>
-</ul>
-</div></div></div></div>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/18/git_merge_and_rebase/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/18/git_merge_and_rebase/" data-id="cjl5aeftj0003d4skx7fcj28f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/18/git_merge_and_rebase/" data-id="cjl636hhf0003pkskz5xgpa7e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -390,50 +217,16 @@
       
         <h2 id="仓库的初始化或导出"><a href="#仓库的初始化或导出" class="headerlink" title="仓库的初始化或导出"></a>仓库的初始化或导出</h2><ul>
 <li>git init 指令创建并初始化一个git仓库</li>
-<li>git clone指令直接从github上导出仓库</li>
-</ul>
-<h2 id="查看库中文件状态"><a href="#查看库中文件状态" class="headerlink" title="查看库中文件状态"></a>查看库中文件状态</h2><ul>
-<li>git status 指令查看未提交文件状态（每执行一步操作后都可以通过该按钮来确认当前状态）</li>
-</ul>
-<h2 id="编辑库中文件"><a href="#编辑库中文件" class="headerlink" title="编辑库中文件"></a>编辑库中文件</h2><ul>
-<li>vim 指令建立新文件并输入文件内容，或修改原有文件内容</li>
-</ul>
-<h2 id="查看分支情况"><a href="#查看分支情况" class="headerlink" title="查看分支情况"></a>查看分支情况</h2><ul>
-<li>git branch 指令查看分支情况</li>
-<li>git checkout -b 指令建立新分支</li>
-<li>git checkout 指令跳到指定分支</li>
-<li>git merge 指令以新建提交的形式，合并分支</li>
-<li>git rebase 指令以转移被合并分支的提交，至干路末端的形式，合并分支</li>
-</ul>
-<h2 id="文件的跟踪及提交"><a href="#文件的跟踪及提交" class="headerlink" title="文件的跟踪及提交"></a>文件的跟踪及提交</h2><ul>
-<li>git add 指令将当前分支下的未跟踪文件添加至跟踪文件</li>
-<li>git commit -m 指令将当前分支的跟踪文件提交，并附加备注</li>
-</ul>
-<h2 id="文件的远程仓库同步"><a href="#文件的远程仓库同步" class="headerlink" title="文件的远程仓库同步"></a>文件的远程仓库同步</h2><ul>
-<li>git push 指令将将本地分支更新推送至远程仓库</li>
-<li>git pull 指令取回远程主机某个分支的更新，再与本地的指定分支合并</li>
-</ul>
-<h2 id="Git工作流程简易导图"><a href="#Git工作流程简易导图" class="headerlink" title="Git工作流程简易导图"></a>Git工作流程简易导图</h2><p><div align="center"><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/Git%20operation.png" alt="Git operation"></div></p>
-<div align="left">
-
-<h2 id="Git分支的本地工作流程"><a href="#Git分支的本地工作流程" class="headerlink" title="Git分支的本地工作流程"></a>Git分支的本地工作流程</h2><div align="center">
-
-<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test.png" alt="Git-test"></p>
-<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test2.png" alt="Git-test2"></p>
-<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test2.png" alt="Git-test3"></p>
-<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test2.png" alt="Git-test4"></p>
-<div align="left">
-
-<h2 id="本地Git与远程Github的交互工作流程"><a href="#本地Git与远程Github的交互工作流程" class="headerlink" title="本地Git与远程Github的交互工作流程"></a>本地Git与远程Github的交互工作流程</h2><div align="center">
-
-<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test2.png" alt="Git-test5"></p>
-<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test2.png" alt="Git-test6"></p>
-<p><img src="https://raw.githubusercontent.com/pandorawanz/pandorawanz.github.io/gh-pages/pic/2018/08/git-test2.png" alt="Git-test7"></p>
-</div></div></div></div>
+<li>git clone指令直接从github上导出仓库
+        
+          <p class="article-more-link">
+            <a href="/2018/08/16/git operation/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/16/git operation/" data-id="cjl5aeft50000d4sk8brzf7cs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/16/git operation/" data-id="cjl636hh50001pkskv9pgz2yp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -467,20 +260,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/16/hello-world/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/16/hello-world/" data-id="cjl5aeftm0004d4sk8y0hnqto" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/16/hello-world/" data-id="cjl636hje000cpksk1ebmhsdc" class="article-share-link">Share</a>
       
       
     </footer>
