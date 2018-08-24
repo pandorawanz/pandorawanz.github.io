@@ -5,20 +5,20 @@
   
 
   
-  <title>File-hw | Blog of wanz</title>
+  <title>File和FileHelper类小封装 | Blog of wanz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是对文件写入写出的小封装File类  Class File123456789101112131415161718192021222324252627282930313233import java.io.*;public class File&amp;#123;    private String ipath;    private String opath;    public File(String">
+  <meta name="description" content="对文件写入写出的小封装File类和FileHelper类">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="File-hw">
+<meta property="og:title" content="File和FileHelper类小封装">
 <meta property="og:url" content="http://yoursite.com/2018/08/24/File-hw/index.html">
 <meta property="og:site_name" content="Blog of wanz">
-<meta property="og:description" content="这是对文件写入写出的小封装File类  Class File123456789101112131415161718192021222324252627282930313233import java.io.*;public class File&amp;#123;    private String ipath;    private String opath;    public File(String">
+<meta property="og:description" content="对文件写入写出的小封装File类和FileHelper类">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-24T06:47:18.920Z">
+<meta property="og:updated_time" content="2018-08-24T08:22:18.644Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="File-hw">
-<meta name="twitter:description" content="这是对文件写入写出的小封装File类  Class File123456789101112131415161718192021222324252627282930313233import java.io.*;public class File&amp;#123;    private String ipath;    private String opath;    public File(String">
+<meta name="twitter:title" content="File和FileHelper类小封装">
+<meta name="twitter:description" content="对文件写入写出的小封装File类和FileHelper类">
   
     <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
   
@@ -79,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      File-hw
+      File和FileHelper类小封装
     </h1>
   
 
@@ -88,17 +88,20 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li>这是对文件写入写出的小封装<strong>File</strong>类</li>
+<li>对文件写入写出的小封装<strong>File</strong>类和<strong>FileHelper</strong>类<a id="more"></a>
+<h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2></li>
 </ul>
-<h2 id="Class-File"><a href="#Class-File" class="headerlink" title="Class File"></a>Class File</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import java.io.*;</span><br><span class="line"></span><br><span class="line">public class File&#123;</span><br><span class="line">    private String ipath;</span><br><span class="line">    private String opath;</span><br><span class="line">    public File(String ipath, String opath) &#123;</span><br><span class="line">        this.ipath = ipath;</span><br><span class="line">        this.opath = opath;</span><br><span class="line">    &#125;</span><br><span class="line">    public String readToString() throws IOException &#123;</span><br><span class="line">        FileInputStream input = new FileInputStream(ipath);</span><br><span class="line">        InputStreamReader reader = new InputStreamReader(input,&quot;UTF-8&quot;);</span><br><span class="line">        BufferedReader bufferedReader = new BufferedReader(reader);</span><br><span class="line">        String context = &quot;&quot;;</span><br><span class="line">        String line = null;</span><br><span class="line">        while ((line = bufferedReader.readLine()) != null) &#123;</span><br><span class="line">            context += line + &quot;\n&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        bufferedReader.close();</span><br><span class="line">        reader.close();</span><br><span class="line">        input.close();</span><br><span class="line">        return context;</span><br><span class="line">    &#125;</span><br><span class="line">    public void writeString(String content) throws IOException&#123;</span><br><span class="line">        FileOutputStream output = new FileOutputStream(opath);</span><br><span class="line">        OutputStreamWriter writer = new OutputStreamWriter(output,&quot;UTF-8&quot;);</span><br><span class="line">        PrintWriter printer = new PrintWriter(writer);</span><br><span class="line">        printer.print(content);</span><br><span class="line">        printer.close();</span><br><span class="line">        writer.close();</span><br><span class="line">        output.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Main实测"><a href="#Main实测" class="headerlink" title="Main实测"></a>Main实测</h2><ul>
-<li>res文件夹在项目的根目录下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        File file = new File (&quot;res/in.txt&quot;, &quot;res/out.txt&quot;);</span><br><span class="line">        String content = file.readToString();</span><br><span class="line">        file.writeString(content);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import java.io.*;</span><br><span class="line"></span><br><span class="line">public class File&#123;</span><br><span class="line">    private String path;</span><br><span class="line">    public File(String path) &#123;</span><br><span class="line">        this.path = path;</span><br><span class="line">    &#125;</span><br><span class="line">    public String readToString() throws IOException &#123;</span><br><span class="line">        FileInputStream input = new FileInputStream(path);</span><br><span class="line">        InputStreamReader reader = new InputStreamReader(input,&quot;UTF-8&quot;);</span><br><span class="line">        BufferedReader bufferedReader = new BufferedReader(reader);</span><br><span class="line">        String context = &quot;&quot;;</span><br><span class="line">        String line = null;</span><br><span class="line">        while ((line = bufferedReader.readLine()) != null) &#123;</span><br><span class="line">            context += line + &quot;\n&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        bufferedReader.close();</span><br><span class="line">        reader.close();</span><br><span class="line">        input.close();</span><br><span class="line">        return context;</span><br><span class="line">    &#125;</span><br><span class="line">    public void writeString(String content) throws IOException&#123;</span><br><span class="line">        FileOutputStream output = new FileOutputStream(path);</span><br><span class="line">        OutputStreamWriter writer = new OutputStreamWriter(output,&quot;UTF-8&quot;);</span><br><span class="line">        PrintWriter printer = new PrintWriter(writer);</span><br><span class="line">        printer.print(content);</span><br><span class="line">        printer.close();</span><br><span class="line">        writer.close();</span><br><span class="line">        output.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Main实测"><a href="#Main实测" class="headerlink" title="Main实测"></a>Main实测</h3><ul>
+<li>res文件夹在项目的根目录下</li>
 </ul>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        File file1 = new File (&quot;res/in.txt&quot;);</span><br><span class="line">        File file2 = new File (&quot;res/out.txt&quot;);</span><br><span class="line">        String content = file1.readToString();</span><br><span class="line">        file2.writeString(content);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="FileHelper类"><a href="#FileHelper类" class="headerlink" title="FileHelper类"></a>FileHelper类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class FileHelper &#123;</span><br><span class="line">    public static void copy(File file1, File file2) throws IOException &#123;</span><br><span class="line">        file2.writeString(file1.readToString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Main实测-1"><a href="#Main实测-1" class="headerlink" title="Main实测"></a>Main实测</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileHelper.copy(file1,file2);</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/24/File-hw/" data-id="cjl7mvvr9000044skugfspnqn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/24/File-hw/" data-id="cjl7qai1r0000qsskv3d18z42" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -163,7 +166,7 @@
       <ul>
         
           <li>
-            <a href="/2018/08/24/File-hw/">File-hw</a>
+            <a href="/2018/08/24/File-hw/">File和FileHelper类小封装</a>
           </li>
         
           <li>
