@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Blog of wanz">
 <meta property="og:description" content="本文将从基本数据类型、控制语句、类等方面来简述Java语言的基本语法。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-23T04:45:43.755Z">
+<meta property="og:updated_time" content="2018-08-25T09:05:32.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基本语法">
 <meta name="twitter:description" content="本文将从基本数据类型、控制语句、类等方面来简述Java语言的基本语法。">
@@ -204,7 +204,7 @@
 <h3 id="3-2-对象"><a href="#3-2-对象" class="headerlink" title="3.2 对象"></a>3.2 对象</h3><p>语义上是表达一个Java类的尸体，可以赋值到一个变量，通过new语句进行创建<br>以Student类为例，首先在Student类中定义成员变量及构造函数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    //成员变量</span><br><span class="line">    private String name;</span><br><span class="line">    private int weight;</span><br><span class="line"></span><br><span class="line">    //无参的构造方法1</span><br><span class="line">    public Student() &#123;</span><br><span class="line">        this.name = &quot;default&quot;;</span><br><span class="line">        this.weight = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //含参的构造方法2</span><br><span class="line">    public Student(String name, int weight) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.weight = weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //静态构造方法</span><br><span class="line">    public static Student newStudent(String name, int weight)&#123;</span><br><span class="line">        return Student(name, weight);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在Main函数中创建对象：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        //Student default，构造方法1</span><br><span class="line">        Student def = new Student();</span><br><span class="line"></span><br><span class="line">        //Student Jeff,构造方法2</span><br><span class="line">        Student jef = new Student(&quot;Jeff&quot;,120);</span><br><span class="line"></span><br><span class="line">        //Student Jimmy,静态构造方法</span><br><span class="line">        Student jimmy =Student.newStudent(&quot;Jimmy&quot;, 130);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.company;            //包名</span><br><span class="line"></span><br><span class="line">import com.company.Student;     //对包内的Student类进行导入</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        //Student default，构造方法1</span><br><span class="line">        Student def = new Student();</span><br><span class="line"></span><br><span class="line">        //Student Jeff,构造方法2</span><br><span class="line">        Student jef = new Student(&quot;Jeff&quot;,120);</span><br><span class="line"></span><br><span class="line">        //Student Jimmy,静态构造方法</span><br><span class="line">        Student jimmy =Student.newStudent(&quot;Jimmy&quot;, 130);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="3-3-修饰符及方法"><a href="#3-3-修饰符及方法" class="headerlink" title="3.3 修饰符及方法"></a>3.3 修饰符及方法</h3><h4 id="3-3-1-访问修饰符"><a href="#3-3-1-访问修饰符" class="headerlink" title="3.3.1 访问修饰符"></a>3.3.1 访问修饰符</h4><p>修饰符用于控制变量和类的作用及其<strong>访问限制</strong>，作用关系如下表：</p>
 <table>
 <thead>
@@ -270,15 +270,19 @@
 <p>这里有个问题：<strong>常量指向的对象能否被修改？</strong><br>final &lt;对象&gt; 可以从下探究：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ...</span><br><span class="line">        final Student fin = new Student(&quot;FIN&quot;,150);</span><br><span class="line">        //fin = jef; 错误，重新引用</span><br><span class="line">        fin.setName(&quot;FII&quot;);  //正确，可以改变对象内成员</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>因此，常量指向的对象本身不可以被修改，但其成员变量可修改</p>
-<h3 id="3-4-注意"><a href="#3-4-注意" class="headerlink" title="3.4 注意"></a>3.4 注意</h3><p>对象不能直接赋值于对象，只能进行引用，即浅复制：</p>
+<h3 id="3-4-注意"><a href="#3-4-注意" class="headerlink" title="3.4 注意"></a>3.4 注意</h3><p>变量可以通过直接传值于变量，但<strong>对象</strong>不能直接传值于对象，简单赋值只能进行引用，即<strong>浅拷贝</strong>，指向统一对象：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    ...</span><br><span class="line">    public void workout() &#123;</span><br><span class="line">        weight = weight - 5;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Main&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ...</span><br><span class="line">        Student jef = new Student(&quot;Jeff&quot;,120);</span><br><span class="line">        Student david = jef;</span><br><span class="line">        david.workout();</span><br><span class="line">        System.out.println(david.getWeight());</span><br><span class="line">        System.out.println(jef.getWeight()); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其结果均为115，可见jef和david均指向同一对象，其成员变量同时改变</p>
-<p>（深复制方法尚待补充）</p>
+<p>其结果均为115，可见jef和david均指向同一对象，其成员变量同时改变，该方法属于浅拷贝</p>
+<ul>
+<li><strong>深拷贝</strong>方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class Student implements Cloneable&#123;      //将类声明附加可克隆功能</span><br><span class="line">    ...</span><br><span class="line">    public Object clone() &#123;                     //克隆方法</span><br><span class="line">        Object o = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            o = super.clone();</span><br><span class="line">        &#125;</span><br><span class="line">        catch (CloneNotSupportedException e) &#123;</span><br><span class="line">            System.out.println(e.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        return o;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ...</span><br><span class="line">        Student jeff = new Student(&quot;Jeff&quot;,120);</span><br><span class="line">        Student david = (Student)jeff.clone();   //深拷贝测试</span><br><span class="line">        david.workout();</span><br><span class="line">        System.out.println(david.getWeight());</span><br><span class="line">        System.out.println(jeff.getWeight());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序输出结果为115和120，说明david与jef是独立的对象，其变化互不影响，深拷贝成功</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/22/java-basis/" data-id="cjl7qai2g0008qsskrq3f8kxq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/22/java-basis/" data-id="cjlb2dk44000gr8sk3n608l18" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -330,7 +334,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a>
+      <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a>
     </div>
   </div>
 
@@ -352,6 +356,14 @@
       <ul>
         
           <li>
+            <a href="/2018/08/26/ToObject/">Java面向对象编程方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/24/IO/">Java IO流</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/24/File-hw/">File和FileHelper类小封装</a>
           </li>
         
@@ -361,14 +373,6 @@
         
           <li>
             <a href="/2018/08/19/class-SDSW/">动静、强弱变量类型</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/18/git_merge_and_rebase/">Git merge 和 Git rebase 区别</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/16/git operation/">基于Git的工作流程</a>
           </li>
         
       </ul>
