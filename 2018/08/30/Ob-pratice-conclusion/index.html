@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Ob-pratice-conclusion | Blog of wanz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基于hackerrank中Object Oriented Programming的练习总结：">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ob-pratice-conclusion">
+<meta property="og:url" content="http://yoursite.com/2018/08/30/Ob-pratice-conclusion/index.html">
+<meta property="og:site_name" content="Blog of wanz">
+<meta property="og:description" content="基于hackerrank中Object Oriented Programming的练习总结：">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-30T03:57:56.313Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ob-pratice-conclusion">
+<meta name="twitter:description" content="基于hackerrank中Object Oriented Programming的练习总结：">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog of wanz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Ob-pratice-conclusion" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/30/Ob-pratice-conclusion/" class="article-date">
+  <time datetime="2018-08-30T02:08:45.000Z" itemprop="datePublished">2018-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ob-pratice-conclusion
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>基于hackerrank中Object Oriented Programming的练习总结：<br><a id="more"></a></p>
+<h3 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h3><ul>
+<li>同包下，派生类对象可以访问父类的非私有成员</li>
+<li>public类必须有同名的独立文件来存储代码，即在同一文件下声明的非同名类，不能用public修饰</li>
+<li>getClass()和getsuperClass()方法可分别访问类名和父类名</li>
+<li>抽象类不能创建对象，且抽象方法必须在继承的子类中定义</li>
+<li>Interface接口内只能声明方法，而实施接口的类必须定义其方法</li>
+<li>重写方法的访问，与对象所属类有关，通过super关键词可以访问父类方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">abstract class Book&#123;</span><br><span class="line">	String title;                       //子类可访问非私有成员</span><br><span class="line">	abstract void setTitle(String s);</span><br><span class="line">	String getTitle()&#123;</span><br><span class="line">		return title;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class MyBook extends Book&#123;              //不能用public修饰</span><br><span class="line">    void setTitle(String s)&#123;            //必须定义抽象方法</span><br><span class="line">        title = s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class Main&#123;</span><br><span class="line">	public static void main(String []args)&#123;</span><br><span class="line">		//Book new_novel=new Book(); This line prHMain.java:25: error: Book is abstract; cannot be instantiated</span><br><span class="line">		Scanner sc=new Scanner(System.in);</span><br><span class="line">		String title=sc.nextLine();</span><br><span class="line">		MyBook new_novel=new MyBook();</span><br><span class="line">		new_novel.setTitle(title);</span><br><span class="line">		System.out.println(&quot;The title is: &quot;+new_novel.getTitle());</span><br><span class="line">      	sc.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><ul>
+<li>Integer.toString()方法可将整型转换为字符串</li>
+<li>Java中判断字符串相等不可以采用==，而要用a.equals(b)表达式来判断</li>
+<li>instanceof关键词可以判断对象是否属于指定类，Object instanceof class</li>
+<li>Arraylist与Array不同，是一种动态数组方法，其访问方式也不一样，用&lt;对象名&gt;.get(i)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">class Student&#123;&#125;</span><br><span class="line">class Rockstar&#123;&#125;</span><br><span class="line">class Hacker&#123;&#125;</span><br><span class="line">public class Main&#123;</span><br><span class="line">    static String count(ArrayList mylist)&#123;</span><br><span class="line">        int a = 0,b = 0,c = 0;</span><br><span class="line">        for(int i = 0; i &lt; mylist.size(); i++)&#123;</span><br><span class="line">            Object element=mylist.get(i);                       //访问动态数组</span><br><span class="line">            if(element instanceof Student)</span><br><span class="line">                a++;</span><br><span class="line">            if(element instanceof Rockstar)</span><br><span class="line">                b++;</span><br><span class="line">            if(element instanceof Hacker)</span><br><span class="line">                c++;</span><br><span class="line">        &#125;</span><br><span class="line">        String ret = Integer.toString(a)+&quot; &quot;+ Integer.toString(b)+&quot; &quot;+ Integer.toString(c);</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String []args)&#123;</span><br><span class="line">        ArrayList mylist = new ArrayList();                     //创建动态数组</span><br><span class="line">        Scanner sc = new Scanner(System.in);</span><br><span class="line">        int t = sc.nextInt();</span><br><span class="line">        for(int i=0; i&lt;t; i++)&#123;</span><br><span class="line">            String s=sc.next();</span><br><span class="line">            if(s.equals(&quot;Student&quot;))mylist.add(new Student());   //判断字符串相等</span><br><span class="line">            if(s.equals(&quot;Rockstar&quot;))mylist.add(new Rockstar());</span><br><span class="line">            if(s.equals(&quot;Hacker&quot;))mylist.add(new Hacker());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(count(mylist));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h3><p>迭代器Iterator的用法：<br>1.使用方法iterator()要求容器返回一个Iterator。第一次调用Iterator的next()方法时，它返回序列的第一个元素<br>2.使用next()获得序列中的下一个元素<br>3.使用hasNext()检查序列中是否还有元素<br>4.使用remove()将迭代器新返回的元素删除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Main&#123;</span><br><span class="line">    static Iterator func(ArrayList mylist)&#123;             </span><br><span class="line">        Iterator it=mylist.iterator();                  //生成迭代器，it装载了mylist的元素</span><br><span class="line">        while(it.hasNext())&#123;                            //有元素就往下读</span><br><span class="line">            Object element = it.next();                 //用next滚动it读取到的位置，element</span><br><span class="line">            if(!(element instanceof Integer)) break;    //读到非整型为止</span><br><span class="line">	    &#125;</span><br><span class="line">      return it;                                        //指针停在非指针元素后一位</span><br><span class="line">    &#125;</span><br><span class="line">    @SuppressWarnings(&#123; &quot;unchecked&quot; &#125;)                  //消除警告</span><br><span class="line">    public static void main(String []args)&#123;</span><br><span class="line">        ArrayList mylist = new ArrayList();</span><br><span class="line">        Scanner sc = new Scanner(System.in);</span><br><span class="line">        int n = sc.nextInt();</span><br><span class="line">        int m = sc.nextInt();</span><br><span class="line">        for(int i = 0;i&lt;n;i++)&#123;</span><br><span class="line">            mylist.add(sc.nextInt());</span><br><span class="line">        &#125;</span><br><span class="line">        mylist.add(&quot;###&quot;);</span><br><span class="line">        for(int i=0;i&lt;m;i++)&#123;</span><br><span class="line">            mylist.add(sc.next());</span><br><span class="line">        &#125;</span><br><span class="line">        Iterator it=func(mylist);                       //指针停在迭代器非整型元素后一位</span><br><span class="line">        while(it.hasNext())&#123;</span><br><span class="line">            Object element = it.next();</span><br><span class="line">            System.out.println((String)element);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/30/Ob-pratice-conclusion/" data-id="cjlg4etnd0003jwsk7pt8c103" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/26/ToObject/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java面向对象编程方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/30/Ob-pratice-conclusion/">Ob-pratice-conclusion</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/26/ToObject/">Java面向对象编程方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/24/IO/">Java IO流</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/24/File-hw/">File和FileHelper类小封装</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/22/java-basis/">Java基本语法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 wanz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
