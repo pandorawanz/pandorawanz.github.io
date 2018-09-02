@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>面向对象编程——抽象类、接口、多态 | Blog of wanz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="继封装和继承之后，抽象类、接口和多态同样是面向对象编程的重点。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象编程——抽象类、接口、多态">
+<meta property="og:url" content="http://yoursite.com/2018/09/01/ToObject2/index.html">
+<meta property="og:site_name" content="Blog of wanz">
+<meta property="og:description" content="继封装和继承之后，抽象类、接口和多态同样是面向对象编程的重点。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-02T05:40:17.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象编程——抽象类、接口、多态">
+<meta name="twitter:description" content="继封装和继承之后，抽象类、接口和多态同样是面向对象编程的重点。">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog of wanz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ToObject2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/01/ToObject2/" class="article-date">
+  <time datetime="2018-09-01T05:48:44.000Z" itemprop="datePublished">2018-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面向对象编程——抽象类、接口、多态
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>继封装和继承之后，<strong>抽象类</strong>、<strong>接口</strong>和<strong>多态</strong>同样是面向对象编程的重点。<br><a id="more"></a></p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
+<li><p><strong>抽象类</strong>：不是所有的类都是用来描绘对象的，如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是<strong>抽象类</strong>。由于抽象类不能实例化对象，所以抽象类<strong>必须被继承</strong>，才能被使用。类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样。</p>
+</li>
+<li><p><strong>抽象方法</strong>：抽象类和接口中具有的特殊方法，与一般方法相比，抽象方法只需要声明而不需要实现，但必须在子类中实现。static方法不能声明为抽象方法</p>
+</li>
+<li><p><strong>使用方法</strong>：使用修饰符abstract声明一个抽象类，<br>一般具有抽象方法：abstract &lt;类型&gt; &lt;方法名&gt;(参数);</p>
+</li>
+<li><p><strong>使用目的</strong>：用于继承之后定义子类，必然会用于定义子类</p>
+</li>
+<li><p><strong>特性</strong>：<br><strong>1.</strong> 不能<strong>创建</strong>对象<br><strong>2.</strong> 具有某个功能（抽象方法），但<strong>必须</strong>在子类中实现。子类继承抽象类之后，必须实现抽象方法，不然仍然为抽象类</p>
+</li>
+<li><p><strong>关系</strong>（与子类）：<strong>is-a</strong> ，和常规继承一样</p>
+</li>
+</ul>
+<h3 id="NewsReader抽象类代码实例"><a href="#NewsReader抽象类代码实例" class="headerlink" title="NewsReader抽象类代码实例"></a>NewsReader抽象类代码实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public abstract class NewsReader &#123;</span><br><span class="line"></span><br><span class="line">    // 和普通类一样，可以有成员变量</span><br><span class="line">    private Integer x;</span><br><span class="line"></span><br><span class="line">    // 和普通类一样，可以有一般方法</span><br><span class="line">    public Integer getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(Integer x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 可以有构造方法</span><br><span class="line">    public NewsReader()&#123;</span><br><span class="line">        System.out.println(&quot;NewsReader&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 抽象方法</span><br><span class="line">    // 具有这个功能，但具体的功能实现，在子类中确定</span><br><span class="line">    public abstract void readNews();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="继承抽象类的UrlNewsReader子类代码实例"><a href="#继承抽象类的UrlNewsReader子类代码实例" class="headerlink" title="继承抽象类的UrlNewsReader子类代码实例"></a>继承抽象类的UrlNewsReader子类代码实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class UrlNewsReader extends NewsReader&#123;</span><br><span class="line"></span><br><span class="line">    public UrlNewsReader()&#123;</span><br><span class="line">        </span><br><span class="line">        // 先调用抽象类父类构造方法</span><br><span class="line">        super();</span><br><span class="line">        System.out.println(&quot;UrlNewsReader&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 必须实现的抽象方法</span><br><span class="line">    public void readNews()&#123;</span><br><span class="line">        System.out.println(&quot;Url reading......&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        </span><br><span class="line">        // 尝试创建NewsReader对象</span><br><span class="line">        // NewsReader newsReader = new NewsReader();</span><br><span class="line">        // error:&apos;NewsReader&apos; is abstract; cannot be instantiated</span><br><span class="line">        </span><br><span class="line">        // 创建UrlNewsReader对象</span><br><span class="line">        UrlNewsReader urlNewsReader = new UrlNewsReader();</span><br><span class="line">        urlNewsReader.readNews();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NewsReader</span><br><span class="line">UrlNewsReader</span><br><span class="line">Url reading......</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>总结</strong>：抽象类虽然不能创建对象，但可以有构造方法，并可以在子类中用<strong>super</strong>关键字调用</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li><p><strong>接口</strong>：<strong>接口</strong>是一种抽象类型，是一系列抽象方法的集合，语义上表示某种功能（比如听说读写，但没有具体的实现）。一个类通过实现接口的方式，从而来实现接口的抽象方法。接口中的抽象方法是不能在接口中实现的，只能由实现接口的类来实现接口中的方法。</p>
+</li>
+<li><p><strong>意义</strong>：把<strong>接口</strong>和<strong>实现</strong>真正分开</p>
+</li>
+<li><p><strong>使用方法</strong>：用关键字<strong>interface</strong>声明接口，实现的类通过关键字<strong>implements</strong>表达实现一个接口，从而声明这个类具有接口定义的属性和行为</p>
+</li>
+<li><p><strong>特性</strong>：<br><strong>1.</strong> 接口是<strong>隐式抽象</strong>的，当声明一个接口的时候，不必使用<strong>abstract</strong>关键字<br><strong>2.</strong> 接口中每一个<strong>方法</strong>也是<strong>隐式抽象</strong>的，声明时同样不需要<strong>abstract</strong>关键字<br><strong>3.</strong> 接口中的方法都是公有的，声明不需要<strong>public</strong>关键字（隐式的<strong>public abstract</strong>，其它修饰符会报错）</p>
+</li>
+<li><p><strong>与类的区别</strong>：<br><strong>1.</strong> 接口不能用于实例化对象<br><strong>2.</strong> 接口<strong>没有构造方法</strong><br><strong>3.</strong> 接口中所有的方法必须是<strong>抽象方法</strong>（没有实现）<br><strong>4.</strong> 接口不能包含成员变量，除了隐式的<strong>public static final</strong>变量（其它修饰符都会报错），因为它不是类，不能实例化对象，所以不会有状态，只有属性<br><strong>5.</strong> 接口不是被类继承了，而是要被类实现<br><strong>6.</strong> 接口支持多实现，表示实现了多种功能</p>
+</li>
+</ul>
+<h3 id="Displayable接口代码实例"><a href="#Displayable接口代码实例" class="headerlink" title="Displayable接口代码实例"></a>Displayable接口代码实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface Displayable &#123;</span><br><span class="line">    </span><br><span class="line">    // 隐式public static final变量</span><br><span class="line">    int a = 1;</span><br><span class="line"></span><br><span class="line">    // 隐式public abstract方法</span><br><span class="line">    void display();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="实现接口的News类代码"><a href="#实现接口的News类代码" class="headerlink" title="实现接口的News类代码"></a>实现接口的News类代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// News实现Displayable</span><br><span class="line">public class News implements Displayable &#123;</span><br><span class="line">    protected String title;</span><br><span class="line">    protected String content;</span><br><span class="line"></span><br><span class="line">    public News()&#123;&#125;</span><br><span class="line"></span><br><span class="line">    // 构造的自由和责任交给用户</span><br><span class="line">    public News(String title, String content) &#123;</span><br><span class="line">        this.title = title;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getTitle() &#123;</span><br><span class="line">        return title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getContent() &#123;</span><br><span class="line">        return content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //注解表示方法来自上一层，可以检查方法名和方法类型是否写错了</span><br><span class="line">    @Override</span><br><span class="line">    // 必须实现display(),且只能公有</span><br><span class="line">    public void display() &#123;</span><br><span class="line">        System.out.println(title + &quot;\n&quot; + content);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试代码-1"><a href="#测试代码-1" class="headerlink" title="测试代码"></a>测试代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        News news = new News(&quot;abc&quot;,&quot;def&quot;);</span><br><span class="line">        news.display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试结果-1"><a href="#测试结果-1" class="headerlink" title="测试结果"></a>测试结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abc</span><br><span class="line">def</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>问题</strong>：抽象类和接口的选择？<br><strong>回答</strong>：语义上抽象类表示一类事物的特性，而接口表示类实现的功能，除了对两者特性的区分外，对抽象类和接口的选择，得先从预估的子类抽象出来的事物来看待。如果抽象出来的共同特征能归为一个类别，用抽象类合适，如果抽象出来的特征能归为一种功能，用接口合适。因此，实现同样的功能，写法不一样，表达的意思是不一样的。<br><strong>例子</strong>：Content这样的抽象，更像是一种功能，而不是一类实物的抽象，用接口较好。</li>
+</ul>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><ul>
+<li><p><strong>多态</strong>：同一个行为具有多个不同表现形式或形态的能力</p>
+</li>
+<li><p><strong>优点</strong>：<br><strong>1.</strong> 消除类型间的耦合关系<br><strong>2.</strong> 可替换性<br><strong>3.</strong> 可扩充性<br><strong>4.</strong> 接口性<br><strong>5.</strong> 灵活性<br><strong>6.</strong> 简化性</p>
+</li>
+<li><p><strong>必要条件</strong>：<br><strong>1.</strong> 继承<br><strong>2.</strong> 重写<br><strong>3.</strong> 父类引用指向子类对象</p>
+</li>
+<li><p><strong>实现方式</strong>：<br><strong>1.</strong> 重写<br><strong>2.</strong> 接口（接口可以看作一种被继承才能实现的父类）<br><strong>3.</strong> 抽象类和抽象方法（抽象类必须作为父类来继承得以实现）</p>
+</li>
+</ul>
+<h3 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Animal&#123;</span><br><span class="line">    public void move()&#123;</span><br><span class="line">        System.out.println(&quot;Animals can move&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 继承</span><br><span class="line">class Dog extends Animal&#123;</span><br><span class="line">    </span><br><span class="line">    // 重写</span><br><span class="line">    public void move()&#123;</span><br><span class="line">        System.out.println(&quot;Dogs can walk and run&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void bark()&#123;</span><br><span class="line">        System.out.println(&quot;Dogs can bark&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Test&#123;</span><br><span class="line">    public static void main(String args[])&#123;</span><br><span class="line">        Animal a = new Animal();    // 父类引用指向父类对象</span><br><span class="line">        Animal b = new Dog();       // 父类引用指向子类对象</span><br><span class="line">        a.move();</span><br><span class="line">        b.move();</span><br><span class="line">        // Test.java:30: cannot find symbol symbol : method bark() location: class Animal b.bark();^</span><br><span class="line">        // Animal类没有bark()方法</span><br><span class="line">        // b.bark();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 结果</span><br><span class="line">Animals can move</span><br><span class="line">Dogs can walk and run</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>总结</strong>：b是Animal类型，却运行了Dog类的方法，因为编译时会检查<strong>引用类型</strong>。在运行时，JVM 会判定对象类型到底属于哪一个对象。因此，在上面的例子中，虽然 Animal有move()方法，程序会正常编译。在运行时，会运行特定对象的方法。（按Animal编译，按Dog运行）</li>
+</ul>
+<h3 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">public class Employee &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private String address;</span><br><span class="line">    private int number;</span><br><span class="line">    public Employee(String name, String address, int number) &#123;</span><br><span class="line">        System.out.println(&quot;Employee 构造函数&quot;);</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.address = address;</span><br><span class="line">        this.number = number;</span><br><span class="line">    &#125;</span><br><span class="line">    public void mailCheck() &#123;</span><br><span class="line">        System.out.println(&quot;邮寄支票给： &quot; + this.name + &quot; &quot; + this.address);</span><br><span class="line">    &#125;</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">      return name;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Salary extends Employee &#123;</span><br><span class="line">    private double salary; // 全年工资</span><br><span class="line">    public Salary(String name, String address, int number, double salary) &#123;</span><br><span class="line">       super(name, address, number);</span><br><span class="line">       setSalary(salary);</span><br><span class="line">    &#125;</span><br><span class="line">    public void mailCheck() &#123;</span><br><span class="line">       System.out.println(&quot;Salary 类的 mailCheck 方法 &quot;);</span><br><span class="line">       System.out.println(&quot;邮寄支票给：&quot; + getName() + &quot; ，工资为：&quot; + salary);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class VirtualDemo &#123;</span><br><span class="line">    public static void main(String [] args) &#123;</span><br><span class="line">      Salary s = new Salary(&quot;员工 A&quot;, &quot;北京&quot;, 3, 3600.00);      // 子类引用指向子类对象</span><br><span class="line">      Employee e = new Salary(&quot;员工 B&quot;, &quot;上海&quot;, 2, 2400.00);    // 父类引用指向子类对象</span><br><span class="line">      System.out.println(&quot;使用 Salary 的引用调用 mailCheck -- &quot;);</span><br><span class="line">      s.mailCheck();</span><br><span class="line">      System.out.println(&quot;\n使用 Employee 的引用调用 mailCheck--&quot;);</span><br><span class="line">      e.mailCheck();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//结果</span><br><span class="line">Employee 构造函数</span><br><span class="line">Employee 构造函数</span><br><span class="line">使用 Salary 的引用调用 mailCheck -- </span><br><span class="line">Salary 类的 mailCheck 方法 </span><br><span class="line">邮寄支票给：员工 A ，工资为：3600.0</span><br><span class="line"></span><br><span class="line">使用 Employee 的引用调用 mailCheck--</span><br><span class="line">Salary 类的 mailCheck 方法 </span><br><span class="line">邮寄支票给：员工 B ，工资为：2400.0</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>注</strong>：子类引用不可以指向父类对象</li>
+</ul>
+<h3 id="实例3"><a href="#实例3" class="headerlink" title="实例3"></a>实例3</h3><h4 id="News的子类UrlNews代码"><a href="#News的子类UrlNews代码" class="headerlink" title="News的子类UrlNews代码"></a>News的子类UrlNews代码</h4><p>为简洁，Displayable接口及实现接口的News类代码已在上面提及，不再重复展示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class UrlNews extends News&#123;</span><br><span class="line">    private String url;</span><br><span class="line"></span><br><span class="line">    // 缺省构造函数，默认调用super()</span><br><span class="line">    public UrlNews() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    // 含参构造函数</span><br><span class="line">    public UrlNews(String title, String content, String url) &#123;</span><br><span class="line">        super(title,content);</span><br><span class="line">        this.url = url;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getUrl() &#123;</span><br><span class="line">        return url;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 重写</span><br><span class="line">    @Override</span><br><span class="line">    public void display() &#123;</span><br><span class="line">        System.out.println(&quot;News from Url:&quot; + url);</span><br><span class="line">        super.display();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="测试代码-2"><a href="#测试代码-2" class="headerlink" title="测试代码"></a>测试代码</h4><p>NewsReader抽象类及其UrlNewsReader子类代码已在上面提及，不再重复展示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        </span><br><span class="line">        // 父类引用指向父类对象</span><br><span class="line">        News news = new News(&quot;abc&quot;,&quot;父类&quot;);</span><br><span class="line">        // 父类引用指向子类对象</span><br><span class="line">        News urlnews = new UrlNews(&quot;ABC&quot;,&quot;子类&quot;, &quot;class.com&quot;);</span><br><span class="line">        news.display();</span><br><span class="line">        urlnews.display();</span><br><span class="line">        </span><br><span class="line">        // 实现接口的子类可以放入接口参数</span><br><span class="line">        viewNews(news);</span><br><span class="line">        viewNews(urlnews);</span><br><span class="line"></span><br><span class="line">        // 接口引用指向子类对象</span><br><span class="line">        Displayable displayable = new UrlNews(&quot;abc&quot;,&quot;def&quot;,&quot;ghi&quot;);</span><br><span class="line">        displayable.display();</span><br><span class="line"></span><br><span class="line">        // 抽象类引用指向子类对象</span><br><span class="line">        NewsReader newsReader = new UrlNewsReader();</span><br><span class="line">        newsReader.readNews();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void viewNews(Displayable item) &#123;</span><br><span class="line">        item.display();</span><br><span class="line">        System.out.println(&quot;播放完毕&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="测试结果-2"><a href="#测试结果-2" class="headerlink" title="测试结果"></a>测试结果</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">abc                             // news.display();</span><br><span class="line">父类                            </span><br><span class="line">News from Url:class.com         // urlnews.display();</span><br><span class="line">ABC</span><br><span class="line">子类</span><br><span class="line">abc                             // viewNews(news);</span><br><span class="line">父类</span><br><span class="line">播放完毕</span><br><span class="line">News from Url:class.com         // viewNews(urlnews);</span><br><span class="line">ABC</span><br><span class="line">子类</span><br><span class="line">播放完毕</span><br><span class="line">News from Url:ghi               // displayable.display();</span><br><span class="line">abc</span><br><span class="line">def</span><br><span class="line">NewsReader                      // NewsReader newsReader = new UrlNewsReader();</span><br><span class="line">UrlNewsReader</span><br><span class="line">Url reading......               // newsReader.readNews();</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>多态的好处</strong>：利用了<strong>动态传参</strong>，可以避免很多重复代码<br><strong>例如</strong>：在Main中定义read()方法，根据多态的原则，可以按如下方法定义:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private static void read(News news) &#123;</span><br><span class="line">    news.display();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果没有多态，则需要将News类的子类的read()方法全部定义一遍：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private static void read(UrlNews urlNews) &#123;</span><br><span class="line">    urlNews.display();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// FileNews是News的子类时且display()方法有重写时</span><br><span class="line">private static void read(FileNews fileNews) &#123;</span><br><span class="line">    fileNews.display();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当News的子类很多时，在Main中就要写很多重复代码，浪费资源，且不方便维护。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/01/ToObject2/" data-id="cjlkfum0x00088ksk6woyz19r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/31/PolymorphismDemo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">一个多态的简单实例</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/01/ToObject2/">面向对象编程——抽象类、接口、多态</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/31/PolymorphismDemo/">一个多态的简单实例</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/30/Ob-pratice-conclusion/">面向对象编程练习总结</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/29/ToObject/">Java面向对象编程——封装和继承</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/24/IO/">Java IO流</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 wanz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
