@@ -62,6 +62,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SpringBootStarted" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/14/SpringBootStarted/" class="article-date">
+  <time datetime="2018-10-14T11:11:36.000Z" itemprop="datePublished">2018-10-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/14/SpringBootStarted/">SpringBoot入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文将介绍在Maven环境下SpringBoot的使用方法。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/10/14/SpringBootStarted/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjn8sr2yt000a9gsk34yjh6bf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-SynchronizedAndJoin" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/25/SynchronizedAndJoin/" class="article-date">
@@ -76,7 +119,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/25/SynchronizedAndJoin/">SynchronizedAndJoin</a>
+      <a class="article-title" href="/2018/09/25/SynchronizedAndJoin/">线程同步——synchronized修饰符和join方法</a>
     </h1>
   
 
@@ -84,26 +127,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="直接用线程输出"><a href="#直接用线程输出" class="headerlink" title="直接用线程输出"></a>直接用线程输出</h2><h3 id="Caller线程"><a href="#Caller线程" class="headerlink" title="Caller线程"></a>Caller线程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Caller implements Runnable&#123;</span><br><span class="line">    String msg;</span><br><span class="line">    Callme target;</span><br><span class="line">    Thread t;</span><br><span class="line"></span><br><span class="line">    public Caller(Callme targ, String s) &#123;</span><br><span class="line">        target = targ;</span><br><span class="line">        msg = s;</span><br><span class="line">        t = new Thread(this);</span><br><span class="line">        t.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 每个线程都会调用的方法</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        target.call(msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Callme类"><a href="#Callme类" class="headerlink" title="Callme类"></a>Callme类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Callme &#123;</span><br><span class="line">    </span><br><span class="line">    // 该方法可同时被多个线程调用</span><br><span class="line">    void call(String msg) &#123;</span><br><span class="line">        System.out.print(&quot;[&quot;+msg);</span><br><span class="line">        try &#123;</span><br><span class="line">            Thread.sleep(1000);     // 暂停1s</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            System.out.println(&quot;Interrupted&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;]&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Sync主类"><a href="#Sync主类" class="headerlink" title="Sync主类"></a>Sync主类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Sync &#123;</span><br><span class="line">    public static void main(String args[]) &#123;</span><br><span class="line">        Callme target = new Callme();   // 被三个线程共享的资源</span><br><span class="line">        Caller ob1 = new Caller(target,&quot;Hello&quot;);</span><br><span class="line">        Caller ob2 = new Caller(target, &quot;Synchronized&quot;);</span><br><span class="line">        Caller ob3 = new Caller(target,&quot;World&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="可能出现的结果"><a href="#可能出现的结果" class="headerlink" title="可能出现的结果"></a>可能出现的结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Hello[Synchronized[World]</span><br><span class="line">]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>由于线程的随机性，Hello,Synchronized,World的顺序是随机的</p>
-<h2 id="Synchronized"><a href="#Synchronized" class="headerlink" title="Synchronized"></a>Synchronized</h2><h3 id="Callme类-1"><a href="#Callme类-1" class="headerlink" title="Callme类"></a>Callme类</h3><p>用synchronized修饰call方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Callme &#123;</span><br><span class="line">    </span><br><span class="line">    // 该方法同时只可以被一个线程调用</span><br><span class="line">    synchronized void call(String msg) &#123;</span><br><span class="line">        System.out.print(&quot;[&quot;+msg);</span><br><span class="line">        try &#123;</span><br><span class="line">            Thread.sleep(1000);     // 暂停1s</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            System.out.println(&quot;Interrupted&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;]&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="可能的输出结果"><a href="#可能的输出结果" class="headerlink" title="可能的输出结果"></a>可能的输出结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Hello]</span><br><span class="line">[World]</span><br><span class="line">[Synchronized]</span><br></pre></td></tr></table></figure>
-<p>同理，由于线程的随机性，Hello,Synchronized,World的顺序是随机的</p>
-<h2 id="join方法"><a href="#join方法" class="headerlink" title="join方法"></a>join方法</h2><p>先去掉Callme类中call方法的synchronized修饰符进行讨论。<br>join()方法使得，主线程等待这个线程运行结束，再运行主线程（其他线程不受影响）</p>
-<h3 id="Sync类"><a href="#Sync类" class="headerlink" title="Sync类"></a>Sync类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Sync &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) throws InterruptedException&#123;</span><br><span class="line">        Callme target=new Callme();   // 被三个线程共享的资源</span><br><span class="line">        Caller ob1=new Caller(target,&quot;Hello&quot;);</span><br><span class="line">        ob1.t.join();</span><br><span class="line">        Caller ob2=new Caller(target,&quot;Synchronized&quot;);</span><br><span class="line">        ob2.t.join();</span><br><span class="line">        Caller ob3=new Caller(target,&quot;World&quot;);</span><br><span class="line">        ob3.t.join();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="必然会出现的结果"><a href="#必然会出现的结果" class="headerlink" title="必然会出现的结果"></a>必然会出现的结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Hello]</span><br><span class="line">[Synchronized]</span><br><span class="line">[World]</span><br></pre></td></tr></table></figure>
-<p>join限制了线程的执行顺序</p>
-
+        <p>多线程的调用可以使得程序运行的效率大幅提升，但线程的使用一方面会降低可读性，一方面给代码的运行带来随机性。针对随机性问题，synchronized修饰符可以使得某方法同时只能被一个线程调用，而join方法会让主线程等待当前子线程执行结束再继续执行。它们都能在一定程度上控制多线程程序的执行顺序。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/25/SynchronizedAndJoin/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjmhs7qnk0008k8sk07vdmz7v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjn8sr2yy000c9gskodwi3oc5" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li></ul>
+
     </footer>
   </div>
   
@@ -137,9 +174,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/15/maven/" data-id="cjmhs7qof000rk8skxv102nnf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/15/maven/" data-id="cjn8sr2zp000s9gsk6eny4d54" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Maven/">Maven</a></li></ul>
+
     </footer>
   </div>
   
@@ -173,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/11/GenericAndCollection/" data-id="cjmhs7qnd0004k8sk46bhq7vo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/11/GenericAndCollection/" data-id="cjn8sr2y300019gskeqjm0eqd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -214,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/07/sort/" data-id="cjmhs7qp3000wk8skhn0y611d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/07/sort/" data-id="cjn8sr2zt000u9gsk3icyqbrb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -257,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/04/DataStructure/" data-id="cjmhs7qmw0000k8ska7ry2746" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/04/DataStructure/" data-id="cjn8sr2yc00039gsksed8i7kw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -300,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/01/ToObject2/" data-id="cjmhs7qnu000fk8skr28zrbsf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/01/ToObject2/" data-id="cjn8sr2z4000h9gskx5nxefsi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -343,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/31/PolymorphismDemo/" data-id="cjmhs7qnn000ak8sk2iq5ffdw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/31/PolymorphismDemo/" data-id="cjn8sr2yk00059gskxfw7f0gg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -386,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/30/Ob-pratice-conclusion/" data-id="cjmhs7qnf0005k8skmh56saop" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/30/Ob-pratice-conclusion/" data-id="cjn8sr2yq00089gskkh5hbdig" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -430,46 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/29/ToObject/" data-id="cjmhs7qns000dk8skmg0lf7s7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-IO" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/24/IO/" class="article-date">
-  <time datetime="2018-08-24T12:04:07.000Z" itemprop="datePublished">2018-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/24/IO/">Java IO流</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>流是</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/24/IO/" data-id="cjmhs7qnb0003k8sk1e8x6lun" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/29/ToObject/" data-id="cjn8sr2z1000f9gskumhao9ii" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -499,7 +499,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li></ul>
     </div>
   </div>
 
@@ -509,7 +509,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a>
+      <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a>
     </div>
   </div>
 
@@ -518,7 +518,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
     </div>
   </div>
 
@@ -531,7 +531,11 @@
       <ul>
         
           <li>
-            <a href="/2018/09/25/SynchronizedAndJoin/">SynchronizedAndJoin</a>
+            <a href="/2018/10/14/SpringBootStarted/">SpringBoot入门</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/25/SynchronizedAndJoin/">线程同步——synchronized修饰符和join方法</a>
           </li>
         
           <li>
@@ -544,10 +548,6 @@
         
           <li>
             <a href="/2018/09/07/sort/">简单排序</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/04/DataStructure/">简单数据结构</a>
           </li>
         
       </ul>
