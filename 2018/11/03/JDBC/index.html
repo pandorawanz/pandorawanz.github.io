@@ -5,15 +5,20 @@
   
 
   
-  <title>Blog of wanz</title>
+  <title>JDBC | Blog of wanz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Blog of wanz">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="关于数据库的What 和 Why之前我们在计算程序模型中提到过，在计算机世界中需要处理的几个核心问题：  存储 计算 交互  具体到存储这一块，之前我们了解过  存储设备 – 内存和硬盘，以及对具体硬盘磁片的存储单元，块和内存的存储单元 文件系统 – 在操作系统层面上对存储的抽象，比如目录和文件 应用程序 – 针对不同的应用场景，可能数据内容的形式和模型会有不同的需求。比如说，Web程序可能很多文">
+<meta name="keywords" content="Database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDBC">
+<meta property="og:url" content="http://yoursite.com/2018/11/03/JDBC/index.html">
 <meta property="og:site_name" content="Blog of wanz">
+<meta property="og:description" content="关于数据库的What 和 Why之前我们在计算程序模型中提到过，在计算机世界中需要处理的几个核心问题：  存储 计算 交互  具体到存储这一块，之前我们了解过  存储设备 – 内存和硬盘，以及对具体硬盘磁片的存储单元，块和内存的存储单元 文件系统 – 在操作系统层面上对存储的抽象，比如目录和文件 应用程序 – 针对不同的应用场景，可能数据内容的形式和模型会有不同的需求。比如说，Web程序可能很多文">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-03T02:42:52.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog of wanz">
+<meta name="twitter:title" content="JDBC">
+<meta name="twitter:description" content="关于数据库的What 和 Why之前我们在计算程序模型中提到过，在计算机世界中需要处理的几个核心问题：  存储 计算 交互  具体到存储这一块，之前我们了解过  存储设备 – 内存和硬盘，以及对具体硬盘磁片的存储单元，块和内存的存储单元 文件系统 – 在操作系统层面上对存储的抽象，比如目录和文件 应用程序 – 针对不同的应用场景，可能数据内容的形式和模型会有不同的需求。比如说，Web程序可能很多文">
   
     <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
   
@@ -60,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="数据库和JDBC（未整理）-JDBC" class="article article-type-数据库和JDBC（未整理）" itemscope itemprop="blogPost">
+        <section id="main"><article id="数据库和JDBC（未整理）-JDBC" class="article article-type-数据库和JDBC（未整理）" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/03/JDBC/" class="article-date">
   <time datetime="2018-11-03T02:41:31.000Z" itemprop="datePublished">2018-11-03</time>
@@ -75,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/03/JDBC/">JDBC</a>
+    <h1 class="article-title" itemprop="name">
+      JDBC
     </h1>
   
 
@@ -202,398 +205,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-HTTP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/21/HTTP/" class="article-date">
-  <time datetime="2018-10-21T11:18:40.000Z" itemprop="datePublished">2018-10-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/21/HTTP/">HTTP协议</a>
-    </h1>
+    <a href="/2018/10/21/HTTP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HTTP协议</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="TCP-IP五层网络架构"><a href="#TCP-IP五层网络架构" class="headerlink" title="TCP/IP五层网络架构"></a>TCP/IP五层网络架构</h2><ul>
-<li><strong>应用层</strong>(HTTP,RPC等)——直接和应用程序接口并提供常见的网络应用服务</li>
-<li><strong>传输层</strong>(TCP)——同一个网络中链接的两个节点，如何完成端对端的连接</li>
-<li><strong>网络层</strong>(IP)——同一个网络的机器如何去协作和传递数据，建立一条路径，保证传输数据的一致</li>
-<li><strong>数据链路层</strong>——网线两端的设备如何传递数据</li>
-<li><strong>物理层</strong>——一条网线如何去传输数据</li>
-</ul>
-<p>数据链路层和物理层是设备工程师考虑的问题，而应用层、传输层、网络层是Web工程师该考虑的问题<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/10/21/HTTP/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjo0uf0cv0005pcskt0g5pwat" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-SpringBootStarted" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/14/SpringBootStarted/" class="article-date">
-  <time datetime="2018-10-14T11:11:36.000Z" itemprop="datePublished">2018-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/14/SpringBootStarted/">SpringBoot入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文将介绍在Maven环境下SpringBoot的使用方法。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/10/14/SpringBootStarted/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjo0uf0ez000ipcska403v2cy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SynchronizedAndJoin" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/25/SynchronizedAndJoin/" class="article-date">
-  <time datetime="2018-09-25T13:19:28.000Z" itemprop="datePublished">2018-09-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/25/SynchronizedAndJoin/">线程同步——synchronized修饰符和join方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>多线程的调用可以使得程序运行的效率大幅提升，但线程的使用一方面会降低可读性，一方面给代码的运行带来随机性。针对随机性问题，synchronized修饰符可以使得某方法同时只能被一个线程调用，而join方法会让主线程等待当前子线程执行结束再继续执行。它们都能在一定程度上控制多线程程序的执行顺序。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/25/SynchronizedAndJoin/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjo0uf0f6000kpcskyhx8jpnw" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-maven" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/15/maven/" class="article-date">
-  <time datetime="2018-09-15T07:34:11.000Z" itemprop="datePublished">2018-09-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/15/maven/">maven</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/15/maven/" data-id="cjo0uf0g8000wpcsknfam2ral" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Maven/">Maven</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-GenericAndCollection" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/11/GenericAndCollection/" class="article-date">
-  <time datetime="2018-09-11T11:21:03.000Z" itemprop="datePublished">2018-09-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/11/GenericAndCollection/">GenericAndCollection</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/11/GenericAndCollection/" data-id="cjo0uf0cm0003pcskuazgp3yu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-sort" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/07/sort/" class="article-date">
-  <time datetime="2018-09-07T04:33:58.000Z" itemprop="datePublished">2018-09-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/07/sort/">简单排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>排序是基础的算法问题，常见的排序有插入排序、冒泡排序、快速排序等，它们分别有不同的计算复杂度。插入排序和冒泡排序的复杂度为O(n^2),而快速排序的复杂度为O(nlogn)。因此，快速排序是最常用的排序方法之一，因为它的复杂度更。然而，对简单的排序方法的理解，还是有必要的。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/07/sort/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/07/sort/" data-id="cjo0uf0gf000zpcsk0pcimznk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DataStructure" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/04/DataStructure/" class="article-date">
-  <time datetime="2018-09-04T13:26:27.000Z" itemprop="datePublished">2018-09-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/04/DataStructure/">简单数据结构</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><p>一个算法的复杂度，会极大影响程序运行的效率，复杂度又分为<strong>时间</strong>复杂度和<strong>空间</strong>复杂度，时间复杂度取决于程序运行时基本语句的运算次数，空间复杂度取决于程序运行时所占用的存储空间。复杂度是规模的量级，和数据量的大小成比例，当数据量基数足够大时，算法的优劣就会显示出来。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/04/DataStructure/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/04/DataStructure/" data-id="cjo0uf0bt0000pcsk5fen6e75" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ToObject2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/01/ToObject2/" class="article-date">
-  <time datetime="2018-09-01T05:48:44.000Z" itemprop="datePublished">2018-09-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/01/ToObject2/">Java面向对象编程——抽象类、接口、多态</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>继封装和继承之后，<strong>抽象类</strong>、<strong>接口</strong>和<strong>多态</strong>同样是面向对象编程的重点。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/01/ToObject2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/01/ToObject2/" data-id="cjo0uf0fg000mpcskojq96rqp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-PolymorphismDemo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/31/PolymorphismDemo/" class="article-date">
-  <time datetime="2018-08-31T11:23:15.000Z" itemprop="datePublished">2018-08-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/31/PolymorphismDemo/">一个多态的简单实例</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个抽象类、接口、多态的简单实例。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/31/PolymorphismDemo/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/31/PolymorphismDemo/" data-id="cjo0uf0eu000gpcsk68fkxx5j" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         
