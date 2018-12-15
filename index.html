@@ -62,6 +62,79 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-StreamNote" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/15/StreamNote/" class="article-date">
+  <time datetime="2018-12-15T03:06:12.000Z" itemprop="datePublished">2018-12-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/15/StreamNote/">StreamNote</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><h3 id="流的概念"><a href="#流的概念" class="headerlink" title="流的概念"></a>流的概念</h3><p>Stream是Java 8 中新增的用来补充集合类的一个新的接口，主要的目的是为了增强Java原有的集合类{Collection}的功能，<br>特别是函数式相关的功能，为了理解Java里的Stream接口，首先我们得先理解什么是Stream，即什么是流</p>
+<h3 id="什么是流"><a href="#什么是流" class="headerlink" title="什么是流"></a>什么是流</h3><p>Stream可以说就是数据流{类比水流}，然后有一个数据来源{水流的源头}，然后这个流中的数据元素有可能是有限的{杯壁下流}，<br>也可能是无限的{长江水流}，我们举几个例子：</p>
+<h4 id="有限的流"><a href="#有限的流" class="headerlink" title="有限的流"></a>有限的流</h4><ul>
+<li>一个集合，例如ArrayList中的所有元素</li>
+<li>一个固定文件（不支持更新）中的所有字符</li>
+</ul>
+<h4 id="无限的流"><a href="#无限的流" class="headerlink" title="无限的流"></a>无限的流</h4><ul>
+<li>日志更新的文件</li>
+<li>一个不关闭的监听端口传来的数据</li>
+</ul>
+<p>注意，流是可以有顺序，可以没顺序的</p>
+<h3 id="Stream接口"><a href="#Stream接口" class="headerlink" title="Stream接口"></a>Stream接口</h3><p>Java的Stream接口就集合了相关对数据流的操作。<br>这些操作大部分都是上节课我们所说的高阶函数，然后这个接口的操作有一些基本特性：</p>
+<ul>
+<li>不存储数据：流是基于数据源的映射，其本身并不存储数据元素，而是通过类似管道的机制把数据源的元素传递给操作。</li>
+<li>不修改数据源：流的操作都不会修改数据源，而是返回新的数据。（函数式编程里很重要的一个特性，immutable，不可变数据）</li>
+<li>惰性执行：流的操作分为两种，第一种为中间操作，另一种为规约和收集操作，<br>中间操作只是定义对流的响应操作链，但是不会真正执行，只有最后规约和收集的时候才会真正执行中间操作。（惰性执行）</li>
+<li>可以解绑：对于流，我们可以限制其中遍历的元素个数，比如limit(n)和findFirst()这样的操作，都会得到结构或者达到限制之后马上返回。</li>
+<li>纯消费：流的元素只能访问一次，操作没有回头路，如果需要重新操作，则重新创建一个流。</li>
+</ul>
+<p><strong>问题</strong>：为什么要把数据转换成Stream再传递给操作，直接把数据源传递给操作不是更直接？<br>为了使代码的执行有明了的一系列特性：<br>为了使程序可以惰性执行，<br>便于解绑，把数据传递给一个或若干个操作，可以得到结果或者达到限制后马上返回，<br>且一方面对数据源有保护作用<br>不修改源数据也会减少很多并发问题</p>
+<h4 id="并行流和串行流"><a href="#并行流和串行流" class="headerlink" title="并行流和串行流"></a>并行流和串行流</h4><p>在Java中，默认创建的都是串行流，比如使用Collection.stream() 返回的就是创建的串行流，<br>而调用Collction.parallelStream()则会返回创建的并行流</p>
+<h4 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h4><p>对于流中不同元素的操作应该是相互独立的，因为Java并不保证不同元素之间的执行顺序，甚至不保证他们的操作是在一个线程中的。</p>
+<h3 id="流的操作"><a href="#流的操作" class="headerlink" title="流的操作"></a>流的操作</h3><h4 id="流的创建"><a href="#流的创建" class="headerlink" title="流的创建"></a>流的创建</h4><p>1.通过集合的stream()方法或者parallelStream()方法；<br>2.通过Arrays.stream(Object [])方法；<br>3.使用Stream的静态方法，比如<br>    1.Stream.of(Object[]),IntStream.range(int,int)<br>    2.Stream.iterate(Object,UnaryOperator),如Stream.iterate{1,n-&gt;n*2}很明显，这是个无限流1,2,4,8,16<br>    3.Stream.generate(Suppler<t> s) 如：Stream.generate(Math::random)<br>4.BufferReader.lines()从文件中获得行的流<br>5.随机数流Random.ints()<br>6.其他一些类提供了创建流的方法<br>7.底层使用StreamSupport()，它提供了将Sliterator转换成流的方法</t></p>
+<h4 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h4><p>中间操作类似于对一个已有的流，绑定一个高阶（定义对每个元素的而操作的操作）的操作，<br>然后返回一个新的流. 其中只是绑定这个操作, 并不会马上执行, 当然也不会修改原始的数据源.</p>
+<p>forEach之前不执行中间操作</p>
+<h4 id="终点操作"><a href="#终点操作" class="headerlink" title="终点操作"></a>终点操作</h4><p>终点操作会触发中间的操作，最终生成结果<br>两个冒号表示方法引用</p>
+<p><strong>问题</strong>：为什么要有方法引用？直接用原来的方法不可以吗？</p>
+<ul>
+<li>看起来简洁一点<br>如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>等同于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(x-&gt;System.out.println(x));</span><br></pre></td></tr></table></figure></p>
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><ul>
+<li>不要去从Java去学函数式编程</li>
+<li>也不要用Java的概念去理解函数式编程</li>
+<li>Haskell, Scala, Kotlin</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjpox7wt8000cw0sk4zzsmbek" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="数据库和JDBC（未整理）-JDBC" class="article article-type-数据库和JDBC（未整理）" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/03/JDBC/" class="article-date">
@@ -88,113 +161,16 @@
 <ul>
 <li>存储</li>
 <li>计算</li>
-<li>交互</li>
-</ul>
-<p>具体到存储这一块，之前我们了解过</p>
-<ul>
-<li>存储设备 – 内存和硬盘，以及对具体硬盘磁片的存储单元，块和内存的存储单元</li>
-<li>文件系统 – 在操作系统层面上对存储的抽象，比如目录和文件</li>
-<li>应用程序 – 针对不同的应用场景，可能<strong>数据内容</strong>的形式和模型会有不同的需求。<br>比如说，Web程序可能很多文本形式的数据，多媒体数据等等<strong>再一层抽象和封装</strong></li>
-</ul>
-<p><strong>数据库</strong>则是提供针对不同类型的应用程序<br>（Web前端程序，Web后端程序，终端应用等等）<br>的通用数据存储，组织，管理和数据访问，的需求的高级抽象</p>
-<p>本质上，我们谈存储和数据，就是在谈<strong>状态</strong>。<br>比如：</p>
-<ul>
-<li>账号信息：账号，密码，登录状态</li>
-<li>产品信息：库存信息，产品价格，消息信息（状态）</li>
-<li>订单信息等等</li>
-</ul>
-<p><strong>对状态（数据）的维持管理</strong> -&gt;存储和组织（所有的应用程序都需要）</p>
-<p>存储，不管哪个层面上，都是为了在特定的时限和资源下保存这些实体的状态</p>
-<p>然后很重要的一类计算就是对这些实体的状态的转换和维护，以及比如：</p>
-<ul>
-<li>更新账号密码</li>
-<li>更新产品的库存</li>
-<li>创建订单</li>
-</ul>
-<p><strong>对状态的访问</strong> -&gt; 操作（所有的应用程序都需要）</p>
-<p>从各种各样的应用程序实例中，提炼抽象出的一些通用的数据存储需求，一起实现到一套系统中，就产生了数据库：</p>
-<ul>
-<li><p>数据存储<br>所有数据都存储到单一文件里或者多个文件里？所有数据是否都存储到单一的机器里？<br>存储在什么样的设备：内存 硬盘 云服务<br>不同的存储 -&gt;使用的方便性和和性能</p>
-</li>
-<li><p>数据结构和组织<br>（面试要明白这个底层结构！）<br>SQL关系数据库：按表和行去组织，底层大概是一个红黑树结构（？）<br>Key-Value数据库：Hash表（数据库变大了会很难处理？）<br>图的数据库：图结构 -&gt;很容易表达社交网络<br>对象模型：JSON这样的结构去存储，MongoDB和DynamoDB</p>
-</li>
-</ul>
-<p>硬盘没有内存快，单文件的并发性低，数据吞吐量低</p>
-<p>冗余对数据查找的作用？</p>
-<ul>
-<li><p>数据索引（如何找到数据）<br>索引的结构是什么样的？<br>支持什么样的索引？<br>顺序、哈希表、分层索引</p>
-</li>
-<li><p>数据的更新和查询<br>关系数据库：SQL语言（SQL命令）</p>
-</li>
-<li><p>数据的备份和冗余（防止丢失和保持可用）<br>备份的方式：全量备份和增量备份<br>恢复方式<br>不通过数据库的支持<br>备份时间，备份格式，备份压缩</p>
-</li>
-<li><p>数据一致性，可用性（冗余和事务）<br>冗余 -&gt; 一致性问题<br>CAP：一致性，可用性，分区容错性（无法同时满足）</p>
-</li>
-<li><p>数据管理<br>数据分析的工具<br>访问的工具</p>
-</li>
-<li><p>规模和Scalability（可扩展性）</p>
-</li>
-<li><p>等等</p>
-</li>
-</ul>
-<p>市面上各种不同的数据库，就是针对不同的场景和不同的需求，对以上的问题提出针对性的解决方案，并且有不同的侧重点</p>
-<p>HDFS和Map</p>
-<p>Mapreduce？</p>
-<h2 id="数据库类型"><a href="#数据库类型" class="headerlink" title="数据库类型"></a>数据库类型</h2><p>按照上面的逻辑，，数据库的特性是应用需求是多维度的，所以我们在考虑数据库的分类的时候，也得从不同维度来考虑</p>
-<h2 id="从数据结构和组织"><a href="#从数据结构和组织" class="headerlink" title="从数据结构和组织"></a>从数据结构和组织</h2><p>关系数据库/SQL<br>MySQL,Oracle,DB2,PstegreSQL,SQLite</p>
-<p>对象/Document/列-Base(NoSQL)<br>MongoDB,DynamoDB等等</p>
-<p>图<br>Key-Value<br>leveldb(<a href="https://github.com/google/leveldb" target="_blank" rel="noopener">https://github.com/google/leveldb</a>)</p>
-<p>时间序列<br>比如金融量化交易系统的金融数据，时间维度是很重要的</p>
-<h2 id="从数据存储"><a href="#从数据存储" class="headerlink" title="从数据存储"></a>从数据存储</h2><h3 id="终端应用数据库"><a href="#终端应用数据库" class="headerlink" title="终端应用数据库"></a>终端应用数据库</h3><p>在应用本地数据库的数据库，比如Web前端，Android/ios应用的本地数据库。</p>
-<ul>
-<li>SQLite</li>
-</ul>
-<h3 id="内存数据库"><a href="#内存数据库" class="headerlink" title="内存数据库"></a>内存数据库</h3><p>在后端系统中，可能需要一些访问更快但是不需要<strong>持久性</strong>的数据，就可能需要在内存中的数据库，<br>但是可以更快的读取和更新速度</p>
-<ul>
-<li><a href="https://redos.io/" target="_blank" rel="noopener">Redis</a></li>
-<li><a href="https://memcached.org" target="_blank" rel="noopener">Memcached</a></li>
-</ul>
-<p>比如：</p>
-<ul>
-<li><p>Web程序中的用户登录状态，就可以存储在内存里，如果Web后端程序重启之后，<br>内存的数据库会丢失，但是只需要用户重新登录就好了，但是可以获得更快的更新和读取速度</p>
-</li>
-<li><p>爬虫中的已经访问过的URLs</p>
-</li>
-</ul>
-<h3 id="持久化数据库"><a href="#持久化数据库" class="headerlink" title="持久化数据库"></a>持久化数据库</h3><p>MySQL,Oracle,MongoDB可能会更关注持久性存储，冗余和备份，保证数据的安全（Security和Safety）等等</p>
-<h3 id="分布式数据库"><a href="#分布式数据库" class="headerlink" title="分布式数据库"></a>分布式数据库</h3><p>数据规模扩大之后，可能需要在多台机器（分布式）上存储，同时提供保证大量数据的存储能力，数据冗余，高吞吐的能力</p>
-<ul>
-<li><a href="https://hbase.apache.org/" target="_blank" rel="noopener">HBase</a></li>
-<li><a href="https://cassandra.apache.org" target="_blank" rel="noopener">Cassandra</a></li>
-</ul>
-<h3 id="云数据库"><a href="#云数据库" class="headerlink" title="云数据库"></a>云数据库</h3><p>云上的完整解决方案，按需付费，可伸缩性，更专业稳定的运维能力</p>
-<ul>
-<li><a href="https://aws.amazon.com/dynamodb" target="_blank" rel="noopener">DynamoDB</a></li>
-<li><a href="https://cloud.tencent.com/product/cdb-overview" target="_blank" rel="noopener">腾讯云数据库</a></li>
-<li>阿里云数据库</li>
-</ul>
-<h3 id="区块链"><a href="#区块链" class="headerlink" title="区块链"></a>区块链</h3><p>区块链本质上是一个可以完全分布到整个互联网的数据库！</p>
-<h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><p>关系型数据库是对一类数据库设计经验的总结和设计方法的抽象，以期得到一个通用的数据库的解决方法<br>关系数据组织数据的基本结构：</p>
-<ul>
-<li>数据库</li>
-<li>数据库表</li>
-<li>数据库字段</li>
-<li>数据库记录</li>
-</ul>
-<p>SQL是一个对SQL数据库的查询和操作的通用语言</p>
-<h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><p>Java程序连接SQL数据库，操作SQL数据库和执行SQL语句的库</p>
-<ul>
-<li>程序接口</li>
-<li>数据库驱动程序</li>
-</ul>
-<p>Scalability<br>Reliability<br>Data Infrastructure<br>可扩展性<br>可靠性<br>数据架构<br>IOT挑战性<br>API建模 + 数据建模</p>
-<p>面试<br>单元测试要怎么写？这是一个加分项，不问也要主动提出<br>存储数据，怎么设计本地的数据库？</p>
-<p>怎么去组织API</p>
-
+<li>交互
+        
+          <p class="article-more-link">
+            <a href="/2018/11/03/JDBC/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjo0uf0cq0004pcskkees0dlq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjpox7wsu0005w0sksb8ofgdj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li></ul>
@@ -220,7 +196,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/21/HTTP/">HTTP协议</a>
+      <a class="article-title" href="/2018/10/21/HTTP/">HTTP协议和RESTful API</a>
     </h1>
   
 
@@ -244,7 +220,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjo0uf0cv0005pcskt0g5pwat" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjpox7wsr0004w0sku3euf3ut" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
@@ -287,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjo0uf0ez000ipcska403v2cy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjpox7wtc000ew0skiax2zida" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
@@ -330,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjo0uf0f6000kpcskyhx8jpnw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjpox7wup000ow0sk5incnct6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li></ul>
@@ -368,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/15/maven/" data-id="cjo0uf0g8000wpcsknfam2ral" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/15/maven/" data-id="cjpox7wvn0011w0sk5b7mdudm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Maven/">Maven</a></li></ul>
@@ -406,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/11/GenericAndCollection/" data-id="cjo0uf0cm0003pcskuazgp3yu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/11/GenericAndCollection/" data-id="cjpox7wse0001w0skolpsybn5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -447,7 +423,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/07/sort/" data-id="cjo0uf0gf000zpcsk0pcimznk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/07/sort/" data-id="cjpox7wvv0015w0skg4rq2uje" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -490,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/04/DataStructure/" data-id="cjo0uf0bt0000pcsk5fen6e75" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/04/DataStructure/" data-id="cjpox7ws60000w0skfmk2wvkq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -533,50 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/01/ToObject2/" data-id="cjo0uf0fg000mpcskojq96rqp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-PolymorphismDemo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/31/PolymorphismDemo/" class="article-date">
-  <time datetime="2018-08-31T11:23:15.000Z" itemprop="datePublished">2018-08-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/31/PolymorphismDemo/">一个多态的简单实例</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个抽象类、接口、多态的简单实例。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/31/PolymorphismDemo/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/31/PolymorphismDemo/" data-id="cjo0uf0eu000gpcsk68fkxx5j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/01/ToObject2/" data-id="cjpox7wv2000sw0skv9u9p83o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -625,7 +558,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
     </div>
   </div>
 
@@ -638,11 +571,15 @@
       <ul>
         
           <li>
+            <a href="/2018/12/15/StreamNote/">StreamNote</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/03/JDBC/">JDBC</a>
           </li>
         
           <li>
-            <a href="/2018/10/21/HTTP/">HTTP协议</a>
+            <a href="/2018/10/21/HTTP/">HTTP协议和RESTful API</a>
           </li>
         
           <li>
@@ -651,10 +588,6 @@
         
           <li>
             <a href="/2018/09/25/SynchronizedAndJoin/">线程同步——synchronized修饰符和join方法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/15/maven/">maven</a>
           </li>
         
       </ul>

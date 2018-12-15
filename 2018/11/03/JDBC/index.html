@@ -7,18 +7,18 @@
   
   <title>JDBC | Blog of wanz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于数据库的What 和 Why之前我们在计算程序模型中提到过，在计算机世界中需要处理的几个核心问题：  存储 计算 交互  具体到存储这一块，之前我们了解过  存储设备 – 内存和硬盘，以及对具体硬盘磁片的存储单元，块和内存的存储单元 文件系统 – 在操作系统层面上对存储的抽象，比如目录和文件 应用程序 – 针对不同的应用场景，可能数据内容的形式和模型会有不同的需求。比如说，Web程序可能很多文">
+  <meta name="description" content="关于数据库的What 和 Why之前我们在计算程序模型中提到过，在计算机世界中需要处理的几个核心问题：  存储 计算 交互">
 <meta name="keywords" content="Database">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JDBC">
 <meta property="og:url" content="http://yoursite.com/2018/11/03/JDBC/index.html">
 <meta property="og:site_name" content="Blog of wanz">
-<meta property="og:description" content="关于数据库的What 和 Why之前我们在计算程序模型中提到过，在计算机世界中需要处理的几个核心问题：  存储 计算 交互  具体到存储这一块，之前我们了解过  存储设备 – 内存和硬盘，以及对具体硬盘磁片的存储单元，块和内存的存储单元 文件系统 – 在操作系统层面上对存储的抽象，比如目录和文件 应用程序 – 针对不同的应用场景，可能数据内容的形式和模型会有不同的需求。比如说，Web程序可能很多文">
+<meta property="og:description" content="关于数据库的What 和 Why之前我们在计算程序模型中提到过，在计算机世界中需要处理的几个核心问题：  存储 计算 交互">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-03T02:42:52.367Z">
+<meta property="og:updated_time" content="2018-11-04T01:34:31.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC">
-<meta name="twitter:description" content="关于数据库的What 和 Why之前我们在计算程序模型中提到过，在计算机世界中需要处理的几个核心问题：  存储 计算 交互  具体到存储这一块，之前我们了解过  存储设备 – 内存和硬盘，以及对具体硬盘磁片的存储单元，块和内存的存储单元 文件系统 – 在操作系统层面上对存储的抽象，比如目录和文件 应用程序 – 针对不同的应用场景，可能数据内容的形式和模型会有不同的需求。比如说，Web程序可能很多文">
+<meta name="twitter:description" content="关于数据库的What 和 Why之前我们在计算程序模型中提到过，在计算机世界中需要处理的几个核心问题：  存储 计算 交互">
   
     <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
   
@@ -91,10 +91,8 @@
 <ul>
 <li>存储</li>
 <li>计算</li>
-<li>交互</li>
-</ul>
-<p>具体到存储这一块，之前我们了解过</p>
-<ul>
+<li>交互<a id="more"></a>
+具体到存储这一块，之前我们了解过</li>
 <li>存储设备 – 内存和硬盘，以及对具体硬盘磁片的存储单元，块和内存的存储单元</li>
 <li>文件系统 – 在操作系统层面上对存储的抽象，比如目录和文件</li>
 <li>应用程序 – 针对不同的应用场景，可能<strong>数据内容</strong>的形式和模型会有不同的需求。<br>比如说，Web程序可能很多文本形式的数据，多媒体数据等等<strong>再一层抽象和封装</strong></li>
@@ -197,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjo0uf0cq0004pcskkees0dlq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjpox7wsu0005w0sksb8ofgdj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li></ul>
@@ -208,10 +206,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2018/12/15/StreamNote/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          StreamNote
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/10/21/HTTP/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">HTTP协议</div>
+      <div class="article-nav-title">HTTP协议和RESTful API</div>
     </a>
   
 </nav>
@@ -249,7 +256,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
     </div>
   </div>
 
@@ -262,11 +269,15 @@
       <ul>
         
           <li>
+            <a href="/2018/12/15/StreamNote/">StreamNote</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/03/JDBC/">JDBC</a>
           </li>
         
           <li>
-            <a href="/2018/10/21/HTTP/">HTTP协议</a>
+            <a href="/2018/10/21/HTTP/">HTTP协议和RESTful API</a>
           </li>
         
           <li>
@@ -275,10 +286,6 @@
         
           <li>
             <a href="/2018/09/25/SynchronizedAndJoin/">线程同步——synchronized修饰符和join方法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/15/maven/">maven</a>
           </li>
         
       </ul>
