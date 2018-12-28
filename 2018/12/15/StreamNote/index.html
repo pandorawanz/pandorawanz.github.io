@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Blog of wanz">
 <meta property="og:description" content="Stream流的概念Stream是Java 8 中新增的用来补充集合类的一个新的接口，主要的目的是为了增强Java原有的集合类{Collection}的功能，特别是函数式相关的功能，为了理解Java里的Stream接口，首先我们得先理解什么是Stream，即什么是流 什么是流Stream可以说就是数据流{类比水流}，然后有一个数据来源{水流的源头}，然后这个流中的数据元素有可能是有限的{杯壁下流}">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-15T03:47:12.010Z">
+<meta property="og:updated_time" content="2018-12-15T03:55:32.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="StreamNote">
 <meta name="twitter:description" content="Stream流的概念Stream是Java 8 中新增的用来补充集合类的一个新的接口，主要的目的是为了增强Java原有的集合类{Collection}的功能，特别是函数式相关的功能，为了理解Java里的Stream接口，首先我们得先理解什么是Stream，即什么是流 什么是流Stream可以说就是数据流{类比水流}，然后有一个数据来源{水流的源头}，然后这个流中的数据元素有可能是有限的{杯壁下流}">
@@ -114,9 +114,9 @@
 <h4 id="终点操作"><a href="#终点操作" class="headerlink" title="终点操作"></a>终点操作</h4><p>终点操作会触发中间的操作，最终生成结果<br>两个冒号表示方法引用</p>
 <p><strong>问题</strong>：为什么要有方法引用？直接用原来的方法不可以吗？</p>
 <ul>
-<li>看起来简洁一点<br>如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure>
-</li>
+<li>看起来简洁一点</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure>
 <p>等同于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(x-&gt;System.out.println(x));</span><br></pre></td></tr></table></figure></p>
 <h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><ul>
 <li>不要去从Java去学函数式编程</li>
@@ -127,7 +127,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjpox7wt8000cw0sk4zzsmbek" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjq83u3kl000jwwsklezrn5fb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,6 +135,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/12/28/InversionOfControl/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          InversionOfControl
+        
+      </div>
+    </a>
   
   
     <a href="/2018/11/03/JDBC/" id="article-nav-older" class="article-nav-link-wrap">
@@ -190,6 +199,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/28/InversionOfControl/">InversionOfControl</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/15/StreamNote/">StreamNote</a>
           </li>
         
@@ -203,10 +216,6 @@
         
           <li>
             <a href="/2018/10/14/SpringBootStarted/">SpringBoot入门</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/25/SynchronizedAndJoin/">线程同步——synchronized修饰符和join方法</a>
           </li>
         
       </ul>

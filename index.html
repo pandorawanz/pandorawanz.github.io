@@ -62,6 +62,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-InversionOfControl" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/28/InversionOfControl/" class="article-date">
+  <time datetime="2018-12-28T13:52:56.000Z" itemprop="datePublished">2018-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/28/InversionOfControl/">InversionOfControl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="控制反转"><a href="#控制反转" class="headerlink" title="控制反转"></a>控制反转</h2><ul>
+<li><p>是一种面向对象编程中的一种设计原则，用来降低计算机代码之间的耦合度<br><strong>举例</strong>：当A依赖于B时，一种写法是在类A里面使用new创建一个类B的成员对象，此时A控制B的创建和销毁,因为A类里的代码需要去创建一个B的对象，就要调用B的构造方法，因此在更新了B的构造方法时，A中调用的B的方法就要修改，这就是<strong>耦合</strong>。而<strong>控制反转</strong>是让A一交出这个创建权给A的外部，由外部（相对于A）控制B的创建和销毁,这样就实现了B的生命周期逻辑和A的解耦<br><strong>再举例</strong>：当多个对象(A,B,C)于一个对象(D)的时候，修改D的时候，A,B,C都要连带修改，解决方式就是控制反转，可以先创建D，再传入A,B,C，成功解耦</p>
+</li>
+<li><p>优点：解耦，和封装一样，都可以减少重复代码</p>
+</li>
+</ul>
+<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>通过控制反转，把B的控制权转移到A的外部，但是A仍然依赖于B,需要使用B的对象去完成一些事情，那问题来了：<strong>我们如何把在外部创建的B的对象交给A呢？</strong></p>
+<ul>
+<li>在A的构造方法里吧B作为一个参数传给A——更加清晰</li>
+<li>使用Setter方法把B传给A的成员变量——更加灵活</li>
+</ul>
+<p>这就是<strong>依赖注入</strong>，依赖注入实际上是控制反转的一个实现</p>
+<h2 id="组件和依赖注入"><a href="#组件和依赖注入" class="headerlink" title="组件和依赖注入"></a>组件和依赖注入</h2><p><strong>依赖注入逻辑</strong>：抽象出一些类和对象，然后处理对象之间的交互</p>
+<p>在具体的场景中，我们会有一些常用的对象来处理一些常见的逻辑结构，比如说特定本地数据的访问，数据库的访问、认证，这种我们会称之为<strong>组件</strong>或者<strong>模块</strong>，在Spring里称之为<strong>Bean</strong>，同一个组件通常可能会在程序中很多地方需要使用，比如说UerController可能会使用到UserDao这个组件，ManageController也会用到UserDao这个组件</p>
+<h3 id="Spring里的一些逻辑"><a href="#Spring里的一些逻辑" class="headerlink" title="Spring里的一些逻辑"></a>Spring里的一些逻辑</h3><p>@Component //告诉Spring，这是一个组件，可以用来注入到其他的对象里<br>Controller本身也是一个Component<br>SpringApplication.run(Application.class,args); //初始化所有的组件，并且根据依赖关系，把每个组件所依赖的其他组件也初始化，然后注入！<br><strong>运行顺序</strong>：<br>1.创建UserController –&gt; new UserController(UserMockDao);–&gt;需要另外一对象（组件）UserMockDao<br>2.先创建UserMockDao –&gt; 创建UserController</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/28/InversionOfControl/" data-id="cjq83u3jw0006wwsk9949i73o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-StreamNote" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/15/StreamNote/" class="article-date">
@@ -112,9 +165,9 @@
 <h4 id="终点操作"><a href="#终点操作" class="headerlink" title="终点操作"></a>终点操作</h4><p>终点操作会触发中间的操作，最终生成结果<br>两个冒号表示方法引用</p>
 <p><strong>问题</strong>：为什么要有方法引用？直接用原来的方法不可以吗？</p>
 <ul>
-<li>看起来简洁一点<br>如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure>
-</li>
+<li>看起来简洁一点</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure>
 <p>等同于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(x-&gt;System.out.println(x));</span><br></pre></td></tr></table></figure></p>
 <h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><ul>
 <li>不要去从Java去学函数式编程</li>
@@ -125,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjpox7wt8000cw0sk4zzsmbek" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjq83u3kl000jwwsklezrn5fb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjpox7wsu0005w0sksb8ofgdj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjq83u3k00009wwsk6mlyopxi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li></ul>
@@ -220,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjpox7wsr0004w0sku3euf3ut" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjq83u3js0004wwskepdwomda" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
@@ -263,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjpox7wtc000ew0skiax2zida" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjq83u3k8000ewwskz5te0yp1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
@@ -306,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjpox7wup000ow0sk5incnct6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjq83u3ko000lwwskxkxi7kjc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li></ul>
@@ -344,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/15/maven/" data-id="cjpox7wvn0011w0sk5b7mdudm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/15/maven/" data-id="cjq83u3lw001awwsk8k8xaze6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Maven/">Maven</a></li></ul>
@@ -382,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/11/GenericAndCollection/" data-id="cjpox7wse0001w0skolpsybn5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/11/GenericAndCollection/" data-id="cjq83u3ik0000wwsk22ce6pb7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -423,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/07/sort/" data-id="cjpox7wvv0015w0skg4rq2uje" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/07/sort/" data-id="cjq83u3m1001bwwsk3wfwojez" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -466,50 +519,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/04/DataStructure/" data-id="cjpox7ws60000w0skfmk2wvkq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ToObject2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/01/ToObject2/" class="article-date">
-  <time datetime="2018-09-01T05:48:44.000Z" itemprop="datePublished">2018-09-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/01/ToObject2/">Java面向对象编程——抽象类、接口、多态</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>继封装和继承之后，<strong>抽象类</strong>、<strong>接口</strong>和<strong>多态</strong>同样是面向对象编程的重点。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/01/ToObject2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/01/ToObject2/" data-id="cjpox7wv2000sw0skv9u9p83o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/04/DataStructure/" data-id="cjq83u3jm0002wwskyfrqhacd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -525,7 +535,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -571,6 +581,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/28/InversionOfControl/">InversionOfControl</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/15/StreamNote/">StreamNote</a>
           </li>
         
@@ -584,10 +598,6 @@
         
           <li>
             <a href="/2018/10/14/SpringBootStarted/">SpringBoot入门</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/25/SynchronizedAndJoin/">线程同步——synchronized修饰符和join方法</a>
           </li>
         
       </ul>
