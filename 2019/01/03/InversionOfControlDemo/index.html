@@ -5,15 +5,20 @@
   
 
   
-  <title>Blog of wanz</title>
+  <title>控制反转实例 | Blog of wanz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Blog of wanz">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="控制反转实例User123456789101112131415161718192021222324252627282930313233package user.model;public class User &amp;#123;    private String name;    private String content;    public User() &amp;#123;        // defa">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="控制反转实例">
+<meta property="og:url" content="http://yoursite.com/2019/01/03/InversionOfControlDemo/index.html">
 <meta property="og:site_name" content="Blog of wanz">
+<meta property="og:description" content="控制反转实例User123456789101112131415161718192021222324252627282930313233package user.model;public class User &amp;#123;    private String name;    private String content;    public User() &amp;#123;        // defa">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-06T05:26:06.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog of wanz">
+<meta name="twitter:title" content="控制反转实例">
+<meta name="twitter:description" content="控制反转实例User123456789101112131415161718192021222324252627282930313233package user.model;public class User &amp;#123;    private String name;    private String content;    public User() &amp;#123;        // defa">
   
     <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
   
@@ -60,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-InversionOfControlDemo" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-InversionOfControlDemo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/03/InversionOfControlDemo/" class="article-date">
   <time datetime="2019-01-03T14:10:25.000Z" itemprop="datePublished">2019-01-03</time>
@@ -75,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/InversionOfControlDemo/">控制反转实例</a>
+    <h1 class="article-title" itemprop="name">
+      控制反转实例
     </h1>
   
 
@@ -107,460 +110,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-InversionOfControl" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/28/InversionOfControl/" class="article-date">
-  <time datetime="2018-12-28T13:52:56.000Z" itemprop="datePublished">2018-12-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/28/InversionOfControl/">控制反转</a>
-    </h1>
+    <a href="/2018/12/28/InversionOfControl/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">控制反转</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>要阐明控制反转的概念，先要明白什么是控制。举例有两个对象，如电池Battery和它的规格参数Parameter，他们可以有如下关系：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Battery &#123;</span><br><span class="line">    Parameter parameter = new Parameter();</span><br><span class="line">    Battery() &#123;&#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>从代码中这样的关系可以看出：</p>
-<ul>
-<li>Battery类对象的构成是依赖于Parameter类对象的</li>
-<li>在创建一个Battery类对象时，会随之创建一个Parameter类对象</li>
-<li>在删除Battery类对象时，其Parameter成员对象也会随之删除</li>
-<li>从前两点可以看出，Battery对象的生命周期决定了Parameter成员对象的生命周期，即控制</li>
-</ul>
-<h2 id="控制反转"><a href="#控制反转" class="headerlink" title="控制反转"></a>控制反转</h2><p>控制反转是一种面向对象编程中的一种设计原则，用来降低计算机代码之间的耦合度，即解开对象与对象之间的控制关系，可以让Battery交出Parameter的创建权给外部，将上面的代码改成：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Battery&#123;</span><br><span class="line">    Parameter parameter = new Parameter()；</span><br><span class="line">    Battery(Parameter parameter) &#123;</span><br><span class="line">        this.parameter = parameter;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Parameter parameter = new parameter();</span><br><span class="line">        Battery battery = new Battery(parameter);   //在构造方法中将parameter传入battery</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样写可以在外部创建Parameter对象，再传入Battery对象，当Battery对象生命周期结束时，Parameter对象可以继续存在，即实现了<strong>控制反转</strong>，控制反转可以实现对象之间的解耦，减少代码的重复</p>
-<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>将所依赖的对象，传递给将使用的从属对象，就是依赖注入，而依赖注入是控制反转的具体实现方法</p>
-<p>在前面的代码中，虽然已经成功实现了Battery对象与Parameter对象的解耦，将Parameter对象的控制权转移到了外部，但是Battery对象对Parameter对象的依赖依然存在，需要Parameter对象的传递才能完成构造，因此依赖注入是控制反转的具体实现方法</p>
-<p>通过控制反转，把B的控制权转移到A的外部，但是A仍然依赖于B,需要使用B的对象去完成一些事情，那问题来了：<strong>我们如何把在外部创建的B的对象交给A呢？</strong></p>
-<ul>
-<li>在A的构造方法里吧B作为一个参数传给A——更加清晰</li>
-<li>使用Setter方法把B传给A的成员变量——更加灵活</li>
-</ul>
-<p>这就是<strong>依赖注入</strong>，依赖注入实际上是控制反转的一个实现</p>
-<h2 id="Spring组件和依赖注入"><a href="#Spring组件和依赖注入" class="headerlink" title="Spring组件和依赖注入"></a>Spring组件和依赖注入</h2><p><strong>依赖注入逻辑</strong>：抽象出一些类和对象，然后处理对象之间的交互</p>
-<p>在具体的场景中，我们会有一些常用的对象来处理一些常见的逻辑结构，比如说特定本地数据的访问，数据库的访问、认证，这种我们会称之为<strong>组件</strong>或者<strong>模块</strong>，在Spring里称之为<strong>Bean</strong>，同一个组件通常可能会在程序中很多地方需要使用，比如说UerController可能会使用到UserDao这个组件，ManageController也会用到UserDao这个组件</p>
-<p>为避免代码重复，统一管理组件的创建, 然后在需要使用的地方把这个组件的实例注入</p>
-<h3 id="Spring里的一些逻辑"><a href="#Spring里的一些逻辑" class="headerlink" title="Spring里的一些逻辑"></a>Spring里的一些逻辑</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Component //告诉Spring，这是一个组件，可以用来注入到其他的对象里</span><br><span class="line">Controller本身也是一个Component</span><br><span class="line">SpringApplication.run(Application.class,args); //初始化所有的组件，并且根据依赖关系，把每个组件所依赖的其他组件也初始化，然后注入！</span><br></pre></td></tr></table></figure>
-<p><strong>运行顺序</strong>：<br><strong>1</strong>.创建UserController –&gt; new UserController(UserMockDao);–&gt;需要另外一对象（组件）UserMockDao<br><strong>2</strong>.先创建UserMockDao –&gt; 创建UserController</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>怎么告诉Spring选择性地选择哪个Component？</p>
-<h2 id="常用的两种注入方式"><a href="#常用的两种注入方式" class="headerlink" title="常用的两种注入方式"></a>常用的两种注入方式</h2><ul>
-<li>组件直接标记注入：如果需要被注入的组件，是我们能够控制的，那用直接标记注入简洁优雅</li>
-<li>工厂模式注入</li>
-</ul>
-<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>工厂模式是一种常用的创建型设计模式，提供了一种创建对象的最佳模式。在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>1.需要注入的组件, 我们需要更复杂的控制创建过程, 比如说动态根据输入内容创建组件<br>2.需要注入的组件是一个外部库的类, 我们没法给它加上@Component这样的标记<br>3.控制组件的数量, 如果是只需要一个组件的实例, 则使用直接注入或者工厂模式都可以. 需要使用多个实例时（每次使用都创建一个新的实例)，选择工厂模式，同一套代码可以创建多个对象</p>
-<h3 id="通用工厂类代码"><a href="#通用工厂类代码" class="headerlink" title="通用工厂类代码"></a>通用工厂类代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.beans.factory.FactoryBean;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class Factory implements FactoryBean&lt;UserDao&gt; &#123;</span><br><span class="line">    // 返回一个UserMockDao对象</span><br><span class="line">    @Override</span><br><span class="line">    public UserDao getObject() &#123;</span><br><span class="line">        return new UserMockDao();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 返回一个UserMockDao类型</span><br><span class="line">    @Override</span><br><span class="line">    public Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">        return UserMockDao.class;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 多个Controller用到UserMockDao时，只需要创建一个，共享</span><br><span class="line">    @Override</span><br><span class="line">    public boolean isSingleton() &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/28/InversionOfControl/" data-id="cjqkgfk7r0006v0skky5ib36h" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-StreamNote" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/15/StreamNote/" class="article-date">
-  <time datetime="2018-12-15T03:06:12.000Z" itemprop="datePublished">2018-12-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/15/StreamNote/">StreamNote</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><h3 id="流的概念"><a href="#流的概念" class="headerlink" title="流的概念"></a>流的概念</h3><p>Stream是Java 8 中新增的用来补充集合类的一个新的接口，主要的目的是为了增强Java原有的集合类{Collection}的功能，<br>特别是函数式相关的功能，为了理解Java里的Stream接口，首先我们得先理解什么是Stream，即什么是流</p>
-<h3 id="什么是流"><a href="#什么是流" class="headerlink" title="什么是流"></a>什么是流</h3><p>Stream可以说就是数据流{类比水流}，然后有一个数据来源{水流的源头}，然后这个流中的数据元素有可能是有限的{杯壁下流}，<br>也可能是无限的{长江水流}，我们举几个例子：</p>
-<h4 id="有限的流"><a href="#有限的流" class="headerlink" title="有限的流"></a>有限的流</h4><ul>
-<li>一个集合，例如ArrayList中的所有元素</li>
-<li>一个固定文件（不支持更新）中的所有字符</li>
-</ul>
-<h4 id="无限的流"><a href="#无限的流" class="headerlink" title="无限的流"></a>无限的流</h4><ul>
-<li>日志更新的文件</li>
-<li>一个不关闭的监听端口传来的数据</li>
-</ul>
-<p>注意，流是可以有顺序，可以没顺序的</p>
-<h3 id="Stream接口"><a href="#Stream接口" class="headerlink" title="Stream接口"></a>Stream接口</h3><p>Java的Stream接口就集合了相关对数据流的操作。<br>这些操作大部分都是上节课我们所说的高阶函数，然后这个接口的操作有一些基本特性：</p>
-<ul>
-<li>不存储数据：流是基于数据源的映射，其本身并不存储数据元素，而是通过类似管道的机制把数据源的元素传递给操作。</li>
-<li>不修改数据源：流的操作都不会修改数据源，而是返回新的数据。（函数式编程里很重要的一个特性，immutable，不可变数据）</li>
-<li>惰性执行：流的操作分为两种，第一种为中间操作，另一种为规约和收集操作，<br>中间操作只是定义对流的响应操作链，但是不会真正执行，只有最后规约和收集的时候才会真正执行中间操作。（惰性执行）</li>
-<li>可以解绑：对于流，我们可以限制其中遍历的元素个数，比如limit(n)和findFirst()这样的操作，都会得到结构或者达到限制之后马上返回。</li>
-<li>纯消费：流的元素只能访问一次，操作没有回头路，如果需要重新操作，则重新创建一个流。</li>
-</ul>
-<p><strong>问题</strong>：为什么要把数据转换成Stream再传递给操作，直接把数据源传递给操作不是更直接？<br>为了使代码的执行有明了的一系列特性：<br>为了使程序可以惰性执行，<br>便于解绑，把数据传递给一个或若干个操作，可以得到结果或者达到限制后马上返回，<br>且一方面对数据源有保护作用<br>不修改源数据也会减少很多并发问题</p>
-<h4 id="并行流和串行流"><a href="#并行流和串行流" class="headerlink" title="并行流和串行流"></a>并行流和串行流</h4><p>在Java中，默认创建的都是串行流，比如使用Collection.stream() 返回的就是创建的串行流，<br>而调用Collction.parallelStream()则会返回创建的并行流</p>
-<h4 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h4><p>对于流中不同元素的操作应该是相互独立的，因为Java并不保证不同元素之间的执行顺序，甚至不保证他们的操作是在一个线程中的。</p>
-<h3 id="流的操作"><a href="#流的操作" class="headerlink" title="流的操作"></a>流的操作</h3><h4 id="流的创建"><a href="#流的创建" class="headerlink" title="流的创建"></a>流的创建</h4><p>1.通过集合的stream()方法或者parallelStream()方法；<br>2.通过Arrays.stream(Object [])方法；<br>3.使用Stream的静态方法，比如<br>    1.Stream.of(Object[]),IntStream.range(int,int)<br>    2.Stream.iterate(Object,UnaryOperator),如Stream.iterate{1,n-&gt;n*2}很明显，这是个无限流1,2,4,8,16<br>    3.Stream.generate(Suppler<t> s) 如：Stream.generate(Math::random)<br>4.BufferReader.lines()从文件中获得行的流<br>5.随机数流Random.ints()<br>6.其他一些类提供了创建流的方法<br>7.底层使用StreamSupport()，它提供了将Sliterator转换成流的方法</t></p>
-<h4 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h4><p>中间操作类似于对一个已有的流，绑定一个高阶（定义对每个元素的而操作的操作）的操作，<br>然后返回一个新的流. 其中只是绑定这个操作, 并不会马上执行, 当然也不会修改原始的数据源.</p>
-<p>forEach之前不执行中间操作</p>
-<h4 id="终点操作"><a href="#终点操作" class="headerlink" title="终点操作"></a>终点操作</h4><p>终点操作会触发中间的操作，最终生成结果<br>两个冒号表示方法引用</p>
-<p><strong>问题</strong>：为什么要有方法引用？直接用原来的方法不可以吗？</p>
-<ul>
-<li>看起来简洁一点</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure>
-<p>等同于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(x-&gt;System.out.println(x));</span><br></pre></td></tr></table></figure></p>
-<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><ul>
-<li>不要去从Java去学函数式编程</li>
-<li>也不要用Java的概念去理解函数式编程</li>
-<li>Haskell, Scala, Kotlin</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjqkgfk8d000jv0skndsksj0a" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="数据库和JDBC（未整理）-JDBC" class="article article-type-数据库和JDBC（未整理）" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/03/JDBC/" class="article-date">
-  <time datetime="2018-11-03T02:41:31.000Z" itemprop="datePublished">2018-11-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/03/JDBC/">JDBC</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于数据库的What-和-Why"><a href="#关于数据库的What-和-Why" class="headerlink" title="关于数据库的What 和 Why"></a>关于数据库的What 和 Why</h2><p>之前我们在计算程序模型中提到过，在计算机世界中需要处理的几个核心问题：</p>
-<ul>
-<li>存储</li>
-<li>计算</li>
-<li>交互
-        
-          <p class="article-more-link">
-            <a href="/2018/11/03/JDBC/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjqkgfk80000bv0skc6uufopv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HTTP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/21/HTTP/" class="article-date">
-  <time datetime="2018-10-21T11:18:40.000Z" itemprop="datePublished">2018-10-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/21/HTTP/">HTTP协议和RESTful API</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="TCP-IP五层网络架构"><a href="#TCP-IP五层网络架构" class="headerlink" title="TCP/IP五层网络架构"></a>TCP/IP五层网络架构</h2><ul>
-<li><strong>应用层</strong>(HTTP,RPC等)——直接和应用程序接口并提供常见的网络应用服务</li>
-<li><strong>传输层</strong>(TCP)——同一个网络中链接的两个节点，如何完成端对端的连接</li>
-<li><strong>网络层</strong>(IP)——同一个网络的机器如何去协作和传递数据，建立一条路径，保证传输数据的一致</li>
-<li><strong>数据链路层</strong>——网线两端的设备如何传递数据</li>
-<li><strong>物理层</strong>——一条网线如何去传输数据</li>
-</ul>
-<p>数据链路层和物理层是设备工程师考虑的问题，而应用层、传输层、网络层是Web工程师该考虑的问题<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/10/21/HTTP/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjqkgfk7q0005v0skgo8jnjrp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SpringBootStarted" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/14/SpringBootStarted/" class="article-date">
-  <time datetime="2018-10-14T11:11:36.000Z" itemprop="datePublished">2018-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/14/SpringBootStarted/">SpringBoot入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文将介绍在Maven环境下SpringBoot的使用方法。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/10/14/SpringBootStarted/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjqkgfk8g000lv0sk2mxknt9j" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SynchronizedAndJoin" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/25/SynchronizedAndJoin/" class="article-date">
-  <time datetime="2018-09-25T13:19:28.000Z" itemprop="datePublished">2018-09-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/25/SynchronizedAndJoin/">线程同步——synchronized修饰符和join方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>多线程的调用可以使得程序运行的效率大幅提升，但线程的使用一方面会降低可读性，一方面给代码的运行带来随机性。针对随机性问题，synchronized修饰符可以使得某方法同时只能被一个线程调用，而join方法会让主线程等待当前子线程执行结束再继续执行。它们都能在一定程度上控制多线程程序的执行顺序。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/25/SynchronizedAndJoin/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjqkgfk8l000ov0skekktbhde" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-maven" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/15/maven/" class="article-date">
-  <time datetime="2018-09-15T07:34:11.000Z" itemprop="datePublished">2018-09-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/15/maven/">maven</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/15/maven/" data-id="cjqkgfk910013v0sk3xq7qpkm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Maven/">Maven</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-GenericAndCollection" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/11/GenericAndCollection/" class="article-date">
-  <time datetime="2018-09-11T11:21:03.000Z" itemprop="datePublished">2018-09-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/11/GenericAndCollection/">GenericAndCollection</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/11/GenericAndCollection/" data-id="cjqkgfk750000v0skcp9a75dj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-sort" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/07/sort/" class="article-date">
-  <time datetime="2018-09-07T04:33:58.000Z" itemprop="datePublished">2018-09-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/07/sort/">简单排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>排序是基础的算法问题，常见的排序有插入排序、冒泡排序、快速排序等，它们分别有不同的计算复杂度。插入排序和冒泡排序的复杂度为O(n^2),而快速排序的复杂度为O(nlogn)。因此，快速排序是最常用的排序方法之一，因为它的复杂度更。然而，对简单的排序方法的理解，还是有必要的。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/07/sort/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/07/sort/" data-id="cjqkgfk950017v0sk3q8qwy65" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         
