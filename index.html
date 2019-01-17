@@ -62,6 +62,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SQLite" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/17/SQLite/" class="article-date">
+  <time datetime="2019-01-17T14:20:12.000Z" itemprop="datePublished">2019-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/17/SQLite/">SQLite特性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h2><h3 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h3><p>SQLite是一个轻量级的关系型数据库，运算速度快，占用资源少，很适合在移动设备上使用， 不仅支持标准SQL语法，还遵循ACID(数据库事务)原则，是一个嵌入式SQL数据库引擎。与大多数其他SQL数据库不同，SQLite没有单独的服务器进程，直接读写普通磁盘文件，具有多个表，索引，触发器和视图的完整SQL数据库包含在<strong>单</strong>个磁盘文件中。<br>
+        
+          <p class="article-more-link">
+            <a href="/2019/01/17/SQLite/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/17/SQLite/" data-id="cjr0pe767000es0sk5ku6sow5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-InversionOfControlDemo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/03/InversionOfControlDemo/" class="article-date">
@@ -84,22 +127,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="控制反转实例"><a href="#控制反转实例" class="headerlink" title="控制反转实例"></a>控制反转实例</h2><h3 id="User"><a href="#User" class="headerlink" title="User"></a>User</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">package user.model;</span><br><span class="line"></span><br><span class="line">public class User &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private String content;</span><br><span class="line"></span><br><span class="line">    public User() &#123;</span><br><span class="line">        // default constructor for spring mapping</span><br><span class="line">        // Spring中不可以省略空构造方法</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public User(String name, String content) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getContent() &#123;</span><br><span class="line">        return content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setContent(String content) &#123;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="UserDao"><a href="#UserDao" class="headerlink" title="UserDao"></a>UserDao</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package user.model;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public interface UserDao &#123;</span><br><span class="line"></span><br><span class="line">    boolean contains(String key);</span><br><span class="line"></span><br><span class="line">    User get(String key);</span><br><span class="line"></span><br><span class="line">    void put(User user);</span><br><span class="line"></span><br><span class="line">    List&lt;User&gt; getAll();</span><br><span class="line"></span><br><span class="line">    void delete(String key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="UserDaoFactory"><a href="#UserDaoFactory" class="headerlink" title="UserDaoFactory"></a>UserDaoFactory</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package user.model;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.FactoryBean;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">@Component    //Component同时只能标一个，不然会报错</span><br><span class="line">public class UserDaoFactory implements FactoryBean&lt;UserDao&gt; &#123;</span><br><span class="line">    // 返回一个UserMockDao对象</span><br><span class="line">    @Override</span><br><span class="line">    public UserDao getObject() &#123;</span><br><span class="line">        System.out.println(&quot;使用工厂模式创建一个UserDao的组件&quot;);</span><br><span class="line">        return new UserMockDao();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 返回一个UserMockDao类型</span><br><span class="line">    @Override</span><br><span class="line">    public Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">        return UserMockDao.class;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 多个Controller用到UserMockDao时，只需要创建一个，共享</span><br><span class="line">    @Override</span><br><span class="line">    public boolean isSingleton() &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="UserMockDao"><a href="#UserMockDao" class="headerlink" title="UserMockDao"></a>UserMockDao</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">package user.model;</span><br><span class="line"></span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * DAO - Data Access Object, 用户实现和管理数据访问的对象，比如访问数据库等</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">//@Component  // 告诉Spring这是一个组件，可以用来注入到其他对象里</span><br><span class="line">public class UserMockDao implements UserDao &#123;</span><br><span class="line"></span><br><span class="line">    // 这可能会用数据库访问，文件访问的逻辑替换</span><br><span class="line"></span><br><span class="line">    private final HashMap&lt;String, User&gt; users = new HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    public UserMockDao() &#123;</span><br><span class="line">        // 模拟数据，之后会补充具体数据库的使用</span><br><span class="line">        users.put(&quot;lzh&quot;, new User(&quot;lzh&quot;,&quot;master&quot;));</span><br><span class="line">        users.put(&quot;pkj&quot;, new User(&quot;pkj&quot;, &quot;electric mouse&quot;));</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;创建UserMockDao!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 数据访问接口</span><br><span class="line">    @Override</span><br><span class="line">    public boolean contains(String key) &#123;</span><br><span class="line">        return users.containsKey(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public User get(String key) &#123;</span><br><span class="line">        return users.get(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void put(User user) &#123;</span><br><span class="line">        users.put(user.getName(),user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;User&gt; getAll() &#123;</span><br><span class="line">        return new ArrayList&lt;&gt;(users.values());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void delete(String key) &#123;</span><br><span class="line">        users.remove(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package user;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.SpringApplication;</span><br><span class="line">import org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line">// 告诉Spring从这里启动</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class Application &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 初始化所有的组件，并且根据依赖关系，把每个组件所依赖的其他组件初始化，然后注入！</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">    1.创建UserController --&gt; new UserController(UserDao); --&gt; 需要另外一对象（组件） UserDao</span><br><span class="line">    2.先创建UserMockDao --&gt; 创建UserController</span><br><span class="line">     */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="UserController"><a href="#UserController" class="headerlink" title="UserController"></a>UserController</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">package user;</span><br><span class="line"></span><br><span class="line">import org.springframework.http.HttpStatus;</span><br><span class="line">import org.springframework.http.ResponseEntity;</span><br><span class="line">import org.springframework.web.bind.annotation.*;</span><br><span class="line">import user.model.User;</span><br><span class="line">import user.model.UserDao;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">// 告诉Spring这是个Controller</span><br><span class="line">// 资源的控制，资源的接口合集</span><br><span class="line">// Controller本身也是一个Component</span><br><span class="line">@RestController</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    // 依赖于UserMockDao，需要注入UserMockDao的实例</span><br><span class="line">    // UserDao泛型也可以</span><br><span class="line">    private UserDao userDao;</span><br><span class="line"></span><br><span class="line">    // 使用构造方法进行注入</span><br><span class="line">    public UserController(UserDao userDao) &#123;</span><br><span class="line">        this.userDao = userDao;</span><br><span class="line">        System.out.println(&quot;创建UserController！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 响应 GET /users 这样的请求</span><br><span class="line">     * 查询用户列表</span><br><span class="line">     * @return 所有用户列表</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/users&quot;)</span><br><span class="line">    List&lt;User&gt; listUsers() &#123;</span><br><span class="line">        return new ArrayList&lt;&gt;(userDao.getAll());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 响应 GET /users/&#123;name&#125;</span><br><span class="line">     * 通过User的name查询具体User对象</span><br><span class="line">     * @param name</span><br><span class="line">     * @return name确定User对象</span><br><span class="line">     */</span><br><span class="line">    @GetMapping(&quot;/users/&#123;name&#125;&quot;)</span><br><span class="line">    // 从path中提取出name</span><br><span class="line">    ResponseEntity&lt;User&gt; getUser(@PathVariable String name) &#123;</span><br><span class="line">        if (userDao.contains(name)) &#123;</span><br><span class="line">            return new ResponseEntity&lt;&gt;(userDao.get(name),HttpStatus.OK);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 响应 POST /users 这样的请求</span><br><span class="line">     * 添加一个用户到我们用户列表里</span><br><span class="line">     * @param user</span><br><span class="line">     * @return 返回创建成功的User对象</span><br><span class="line">     */</span><br><span class="line"></span><br><span class="line">    /*</span><br><span class="line">    @PostMapping(&quot;/users&quot;)</span><br><span class="line">    User newUser(@RequestBody User user) &#123;</span><br><span class="line">        users.put(user.getName(),user);</span><br><span class="line">        return users.get(user.getName());</span><br><span class="line">    &#125;</span><br><span class="line">    */</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 响应 POST /users 这样的请求</span><br><span class="line">     * 添加一个用户到我们用户列表里</span><br><span class="line">     * @param user</span><br><span class="line">     * @return 返回创建成功的User对象</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/users&quot;)</span><br><span class="line">    ResponseEntity&lt;User&gt; newUser(@RequestBody User user) &#123;</span><br><span class="line">        userDao.put(user);</span><br><span class="line">        // 创建成功后返回User对象，以及自定义的状态值201</span><br><span class="line">        return new ResponseEntity&lt;&gt;(userDao.get(user.getName()), HttpStatus.CREATED);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 响应 PUT /users/&#123;name&#125; 这样的请求</span><br><span class="line">     * @param name</span><br><span class="line">     * @param updatedUser</span><br><span class="line">     * @return 修改之后的User对象</span><br><span class="line">     */</span><br><span class="line">    @PutMapping(&quot;/users/&#123;name&#125;&quot;)</span><br><span class="line">    ResponseEntity&lt;User&gt; updateUser(@PathVariable String name,@RequestBody User updatedUser) &#123;</span><br><span class="line">        if (userDao.contains(name)) &#123;</span><br><span class="line">            User user = userDao.get(name);</span><br><span class="line">            user.setContent(updatedUser.getContent());</span><br><span class="line">            return new ResponseEntity&lt;&gt;(user,HttpStatus.OK);</span><br><span class="line">        &#125; else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 响应 DELETE /users/&#123;name&#125; 这样的请求</span><br><span class="line">     * 删除 name 确定的User对象</span><br><span class="line">     * @param name</span><br><span class="line">     */</span><br><span class="line">    @DeleteMapping(&quot;/users/&#123;name&#125;&quot;)</span><br><span class="line">    ResponseEntity&lt;Void&gt; deleteUser(@PathVariable String name) &#123;</span><br><span class="line">        if (userDao.contains(name)) &#123;</span><br><span class="line">            userDao.delete(name);</span><br><span class="line">            return new ResponseEntity&lt;&gt;(HttpStatus.OK);</span><br><span class="line">        &#125; else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.UserDao是User系列操作接口的抽象集合，用于处理User相关数据，通过UserMockDao实现具体方法内容，从而实现控制反转，在Controller中使用时<br>2.一般情况下，@Component只能标注一个类（否则）：</p>
-<ul>
-<li>标注在UserMockDao时，直接生成UserMockDao实例后注入UserController的构造方法中</li>
-<li>标注在UserDaoFactory时，采用工厂模式创建UserMockDao对象，然后注入UserController的构造方法中</li>
-</ul>
-
+        <h2 id="控制反转实例"><a href="#控制反转实例" class="headerlink" title="控制反转实例"></a>控制反转实例</h2>
+        
+          <p class="article-more-link">
+            <a href="/2019/01/03/InversionOfControlDemo/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/InversionOfControlDemo/" data-id="cjqkgfk7n0004v0skyhrq7lol" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/InversionOfControlDemo/" data-id="cjr0pe75s0006s0sk5zbebcpi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -133,44 +170,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>要阐明控制反转的概念，先要明白什么是控制。举例有两个对象，如电池Battery和它的规格参数Parameter，他们可以有如下关系：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Battery &#123;</span><br><span class="line">    Parameter parameter = new Parameter();</span><br><span class="line">    Battery() &#123;&#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>从代码中这样的关系可以看出：</p>
-<ul>
-<li>Battery类对象的构成是依赖于Parameter类对象的</li>
-<li>在创建一个Battery类对象时，会随之创建一个Parameter类对象</li>
-<li>在删除Battery类对象时，其Parameter成员对象也会随之删除</li>
-<li>从前两点可以看出，Battery对象的生命周期决定了Parameter成员对象的生命周期，即控制</li>
-</ul>
-<h2 id="控制反转"><a href="#控制反转" class="headerlink" title="控制反转"></a>控制反转</h2><p>控制反转是一种面向对象编程中的一种设计原则，用来降低计算机代码之间的耦合度，即解开对象与对象之间的控制关系，可以让Battery交出Parameter的创建权给外部，将上面的代码改成：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Battery&#123;</span><br><span class="line">    Parameter parameter = new Parameter()；</span><br><span class="line">    Battery(Parameter parameter) &#123;</span><br><span class="line">        this.parameter = parameter;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Parameter parameter = new parameter();</span><br><span class="line">        Battery battery = new Battery(parameter);   //在构造方法中将parameter传入battery</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样写可以在外部创建Parameter对象，再传入Battery对象，当Battery对象生命周期结束时，Parameter对象可以继续存在，即实现了<strong>控制反转</strong>，控制反转可以实现对象之间的解耦，减少代码的重复</p>
-<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>将所依赖的对象，传递给将使用的从属对象，就是依赖注入，而依赖注入是控制反转的具体实现方法</p>
-<p>在前面的代码中，虽然已经成功实现了Battery对象与Parameter对象的解耦，将Parameter对象的控制权转移到了外部，但是Battery对象对Parameter对象的依赖依然存在，需要Parameter对象的传递才能完成构造，因此依赖注入是控制反转的具体实现方法</p>
-<p>通过控制反转，把B的控制权转移到A的外部，但是A仍然依赖于B,需要使用B的对象去完成一些事情，那问题来了：<strong>我们如何把在外部创建的B的对象交给A呢？</strong></p>
-<ul>
-<li>在A的构造方法里吧B作为一个参数传给A——更加清晰</li>
-<li>使用Setter方法把B传给A的成员变量——更加灵活</li>
-</ul>
-<p>这就是<strong>依赖注入</strong>，依赖注入实际上是控制反转的一个实现</p>
-<h2 id="Spring组件和依赖注入"><a href="#Spring组件和依赖注入" class="headerlink" title="Spring组件和依赖注入"></a>Spring组件和依赖注入</h2><p><strong>依赖注入逻辑</strong>：抽象出一些类和对象，然后处理对象之间的交互</p>
-<p>在具体的场景中，我们会有一些常用的对象来处理一些常见的逻辑结构，比如说特定本地数据的访问，数据库的访问、认证，这种我们会称之为<strong>组件</strong>或者<strong>模块</strong>，在Spring里称之为<strong>Bean</strong>，同一个组件通常可能会在程序中很多地方需要使用，比如说UerController可能会使用到UserDao这个组件，ManageController也会用到UserDao这个组件</p>
-<p>为避免代码重复，统一管理组件的创建, 然后在需要使用的地方把这个组件的实例注入</p>
-<h3 id="Spring里的一些逻辑"><a href="#Spring里的一些逻辑" class="headerlink" title="Spring里的一些逻辑"></a>Spring里的一些逻辑</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Component //告诉Spring，这是一个组件，可以用来注入到其他的对象里</span><br><span class="line">Controller本身也是一个Component</span><br><span class="line">SpringApplication.run(Application.class,args); //初始化所有的组件，并且根据依赖关系，把每个组件所依赖的其他组件也初始化，然后注入！</span><br></pre></td></tr></table></figure>
-<p><strong>运行顺序</strong>：<br><strong>1</strong>.创建UserController –&gt; new UserController(UserMockDao);–&gt;需要另外一对象（组件）UserMockDao<br><strong>2</strong>.先创建UserMockDao –&gt; 创建UserController</p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>怎么告诉Spring选择性地选择哪个Component？</p>
-<h2 id="常用的两种注入方式"><a href="#常用的两种注入方式" class="headerlink" title="常用的两种注入方式"></a>常用的两种注入方式</h2><ul>
-<li>组件直接标记注入：如果需要被注入的组件，是我们能够控制的，那用直接标记注入简洁优雅</li>
-<li>工厂模式注入</li>
-</ul>
-<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>工厂模式是一种常用的创建型设计模式，提供了一种创建对象的最佳模式。在工厂模式中，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象。</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>1.需要注入的组件, 我们需要更复杂的控制创建过程, 比如说动态根据输入内容创建组件<br>2.需要注入的组件是一个外部库的类, 我们没法给它加上@Component这样的标记<br>3.控制组件的数量, 如果是只需要一个组件的实例, 则使用直接注入或者工厂模式都可以. 需要使用多个实例时（每次使用都创建一个新的实例)，选择工厂模式，同一套代码可以创建多个对象</p>
-<h3 id="通用工厂类代码"><a href="#通用工厂类代码" class="headerlink" title="通用工厂类代码"></a>通用工厂类代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.beans.factory.FactoryBean;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class Factory implements FactoryBean&lt;UserDao&gt; &#123;</span><br><span class="line">    // 返回一个UserMockDao对象</span><br><span class="line">    @Override</span><br><span class="line">    public UserDao getObject() &#123;</span><br><span class="line">        return new UserMockDao();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 返回一个UserMockDao类型</span><br><span class="line">    @Override</span><br><span class="line">    public Class&lt;?&gt; getObjectType() &#123;</span><br><span class="line">        return UserMockDao.class;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 多个Controller用到UserMockDao时，只需要创建一个，共享</span><br><span class="line">    @Override</span><br><span class="line">    public boolean isSingleton() &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>要阐明控制反转的概念，先要明白什么是控制。举例有两个对象，如电池Battery和它的规格参数Parameter，他们可以有如下关系：<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/28/InversionOfControl/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/28/InversionOfControl/" data-id="cjqkgfk7r0006v0skky5ib36h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/28/InversionOfControl/" data-id="cjr0pe75x0009s0skzcrem5fl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -245,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjqkgfk8d000jv0skndsksj0a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjr0pe76n000os0skc3nt9a71" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjqkgfk80000bv0skc6uufopv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjr0pe763000bs0skqkppc5rs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li></ul>
@@ -340,7 +349,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjqkgfk7q0005v0skgo8jnjrp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjr0pe75q0005s0skf1duir81" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
@@ -383,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjqkgfk8g000lv0sk2mxknt9j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjr0pe76i000ls0sks0yleddd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
@@ -426,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjqkgfk8l000ov0skekktbhde" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjr0pe76p000qs0skgm5zpexe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li></ul>
@@ -464,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/15/maven/" data-id="cjqkgfk910013v0sk3xq7qpkm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/15/maven/" data-id="cjr0pe77a0014s0sk2frxo9dd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Maven/">Maven</a></li></ul>
@@ -502,52 +511,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/11/GenericAndCollection/" data-id="cjqkgfk750000v0skcp9a75dj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/11/GenericAndCollection/" data-id="cjr0pe74j0000s0skwvopxdqn" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-sort" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/07/sort/" class="article-date">
-  <time datetime="2018-09-07T04:33:58.000Z" itemprop="datePublished">2018-09-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/07/sort/">简单排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>排序是基础的算法问题，常见的排序有插入排序、冒泡排序、快速排序等，它们分别有不同的计算复杂度。插入排序和冒泡排序的复杂度为O(n^2),而快速排序的复杂度为O(nlogn)。因此，快速排序是最常用的排序方法之一，因为它的复杂度更。然而，对简单的排序方法的理解，还是有必要的。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/07/sort/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/07/sort/" data-id="cjqkgfk950017v0sk3q8qwy65" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
     </footer>
   </div>
   
@@ -573,7 +539,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li></ul>
     </div>
   </div>
 
@@ -583,7 +549,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a>
+      <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/db/" style="font-size: 10px;">db</a>
     </div>
   </div>
 
@@ -605,6 +571,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/17/SQLite/">SQLite特性</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/03/InversionOfControlDemo/">控制反转实例</a>
           </li>
         
@@ -618,10 +588,6 @@
         
           <li>
             <a href="/2018/11/03/JDBC/">JDBC</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/21/HTTP/">HTTP协议和RESTful API</a>
           </li>
         
       </ul>

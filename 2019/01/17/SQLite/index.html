@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>SQLite特性 | Blog of wanz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SQLite数据存储SQLite是一个轻量级的关系型数据库，运算速度快，占用资源少，很适合在移动设备上使用， 不仅支持标准SQL语法，还遵循ACID(数据库事务)原则，是一个嵌入式SQL数据库引擎。与大多数其他SQL数据库不同，SQLite没有单独的服务器进程，直接读写普通磁盘文件，具有多个表，索引，触发器和视图的完整SQL数据库包含在单个磁盘文件中。">
+<meta name="keywords" content="db">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQLite特性">
+<meta property="og:url" content="http://yoursite.com/2019/01/17/SQLite/index.html">
+<meta property="og:site_name" content="Blog of wanz">
+<meta property="og:description" content="SQLite数据存储SQLite是一个轻量级的关系型数据库，运算速度快，占用资源少，很适合在移动设备上使用， 不仅支持标准SQL语法，还遵循ACID(数据库事务)原则，是一个嵌入式SQL数据库引擎。与大多数其他SQL数据库不同，SQLite没有单独的服务器进程，直接读写普通磁盘文件，具有多个表，索引，触发器和视图的完整SQL数据库包含在单个磁盘文件中。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-17T14:21:17.979Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQLite特性">
+<meta name="twitter:description" content="SQLite数据存储SQLite是一个轻量级的关系型数据库，运算速度快，占用资源少，很适合在移动设备上使用， 不仅支持标准SQL语法，还遵循ACID(数据库事务)原则，是一个嵌入式SQL数据库引擎。与大多数其他SQL数据库不同，SQLite没有单独的服务器进程，直接读写普通磁盘文件，具有多个表，索引，触发器和视图的完整SQL数据库包含在单个磁盘文件中。">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog of wanz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-SQLite" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/17/SQLite/" class="article-date">
+  <time datetime="2019-01-17T14:20:12.000Z" itemprop="datePublished">2019-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQLite特性
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SQLite"><a href="#SQLite" class="headerlink" title="SQLite"></a>SQLite</h2><h3 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h3><p>SQLite是一个轻量级的关系型数据库，运算速度快，占用资源少，很适合在移动设备上使用， 不仅支持标准SQL语法，还遵循ACID(数据库事务)原则，是一个嵌入式SQL数据库引擎。与大多数其他SQL数据库不同，SQLite没有单独的服务器进程，直接读写普通磁盘文件，具有多个表，索引，触发器和视图的完整SQL数据库包含在<strong>单</strong>个磁盘文件中。<br><a id="more"></a></p>
+<h3 id="数据结构和组织"><a href="#数据结构和组织" class="headerlink" title="数据结构和组织"></a>数据结构和组织</h3><p>SQLite支持五种数据类型:NULL,INTEGER,REAL(浮点数),TEXT(字符串文本)和BLOB(二进制对象) 虽然只有五种,但是对于var char,char等其他数据类型都是可以保存的;因为SQLite有个最大的特点: 可以各种数据类型的数据保存到任何字段中而不用关心字段声明的数据类型是什么。SQLite是一种关系数据库，按表和行去组织，底层是红黑树结构，通过文件来保存数据库，一个文件就是一个数据库，数据库中又包含多个表格，表格里又有多条记录，每个记录由多个字段构成，每个字段有对应的值，每个值我们可以指定类型，也可以不指定类型(主键除外)</p>
+<h3 id="数据索引（如何找到数据）"><a href="#数据索引（如何找到数据）" class="headerlink" title="数据索引（如何找到数据）"></a>数据索引（如何找到数据）</h3><p>索引是一种特殊的查找表，数据库搜索引擎用来加快数据检索。简单地说，索引是一个指向表中数据的指针。索引有助于加快 SELECT 查询和 WHERE 子句，但它会减慢使用 UPDATE 和 INSERT 语句时的数据输入。索引可以创建或删除，但不会影响数据。使用 CREATE INDEX 语句创建索引，它允许命名索引，指定表及要索引的一列或多列，并指示索引是升序排列还是降序排列。索引也可以是唯一的，与 UNIQUE 约束类似，在列上或列组合上防止重复条目</p>
+<ul>
+<li>单列索引：只基于表的一个列上创建的索引</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name</span><br><span class="line">ON table_name (column_name);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>唯一索引：不允许任何重复的值插入到表中,为了性能，同时也为了数据的完整性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE UNIQUE INDEX index_name</span><br><span class="line">on table_name (column_name);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>组合索引：基于一个表的两个或多个列上创建的索引</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name</span><br><span class="line">on table_name (column1, column2);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>隐式索引：在创建对象时，由数据库服务器自动创建的索引。索引自动创建为主键约束和唯一约束。</li>
+</ul>
+<p>如果值使用到一个列，则选择使用单列索引。如果在作为过滤的 WHERE 子句中有两个或多个列经常使用，则选择使用组合索引。</p>
+<h3 id="数据的更新和查询"><a href="#数据的更新和查询" class="headerlink" title="数据的更新和查询"></a>数据的更新和查询</h3><ul>
+<li>更新</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name</span><br><span class="line">SET column1 = value1, column2 = value2...., columnN = valueN</span><br><span class="line">WHERE [condition];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2, columnN </span><br><span class="line">FROM table_name</span><br><span class="line">WHERE [condition]</span><br></pre></td></tr></table></figure>
+<h3 id="数据的备份和冗余（防止丢失和保持可用）"><a href="#数据的备份和冗余（防止丢失和保持可用）" class="headerlink" title="数据的备份和冗余（防止丢失和保持可用）"></a>数据的备份和冗余（防止丢失和保持可用）</h3><p>通过输入以下语句备份及还原：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; .backup &apos;backup.db&apos;</span><br><span class="line">sqlite&gt; .restore &apos;backup.db&apos;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>备份方式：直接以新文件的形式全量备份</li>
+<li>备份时间：手动</li>
+</ul>
+<h3 id="数据一致性，事务"><a href="#数据一致性，事务" class="headerlink" title="数据一致性，事务"></a>数据一致性，事务</h3><p>事务（Transaction）是一个对数据库执行工作单元。事务（Transaction）是以逻辑顺序完成的工作单位或序列，可以是由用户手动操作完成，也可以是由某种数据库程序自动完成。数据一致性是指在事务开始之前和事务结束以后，数据库的完整性没有被破坏。</p>
+<h4 id="事务属性-ACID"><a href="#事务属性-ACID" class="headerlink" title="事务属性(ACID)"></a>事务属性(ACID)</h4><ul>
+<li>原子性（Atomicity）：确保工作单位内的所有操作都成功完成，否则，事务会在出现故障时终止，之前的操作也会回滚到以前的状态。</li>
+<li>一致性（Consistency)：确保数据库在成功提交的事务上正确地改变状态。</li>
+<li>隔离性（Isolation）：使事务操作相互独立和透明。</li>
+<li>持久性（Durability）：确保已提交事务的结果或效果在系统发生故障的情况下仍然存在。</li>
+</ul>
+<h4 id="事务控制"><a href="#事务控制" class="headerlink" title="事务控制"></a>事务控制</h4><ul>
+<li>BEGIN TRANSACTION：开始事务处理。</li>
+<li>COMMIT：保存更改，或者可以使用 END TRANSACTION 命令。</li>
+<li>ROLLBACK：回滚所做的更改。<br>事务控制命令只与 DML 命令 INSERT、UPDATE 和 DELETE 一起使用。他们不能在创建表或删除表时使用，因为这些操作在数据库中是自动提交的。</li>
+</ul>
+<h4 id="事务执行代码示例"><a href="#事务执行代码示例" class="headerlink" title="事务执行代码示例"></a>事务执行代码示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">SQLiteDatabase db = dbHelper.getReadableDatabase();  </span><br><span class="line">db.beginTransaction();  //开启事务                       </span><br><span class="line">try &#123;                                                </span><br><span class="line">    db.delete(&quot;Book&quot;, null, null);                   </span><br><span class="line">    ContentValues values = new ContentValues();      </span><br><span class="line">    values.put(&quot;name&quot;, &quot;sheng&quot;);                     </span><br><span class="line">    values.put(&quot;author&quot;, &quot;xiao&quot;);                    </span><br><span class="line">    values.put(&quot;pages&quot;, 123);                        </span><br><span class="line">    values.put(&quot;price&quot;, 20.5);                       </span><br><span class="line">    db.insert(&quot;Book&quot;, null, values);                 </span><br><span class="line">    db.setTransactionSuccessful();  //事务已经执行成功       </span><br><span class="line">&#125; catch (Exception e) &#123;                              </span><br><span class="line">    e.printStackTrace();                             </span><br><span class="line">&#125;finally&#123;</span><br><span class="line">    db.endTransaction();  //结束事务                     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先调用SQLiteDatabase的beginTransaction()方法来开启一个事务，然后在一个异常捕获的代码块中去执行具体的数据库操作，当所有的操作完成之后，调用setTransactionSuccessful()表示事务已经执行成功了，最后在finally代码块中调用endTransaction()来结束事务</p>
+<p>引用：<a href="https://www.jianshu.com/p/add11b6a8fa4" target="_blank" rel="noopener">https://www.jianshu.com/p/add11b6a8fa4</a></p>
+<h3 id="数据管理"><a href="#数据管理" class="headerlink" title="数据管理"></a>数据管理</h3><h4 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h4><p>SQLite中的ANALYZE命令用于分析数据表和索引中的数据，并将统计结果存放于SQLite的内部系统表中，以便于查询优化器可以根据分析后的统计数据选择最优的查询执行路径，从而提高整个查询的效率。</p>
+<ul>
+<li>如果在ANALYZE命令之后没有指定任何参数，则分析当前连接中所有Attached数据库中的表和索引。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; ANALYZE;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果指定数据库作为ANALYZE的参数，那么该数据库下的所有表和索引都将被分析并生成统计数据。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; ANALYZE main;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果指定了数据库中的某个表或索引为ANALYZE的参数，那么该表和其所有关联的索引都将被分析。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; ANALYZE main.testtable;</span><br><span class="line">sqlite&gt; ANALYZE main.testtable_idx2;</span><br></pre></td></tr></table></figure>
+<p>引用：<a href="https://www.kancloud.cn/wizardforcel/sqlite-learning-manual/154304" target="_blank" rel="noopener">https://www.kancloud.cn/wizardforcel/sqlite-learning-manual/154304</a></p>
+<h4 id="数据管理工具"><a href="#数据管理工具" class="headerlink" title="数据管理工具"></a>数据管理工具</h4><ul>
+<li><a href="http://www.sqliteexpert.com/features.html" target="_blank" rel="noopener">SQLite Expert</a></li>
+<li><a href="http://sqliteadmin.orbmu2k.de/" target="_blank" rel="noopener">Sqliteadmin Administrator</a></li>
+<li><a href="https://www.oschina.net/p/sqlitebrowser" target="_blank" rel="noopener">SQLite Database Browser</a></li>
+<li><a href="https://www.oschina.net/p/sqlitespy" target="_blank" rel="noopener">SQLiteSpy</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/" target="_blank" rel="noopener">SQLite Manager</a></li>
+</ul>
+<p>引用：<a href="https://www.oschina.net/news/43608/5-popular-and-free-sqlite-management-tools" target="_blank" rel="noopener">https://www.oschina.net/news/43608/5-popular-and-free-sqlite-management-tools</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/17/SQLite/" data-id="cjr0pe767000es0sk5ku6sow5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/03/InversionOfControlDemo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">控制反转实例</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/db/" style="font-size: 10px;">db</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/01/17/SQLite/">SQLite特性</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/03/InversionOfControlDemo/">控制反转实例</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/28/InversionOfControl/">控制反转</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/15/StreamNote/">StreamNote</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/03/JDBC/">JDBC</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 wanz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
