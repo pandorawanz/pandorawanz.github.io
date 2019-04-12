@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Blog of wanz">
 <meta property="og:description" content="SQLite学习笔记使用SQLite-java分三步：1.连接数据库2.创建事务状态3.执行数据库事务">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-25T04:34:54.515Z">
+<meta property="og:updated_time" content="2019-02-04T03:43:22.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite实例">
 <meta name="twitter:description" content="SQLite学习笔记使用SQLite-java分三步：1.连接数据库2.创建事务状态3.执行数据库事务">
@@ -95,7 +95,7 @@
 <h3 id="执行数据库事务"><a href="#执行数据库事务" class="headerlink" title="执行数据库事务"></a>执行数据库事务</h3><p>连接到数据库，并创建好事务状态后，用executeUpdate()方法直接执行数据库语句</p>
 <h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><p>SQLite语句：create table {表名} （{列名1 类型1，列名2 类型2，…}）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">statement.executeUpdate(&quot;create table person(id integer not null, name string not null)&quot;);</span><br></pre></td></tr></table></figure>
-<h4 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h4><p>SQLite语句：insert into {表名} （{结构}）</p>
+<h4 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h4><p>SQLite语句：insert into {表名} values({结构})</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">statement.executeUpdate(&quot;insert into person values(1, &apos;wz&apos;)&quot;);</span><br></pre></td></tr></table></figure>
 <h4 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h4><p>SQLite语句：select {列名} from {表名}</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">statement.executeUpdate(&quot;select * from person&quot;);</span><br></pre></td></tr></table></figure>
@@ -106,11 +106,14 @@
 <h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><p>SQLite语句：drop table if exists {表名}</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">statement.executeUpdate(&quot;drop table if exists person&quot;);</span><br></pre></td></tr></table></figure>
 <h2 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">import java.sql.*;</span><br><span class="line"></span><br><span class="line">public class jdbcSample &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        // 声明连接connection</span><br><span class="line">        Connection connection = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            // 连接到数据库</span><br><span class="line">            connection = DriverManager.getConnection(&quot;jdbc:sqlite:src/main/resources/sample.db&quot;);</span><br><span class="line">            // 事务</span><br><span class="line">            Statement statement = connection.createStatement();</span><br><span class="line">            // 设定SQL执行超时时间（秒），超时则抛出SQLException</span><br><span class="line">            statement.setQueryTimeout(30);</span><br><span class="line"></span><br><span class="line">            // 删除原有的person表</span><br><span class="line">            statement.executeUpdate(&quot;drop table if exists person&quot;);</span><br><span class="line">            // 创建person表以及声明其结构</span><br><span class="line">            statement.executeUpdate(&quot;create table person(id integer not null, name string not null)&quot;);</span><br><span class="line">            // 插入数据</span><br><span class="line">            statement.executeUpdate(&quot;insert into person values(1, &apos;wz&apos;)&quot;);</span><br><span class="line">            statement.executeUpdate(&quot;insert into person values(2, &apos;yz&apos;)&quot;);</span><br><span class="line">            // 选择数据，*为全部，放入ResultSet实例中</span><br><span class="line">            ResultSet rs = statement.executeQuery(&quot;select * from person&quot;);</span><br><span class="line">            // 遍历输出</span><br><span class="line">            while(rs.next()) &#123;</span><br><span class="line">                // read the result set</span><br><span class="line">                System.out.println(&quot;name = &quot; + rs.getString(&quot;name&quot;));</span><br><span class="line">                System.out.println(&quot;id = &quot; + rs.getInt(&quot;id&quot;));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(&quot;---------------------------------&quot;);</span><br><span class="line"></span><br><span class="line">            // 更新数据</span><br><span class="line">            statement.executeUpdate(&quot;update person set name = &apos;zz&apos; where id = 1&quot;);</span><br><span class="line">            statement.executeUpdate(&quot;update person set id = 3 where name = &apos;yz&apos;&quot;);</span><br><span class="line">            rs = statement.executeQuery(&quot;select * from person&quot;);</span><br><span class="line">            while(rs.next()) &#123;</span><br><span class="line">                // read the result set</span><br><span class="line">                System.out.println(&quot;name = &quot; + rs.getString(&quot;name&quot;));</span><br><span class="line">                System.out.println(&quot;id = &quot; + rs.getInt(&quot;id&quot;));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(&quot;---------------------------------&quot;);</span><br><span class="line">            // 删除数据</span><br><span class="line">            statement.executeUpdate(&quot;delete from person where name = &apos;zz&apos;&quot;);</span><br><span class="line">            rs = statement.executeQuery(&quot;select * from person&quot;);</span><br><span class="line">            while(rs.next()) &#123;</span><br><span class="line">                // read the result set</span><br><span class="line">                System.out.println(&quot;name = &quot; + rs.getString(&quot;name&quot;));</span><br><span class="line">                System.out.println(&quot;id = &quot; + rs.getInt(&quot;id&quot;));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; catch(SQLException e) &#123;</span><br><span class="line">            // if the error massage is &quot;out of memory&quot; ,</span><br><span class="line">            // it probably means no database file is found.</span><br><span class="line">            System.err.println(e.getMessage());</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if(connection != null)</span><br><span class="line">                    connection.close();</span><br><span class="line">            &#125; catch(SQLException e) &#123;</span><br><span class="line">                // connection close failed.</span><br><span class="line">                System.err.println(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="alter-修改"><a href="#alter-修改" class="headerlink" title="alter 修改"></a>alter 修改</h4><p>在表中添加列:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name</span><br><span class="line">ADD column_name datatype</span><br></pre></td></tr></table></figure>
+<p>删除表中的列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name </span><br><span class="line">DROP COLUMN column_name</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/SQLiteDemo/" data-id="cjrbjz1nq000ibssksmwlpx30" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/SQLiteDemo/" data-id="cjue7z125000o48skls63nqmu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li></ul>
@@ -120,6 +123,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/04/12/JavaFuture/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaFuture实例
+        
+      </div>
+    </a>
   
   
     <a href="/2019/01/17/SQLite/" id="article-nav-older" class="article-nav-link-wrap">
@@ -162,7 +174,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
     </div>
   </div>
 
@@ -173,6 +185,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/04/12/JavaFuture/">JavaFuture实例</a>
+          </li>
         
           <li>
             <a href="/2019/01/25/SQLiteDemo/">SQLite实例</a>
@@ -188,10 +204,6 @@
         
           <li>
             <a href="/2018/12/28/InversionOfControl/">控制反转</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/15/StreamNote/">StreamNote</a>
           </li>
         
       </ul>
