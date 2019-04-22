@@ -62,6 +62,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-HTML/HTMLRun" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/22/HTML/HTMLRun/" class="article-date">
+  <time datetime="2019-04-22T04:36:31.000Z" itemprop="datePublished">2019-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/HTML/HTMLRun/">html运行方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTML运行方法"><a href="#HTML运行方法" class="headerlink" title="HTML运行方法"></a>HTML运行方法</h2><p>1.浏览器打开<br>2.http-server</p>
+<h2 id="http-server"><a href="#http-server" class="headerlink" title="http-server"></a>http-server</h2><p>打开终端或者 gitbash，输入<br>npm install -g http-server<br>即安装成功（如果提示命令不存在，需要先下载安装 nodejs），安装后切换到对应目录，启动静态服务器，在html目录下输入http-server</p>
+<h2 id="命令行翻译工具"><a href="#命令行翻译工具" class="headerlink" title="命令行翻译工具"></a>命令行翻译工具</h2><p>打开终端或者 gitbash，输入<br>npm install -g fanyi<br>然后在终端下输入fanyi 你好<br>即可进行及时翻译</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/22/HTML/HTMLRun/" data-id="cjurvi4ck001ppsskguio9683" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JavaFuture" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/04/12/JavaFuture/" class="article-date">
@@ -84,15 +125,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Random;</span><br><span class="line">import java.util.concurrent.ExecutionException;</span><br><span class="line">import java.util.concurrent.ExecutorService;</span><br><span class="line">import java.util.concurrent.Executors;</span><br><span class="line">import java.util.concurrent.Future;</span><br><span class="line"></span><br><span class="line">public class FutureDemo &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ExecutorService executor = Executors.newCachedThreadPool(); // 线程池</span><br><span class="line">        Future&lt;Integer&gt; result = executor.submit(() -&gt; &#123;             // Lambda</span><br><span class="line">            System.out.println(&quot;result开始.&quot;);</span><br><span class="line">            Random rand = new Random();</span><br><span class="line">            for (int i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">                if (i % 2000 == 0) &#123;</span><br><span class="line">                    System.out.println(&quot;result:&quot; + i);</span><br><span class="line">                &#125;</span><br><span class="line">                rand.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(&quot;result进入等待.&quot;);</span><br><span class="line">            Thread.sleep(5000);</span><br><span class="line">            return rand.nextInt();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Future&lt;Integer&gt; result2 = executor.submit(() -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;result2开始.&quot;);</span><br><span class="line">            Random rand = new Random();</span><br><span class="line">            for (int i = 0; i &lt; 100000; i++) &#123;</span><br><span class="line">                if (i% 20000 == 0) &#123;</span><br><span class="line">                    System.out.println(&quot;result2:&quot; + i);</span><br><span class="line">                &#125;</span><br><span class="line">                rand.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(&quot;result2进入等待.&quot;);</span><br><span class="line">            Thread.sleep(10000);</span><br><span class="line">            return rand.nextInt();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;主线程在执行任务&quot;);</span><br><span class="line">        // 执行其他的任务</span><br><span class="line">        for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(&quot;准备取结果1:&quot;);</span><br><span class="line">            System.out.println(&quot;运行结果1：&quot; + result.get());       // Future.get() 同步方法</span><br><span class="line">            System.out.println(&quot;准备取结果2:&quot;);</span><br><span class="line">            System.out.println(&quot;运行结果2：&quot; + result2.get());</span><br><span class="line">        &#125; catch (InterruptedException | ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;所有任务执行完毕&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">Output:</span><br><span class="line">主线程在执行任务</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">准备取结果1:</span><br><span class="line">result开始.</span><br><span class="line">result:0</span><br><span class="line">result2开始.</span><br><span class="line">result2:0</span><br><span class="line">result:2000</span><br><span class="line">result:4000</span><br><span class="line">result:6000</span><br><span class="line">result:8000</span><br><span class="line">result进入等待.</span><br><span class="line">result2:20000</span><br><span class="line">result2:40000</span><br><span class="line">result2:60000</span><br><span class="line">result2:80000</span><br><span class="line">result2进入等待.</span><br><span class="line">运行结果1：585751556</span><br><span class="line">准备取结果2:</span><br><span class="line">运行结果2：1483075689</span><br><span class="line">所有任务执行完毕</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+        <h2 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Random;</span><br><span class="line">import java.util.concurrent.ExecutionException;</span><br><span class="line">import java.util.concurrent.ExecutorService;</span><br><span class="line">import java.util.concurrent.Executors;</span><br><span class="line">import java.util.concurrent.Future;</span><br><span class="line"></span><br><span class="line">public class FutureDemo &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ExecutorService executor = Executors.newCachedThreadPool(); // 线程池</span><br><span class="line">        Future&lt;Integer&gt; result = executor.submit(() -&gt; &#123;             // Lambda</span><br><span class="line">            System.out.println(&quot;result开始.&quot;);</span><br><span class="line">            Random rand = new Random();</span><br><span class="line">            for (int i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">                if (i % 2000 == 0) &#123;</span><br><span class="line">                    System.out.println(&quot;result:&quot; + i);</span><br><span class="line">                &#125;</span><br><span class="line">                rand.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(&quot;result进入等待.&quot;);</span><br><span class="line">            Thread.sleep(5000);</span><br><span class="line">            return rand.nextInt();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Future&lt;Integer&gt; result2 = executor.submit(() -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;result2开始.&quot;);</span><br><span class="line">            Random rand = new Random();</span><br><span class="line">            for (int i = 0; i &lt; 100000; i++) &#123;</span><br><span class="line">                if (i% 20000 == 0) &#123;</span><br><span class="line">                    System.out.println(&quot;result2:&quot; + i);</span><br><span class="line">                &#125;</span><br><span class="line">                rand.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(&quot;result2进入等待.&quot;);</span><br><span class="line">            Thread.sleep(10000);</span><br><span class="line">            return rand.nextInt();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;主线程在执行任务&quot;);</span><br><span class="line">        // 执行其他的任务</span><br><span class="line">        for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(&quot;准备取结果1:&quot;);</span><br><span class="line">            System.out.println(&quot;运行结果1：&quot; + result.get());       // Future.get() 同步方法</span><br><span class="line">            System.out.println(&quot;准备取结果2:&quot;);</span><br><span class="line">            System.out.println(&quot;运行结果2：&quot; + result2.get());</span><br><span class="line">        &#125; catch (InterruptedException | ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;所有任务执行完毕&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">Output:</span><br><span class="line">主线程在执行任务</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">准备取结果1:</span><br><span class="line">result开始.</span><br><span class="line">result:0</span><br><span class="line">result2开始.</span><br><span class="line">result2:0</span><br><span class="line">result:2000</span><br><span class="line">result:4000</span><br><span class="line">result:6000</span><br><span class="line">result:8000</span><br><span class="line">result进入等待.</span><br><span class="line">result2:20000</span><br><span class="line">result2:40000</span><br><span class="line">result2:60000</span><br><span class="line">result2:80000</span><br><span class="line">result2进入等待.</span><br><span class="line">运行结果1：585751556</span><br><span class="line">准备取结果2:</span><br><span class="line">运行结果2：1483075689</span><br><span class="line">所有任务执行完毕</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从输出结果看，主线程先提交异步任务result和result2，但是异步任务Future尚未开始执行。等到主线程执行到需要Future.get()的时候，进入等待，此时异步的所有Future开始多线程执行，直至执行完毕，主程序的运行状态会持续，一定时间后停止。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/12/JavaFuture/" data-id="cjue7z11b000948skxn59ywmg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/12/JavaFuture/" data-id="cjurvi48l000fpsski1hhiknm" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
     </footer>
   </div>
   
@@ -131,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/SQLiteDemo/" data-id="cjue7z125000o48skls63nqmu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/SQLiteDemo/" data-id="cjurvi49e000opssk6h65q73g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li></ul>
@@ -174,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/SQLite/" data-id="cjue7z123000l48skj6lhlay9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/17/SQLite/" data-id="cjurvi499000mpsskkao1oddm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li></ul>
@@ -217,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/InversionOfControlDemo/" data-id="cjue7z11g000b48skmq6m2kez" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/InversionOfControlDemo/" data-id="cjurvi486000apssk36uxhaca" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -260,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/28/InversionOfControl/" data-id="cjue7z115000648sk4kg4pd8j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/28/InversionOfControl/" data-id="cjurvi47x0008psskb9y91otk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -335,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjue7z12d000u48skvy2cruo3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjurvi49l000tpsskcwdy3mxn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -380,7 +423,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjue7z11l000e48skyzdhmm5f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjurvi48f000dpsskas6nag7a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li></ul>
@@ -430,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjue7z113000548skzie377hl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjurvi47a0003psskjnalpd33" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
@@ -473,53 +516,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjue7z129000q48skmmyy8zpd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjurvi49i000rpsskd9r58on7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SynchronizedAndJoin" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/25/SynchronizedAndJoin/" class="article-date">
-  <time datetime="2018-09-25T13:19:28.000Z" itemprop="datePublished">2018-09-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/25/SynchronizedAndJoin/">线程同步——synchronized修饰符和join方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>多线程的调用可以使得程序运行的效率大幅提升，但线程的使用一方面会降低可读性，一方面给代码的运行带来随机性。针对随机性问题，synchronized修饰符可以使得某方法同时只能被一个线程调用，而join方法会让主线程等待当前子线程执行结束再继续执行。它们都能在一定程度上控制多线程程序的执行顺序。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/25/SynchronizedAndJoin/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/25/SynchronizedAndJoin/" data-id="cjue7z12g000x48skpfowa0de" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li></ul>
 
     </footer>
   </div>
@@ -546,7 +546,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li></ul>
     </div>
   </div>
 
@@ -556,7 +556,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/db/" style="font-size: 15px;">db</a>
+      <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/db/" style="font-size: 15px;">db</a> <a href="/tags/html/" style="font-size: 10px;">html</a>
     </div>
   </div>
 
@@ -578,6 +578,10 @@
       <ul>
         
           <li>
+            <a href="/2019/04/22/HTML/HTMLRun/">html运行方法</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/12/JavaFuture/">JavaFuture实例</a>
           </li>
         
@@ -591,10 +595,6 @@
         
           <li>
             <a href="/2019/01/03/InversionOfControlDemo/">控制反转实例</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/28/InversionOfControl/">控制反转</a>
           </li>
         
       </ul>
