@@ -62,6 +62,84 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-microserviceIntroduction" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/24/microserviceIntroduction/" class="article-date">
+  <time datetime="2019-04-24T14:59:34.000Z" itemprop="datePublished">2019-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/24/microserviceIntroduction/">microserviceIntroduction</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="单体架构"><a href="#单体架构" class="headerlink" title="单体架构"></a>单体架构</h2><h3 id="单体架构是什么"><a href="#单体架构是什么" class="headerlink" title="单体架构是什么"></a>单体架构是什么</h3><p>单体架构会把一个完整的应用当成一开发单元。</p>
+<p>一般企业应用包含三个部分：</p>
+<ul>
+<li>客户端界面（由HTML、Javascript组成，使用浏览器进行访问）</li>
+<li>数据库（由许多的表组件构成一个通用的、相互关联的数据管理系统）</li>
+<li>服务端应用</li>
+</ul>
+<p>服务端应用处理HTTP请求、执行领域逻辑、检索并更新数据库中的数据、使用适当的HTML视图发送给客户端，服务端应用是完整的并且由单一的逻辑层次执行，系统中任务变更都会导到服务端的应用重新编辑并发布一个新的版本。虽然利用开发语言基础特性会把应用封装成类、函数，但是业务中所有逻辑（前后端）都要在单一的进程中处理完成。所以被称为单体应用。可以直接打包成war包部署到单一机器上，也可以通过负载均衡将应用部署到多台服务器上。</p>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>业务场景简单，功能不复杂研发人员较少的场景</li>
+<li>创业公司初期</li>
+</ul>
+<h3 id="单体架构的优点"><a href="#单体架构的优点" class="headerlink" title="单体架构的优点"></a>单体架构的优点</h3><ul>
+<li>易于开发</li>
+<li>易于测试</li>
+<li>易于部署</li>
+<li>易于拓展</li>
+</ul>
+<h3 id="单体架构存在的缺点"><a href="#单体架构存在的缺点" class="headerlink" title="单体架构存在的缺点"></a>单体架构存在的缺点</h3><ul>
+<li>系统耦合性高，复杂性逐渐变高，部署速度逐渐变慢，开发效率会越来越低</li>
+<li>技术选型很单一，阻碍技术创新</li>
+<li>无法按需伸缩</li>
+</ul>
+<p>架构拆分思路：分库分表<br>分库-垂直拆分-业务维度拆分<br>分表-同样的信息分成很多表-水平拆分<br>这是建立索引？</p>
+<p>架构：垂直拆分和水平拆分：业务和功能维度</p>
+<p>面向服务(SOA)/水平分层架构</p>
+<h2 id="水平分层架构"><a href="#水平分层架构" class="headerlink" title="水平分层架构"></a>水平分层架构</h2><h3 id="水平分层架构是什么"><a href="#水平分层架构是什么" class="headerlink" title="水平分层架构是什么"></a>水平分层架构是什么</h3><p>在水平方向分层多个独立进程</p>
+<p>一般有如下几个部分：<br>APP-(http)-Nginx-(TCP)-网关层(Gateway)-(消息队列：同步-&gt;异步-提高吞吐量)-业务逻辑service-数据访问-存储层(database)</p>
+<p>网关层：请求健全、数据完整性验证、服务治理（熔断、服务降级（数据量太大））、json-&gt;hashmap<br>数据访问层：1.CRUD（增删改查） 2.ORM 3.分层分类 4.抽象</p>
+<h2 id="面向服务架构（垂直分层：按业务划分）"><a href="#面向服务架构（垂直分层：按业务划分）" class="headerlink" title="面向服务架构（垂直分层：按业务划分）"></a>面向服务架构（垂直分层：按业务划分）</h2><h3 id="面向服务架构是什么"><a href="#面向服务架构是什么" class="headerlink" title="面向服务架构是什么"></a>面向服务架构是什么</h3><p>面向服务的架构(SOA)是一个组件模型，它将应用程序的不同业务功能单元（称为服务）进行拆分，并通过这些服务之间定义良好的接口和契约联系起来。接口是采用中立的方式进行定义的，它应该独立于实现服务的硬件平台、操作系统和编程语言。这使得构建在各种各样的系统中的服务可以以一种统一和通用的方式进行交互。</p>
+<p>服务的提出其实隐含了两个概念，服务提供者和服务消费者，这两者之间有一个合同约定，这非常类似我们实现生活中签订的服务合同，A单位和B单位分别是服务的提供者和消费者，两者签订了一个服务合同，规定A为B提供某项服务。服务就是提供一些公共需求的设施，通过一个工作过程能提供帮助让使用者收益。</p>
+<p>服务两个重要特点：自治和管制，自治代表服务不能被外部势力牵制，比如如果一个服务内部处理中需要调用外部资源或等待外部流程结束，这种等待不能影响服务本身的调用，如果一个服务分为显式对外和隐式内部两个部分，那么自治是针对隐式内部，意味着我们不能在具体一个服务中直接使用过同步代码实现复杂功能。</p>
+<h2 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h2><h3 id="面向服务架构的优点"><a href="#面向服务架构的优点" class="headerlink" title="面向服务架构的优点"></a>面向服务架构的优点</h3><ul>
+<li>松耦合：由于服务自治，有一定封装边界，服务调用交互是通过发布接口。<br>这意味着应用程序不感兴趣服务如何被实现</li>
+<li>位置透明：服务的消费者不必关心服务位于什么地方</li>
+<li>可在异构平台间复用。可以将遗留系统包装成服务</li>
+<li>便于测试，能并行开发，较高可靠性和良好的可伸缩性</li>
+</ul>
+<h3 id="面向服务架构存在的缺点"><a href="#面向服务架构存在的缺点" class="headerlink" title="面向服务架构存在的缺点"></a>面向服务架构存在的缺点</h3><ul>
+<li>虽然业务在垂直方向进行切分，但每个服务仍然是单体架构</li>
+<li>过于依赖ESB</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/24/microserviceIntroduction/" data-id="cjuvcivvh001544skp7ezn7vz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-HTML/HTMLRun" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/04/22/HTML/HTMLRun/" class="article-date">
@@ -91,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/22/HTML/HTMLRun/" data-id="cjurvqb6y001ovgskoowc051c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/22/HTML/HTMLRun/" data-id="cjuvcivxl001q44sku5qix1v4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -131,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/12/JavaFuture/" data-id="cjurvqb39000evgskhd3mpfp1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/12/JavaFuture/" data-id="cjuvcivu4000f44skakejhcme" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -174,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/SQLiteDemo/" data-id="cjurvqb3u000nvgskw59clpbs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/SQLiteDemo/" data-id="cjuvcivun000m44skzq5h9buq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li></ul>
@@ -217,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/SQLite/" data-id="cjurvqb3q000lvgskpgudoz2x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/17/SQLite/" data-id="cjuvcivuu000o44skg5a10q9f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li></ul>
@@ -260,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/InversionOfControlDemo/" data-id="cjurvqb31000avgskk6pm88gb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/InversionOfControlDemo/" data-id="cjuvcivtz000d44sk2w92p8fz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -303,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/28/InversionOfControl/" data-id="cjurvqb2t0008vgskin0xazs1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/28/InversionOfControl/" data-id="cjuvcivtp000844sksuvatrd8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -378,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjurvqb41000svgsk7q7zk91g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjuvcivv0000t44skwq2sbidj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -423,7 +501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjurvqb36000cvgsk2ra9p9yj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjuvcivtv000a44sknsi4463c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li></ul>
@@ -473,53 +551,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjurvqb2h0003vgsk7o00pvaw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjuvcivtk000544sknnx8q35r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SpringBootStarted" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/14/SpringBootStarted/" class="article-date">
-  <time datetime="2018-10-14T11:11:36.000Z" itemprop="datePublished">2018-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/14/SpringBootStarted/">SpringBoot入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文将介绍在Maven环境下SpringBoot的使用方法。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/10/14/SpringBootStarted/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/14/SpringBootStarted/" data-id="cjurvqb3x000qvgskzrvbj8w8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 
     </footer>
   </div>
@@ -578,6 +613,10 @@
       <ul>
         
           <li>
+            <a href="/2019/04/24/microserviceIntroduction/">microserviceIntroduction</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/22/HTML/HTMLRun/">html运行方法</a>
           </li>
         
@@ -591,10 +630,6 @@
         
           <li>
             <a href="/2019/01/17/SQLite/">SQLite特性</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/03/InversionOfControlDemo/">控制反转实例</a>
           </li>
         
       </ul>
