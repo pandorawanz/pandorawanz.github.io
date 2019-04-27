@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/24/microserviceIntroduction/">microserviceIntroduction</a>
+      <a class="article-title" href="/2019/04/24/microserviceIntroduction/">微服务简介</a>
     </h1>
   
 
@@ -91,65 +91,15 @@
 <li>数据库（由许多的表组件构成一个通用的、相互关联的数据管理系统）</li>
 <li>服务端应用</li>
 </ul>
-<p>服务端应用处理HTTP请求、执行领域逻辑、检索并更新数据库中的数据、使用适当的HTML视图发送给客户端，服务端应用是完整的并且由单一的逻辑层次执行，系统中任务变更都会导到服务端的应用重新编辑并发布一个新的版本。虽然利用开发语言基础特性会把应用封装成类、函数，但是业务中所有逻辑（前后端）都要在单一的进程中处理完成。所以被称为单体应用。可以直接打包成war包部署到单一机器上，也可以通过负载均衡将应用部署到多台服务器上。</p>
-<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
-<li>业务场景简单，功能不复杂研发人员较少的场景</li>
-<li>创业公司初期</li>
-</ul>
-<h3 id="单体架构的优点"><a href="#单体架构的优点" class="headerlink" title="单体架构的优点"></a>单体架构的优点</h3><ul>
-<li>易于开发</li>
-<li>易于测试</li>
-<li>易于部署</li>
-<li>易于拓展</li>
-</ul>
-<h3 id="单体架构存在的缺点"><a href="#单体架构存在的缺点" class="headerlink" title="单体架构存在的缺点"></a>单体架构存在的缺点</h3><ul>
-<li>系统耦合性高，复杂性逐渐变高，部署速度逐渐变慢，开发效率会越来越低</li>
-<li>技术选型很单一，阻碍技术创新</li>
-<li>无法按需伸缩</li>
-</ul>
-<p>架构拆分思路：分库分表<br>分库-垂直拆分-业务维度拆分<br>分表-同样的信息分成很多表-水平拆分<br>这是建立索引？</p>
-<p>架构：垂直拆分和水平拆分：业务和功能维度</p>
-<p>面向服务(SOA)/水平分层架构</p>
-<h2 id="水平分层架构"><a href="#水平分层架构" class="headerlink" title="水平分层架构"></a>水平分层架构</h2><h3 id="水平分层架构是什么"><a href="#水平分层架构是什么" class="headerlink" title="水平分层架构是什么"></a>水平分层架构是什么</h3><p>在水平方向分层多个独立进程</p>
-<p>一般有如下几个部分：<br>APP-(http)-Nginx-(TCP)-网关层(Gateway)-(消息队列：同步-&gt;异步-提高吞吐量)-业务逻辑service-数据访问-存储层(database)</p>
-<p>网关层：请求健全、数据完整性验证、服务治理（熔断、服务降级（数据量太大））、json-&gt;hashmap<br>数据访问层：1.CRUD（增删改查） 2.ORM 3.分层分类 4.抽象</p>
-<h2 id="面向服务架构（垂直分层：按业务划分）"><a href="#面向服务架构（垂直分层：按业务划分）" class="headerlink" title="面向服务架构（垂直分层：按业务划分）"></a>面向服务架构（垂直分层：按业务划分）</h2><h3 id="面向服务架构是什么"><a href="#面向服务架构是什么" class="headerlink" title="面向服务架构是什么"></a>面向服务架构是什么</h3><p>面向服务的架构(SOA)是一个组件模型，它将应用程序的不同业务功能单元（称为服务）进行拆分，并通过这些服务之间定义良好的接口和契约联系起来。接口是采用中立的方式进行定义的，它应该独立于实现服务的硬件平台、操作系统和编程语言。这使得构建在各种各样的系统中的服务可以以一种统一和通用的方式进行交互。</p>
-<p>服务的提出其实隐含了两个概念，服务提供者和服务消费者，这两者之间有一个合同约定，这非常类似我们实现生活中签订的服务合同，A单位和B单位分别是服务的提供者和消费者，两者签订了一个服务合同，规定A为B提供某项服务。服务就是提供一些公共需求的设施，通过一个工作过程能提供帮助让使用者收益。</p>
-<p>服务两个重要特点：自治和管制，自治代表服务不能被外部势力牵制，比如如果一个服务内部处理中需要调用外部资源或等待外部流程结束，这种等待不能影响服务本身的调用，如果一个服务分为显式对外和隐式内部两个部分，那么自治是针对隐式内部，意味着我们不能在具体一个服务中直接使用过同步代码实现复杂功能。</p>
-<h2 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h2><h3 id="面向服务架构的优点"><a href="#面向服务架构的优点" class="headerlink" title="面向服务架构的优点"></a>面向服务架构的优点</h3><ul>
-<li>松耦合：由于服务自治，有一定封装边界，服务调用交互是通过发布接口。<br>这意味着应用程序不感兴趣服务如何被实现</li>
-<li>位置透明：服务的消费者不必关心服务位于什么地方</li>
-<li>可在异构平台间复用。可以将遗留系统包装成服务</li>
-<li>便于测试，能并行开发，较高可靠性和良好的可伸缩性</li>
-</ul>
-<h3 id="面向服务架构存在的缺点"><a href="#面向服务架构存在的缺点" class="headerlink" title="面向服务架构存在的缺点"></a>面向服务架构存在的缺点</h3><ul>
-<li>虽然业务在垂直方向进行切分，但每个服务仍然是单体架构</li>
-<li>过于依赖ESB</li>
-</ul>
-<h2 id="微服务架构（水平-垂直划分）"><a href="#微服务架构（水平-垂直划分）" class="headerlink" title="微服务架构（水平+垂直划分）"></a>微服务架构（水平+垂直划分）</h2><p>APP - 网关层 - 服务层 - 数据访问层 - 数据存储层</p>
-<h3 id="抽象的微服务定义"><a href="#抽象的微服务定义" class="headerlink" title="抽象的微服务定义"></a>抽象的微服务定义</h3><p>Adrian Cockcroft（曾任首席云架构师，被称为“让Netflix走向云端的人”，现为AWS VP）给微服务下了一个比较抽象的定义：<br>基于有限上下文构建的松散耦合的面向服务的架构(Loosely coupled service oriented architecture with bounded contexts…)。<br>松散耦合和有限上下文可以认为是一个硬币的两面，一个微服务是独立开发、测试、部署和升级的单位，如果你升级一个服务需要很多其他服务的 联动配合，<br>那么就不能称为松散耦合；如果开发人员在开发一个微服务的时候，他的大脑必须同时想着周边的服务，<br>不能轻松忽略，那么这个服务就不能称为有限上下文。</p>
-<h3 id="比较具体的微服务定义"><a href="#比较具体的微服务定义" class="headerlink" title="比较具体的微服务定义"></a>比较具体的微服务定义</h3><p>Martin Fowler则给出一个比较具体的微服务定义：微服务是一种架构风格(architectural style)，<br>主张互联网应用由一系列细粒度的，职责单一的服务组成，每个服务运行在各自独立的进程中，<br>服务之间通过轻量机制(如HTTP/JSON)进行通信。这些服务建立在业务领域之上，可通过全自动方式独立部署。<br>这些服务基本没有集中式的管理，服务可以用那个不同的编程语言编写，也可以使用不同的数据存储技术。</p>
-<h3 id="简单定义"><a href="#简单定义" class="headerlink" title="简单定义"></a>简单定义</h3><p>微服务架构风格，就像是把小的服务开发成单一应用的形式，每个应用运行在单一的进程中，<br>并使用如HTTP这样的轻量级的API。这些服务满足某需求，并使用自动化部署工具进行独立发布。<br>这些服务可以使用不同的开发语言以及不同数据存储技术，并保持最低限制的集中式管理</p>
-<h2 id="微服务使用场景"><a href="#微服务使用场景" class="headerlink" title="微服务使用场景"></a>微服务使用场景</h2><ul>
-<li>微服务是两个维度上的拆分：水平拆分与垂直拆分</li>
-<li>微服务其实并不是一个系统架构，而是业务架构与组织架构</li>
-<li>项目需要快速迭代和持续交付</li>
-</ul>
-<h2 id="微服务的优势"><a href="#微服务的优势" class="headerlink" title="微服务的优势"></a>微服务的优势</h2><h3 id="技术异构性"><a href="#技术异构性" class="headerlink" title="技术异构性"></a>技术异构性</h3><p>在一个由多个服务相互协作的系统中，可以在不同的服务中心使用最合适该服务的技术，如果系统中的一部分需要做性能提升，可以使用性能更好的技术站重新构建该部分。系统中的不同部分也可使用不同的数据存储技术，比如对于社交网络来说，图数据库能更好地处理用户之间的交互操作，但是对于用户发布的帖子而言，文档数据库可能是一个更好的选择随着风险，这使得很多人望而却步。尤其是对于单块系统而言，采用一个新的语言、数据库或者框架都会对整个系统产生巨大的影响。对于微服务系统而言，总会存在一些地方让我们可以尝试新技术。你可以选择一个风险最小的服务来采用新技术，即便出现问题也容易处理。这种可以快速采用新技术的能力对很多组织而言是非常有价值的。</p>
-<h3 id="弹性"><a href="#弹性" class="headerlink" title="弹性"></a>弹性</h3><p>如果系统中的一个组件不可用了，但并没有导致级联故障，那么系统的其他部分还可以正常运行。在单体架构中，如果服务不可用，那么所有的功能都会不可用。对于单体系统而言，可以通过将同样的实例运行在不同的机器上来降低功能完全不可用的概率，然而微服务系统本身就可能够很好地处理服务不可用和功能降级问题。微服务系统可以改进系统弹性，但还是需要谨慎对待，因为一旦使用了分布式系统，网络就会是个问题。不但网络会是个问题，机器也如此，因此我们需要了解出现问题时应该如何对用户进行展示。</p>
-<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p>庞大的单块服务职能作为一个整体进行扩展。即使系统中只有一小部分存在性能问题，也需要对整个服务进行扩展。如果使用较小的多个服务，则可以只对需要扩展的服务进行扩展，这样就可以吧那些不需要扩展的服务运行在更小的、性能稍差的硬件上。这种架构使得每个服务都可以有专门的开发团队来开发。开发者可以自由选择开发技术，提供API服务。当然，许多公司试图避免混乱，只提供某些技术选择。甚至于，因为服务都是相对简单，即使用现在技术重写以前的代码也不是很困难的事情。</p>
-<h3 id="简化部署"><a href="#简化部署" class="headerlink" title="简化部署"></a>简化部署</h3><p>在有几百万代码行的单块应用程序中，即使只修改了一行代码，也需要重新部署整个应用程序才能够发布该变更。这种部署的影响很大、风险很高，因此相关干系人不敢轻易做部署。于是在实际操作中，部署的频率就会变得很低。这意味着在两次发布之间我们对软件做了很多功能增强，但直到最后一刻才把这些大量的变更一次性发布到生产环境中。这时，另外一个问题就显现出来了：两次发布之间的差异越大，出错的可能性就越大！在微服务架构中，各个服务的部署是独立的，这样就可以更快地对特定部分的代码进行部署。如果真的出了问题，也只会影响一个服务，并且容易快速回滚，这也意味着客户可以更快地使用我们开发的新功能。Amazon和Netflix等组织采用这种架构主要就是基于上述考虑。这种架构很好地清除了软件发布过程中的种种障碍。</p>
-<h2 id="微服务架构中的不足"><a href="#微服务架构中的不足" class="headerlink" title="微服务架构中的不足"></a>微服务架构中的不足</h2><p>“there are no silver bullets”，像任何其它科技一样，微服务架构也有不足。<br>1.“微服务”强调了服务大小，尽管小服务更乐于被采用，但是不要忘了微服务只是结果，而不是最终目的，微服务的目的是有效的拆分应用，实现敏捷开发和部署。</p>
-<p>2.微服务应用是分布式系统，由此会带来固有的复杂性。开发者需要在RPC或者消息传递之间选择并完成进程间通讯机制。此外，他们必须写代码来处理消息传递中速度过慢或者不可用等局部失效问题。当然这并不是什么难事，但相对于单体式应用中通过语言层级的方法或者进程调用，微服务下这种技术显得更复杂一些。</p>
-<p>3.另外一个关于微服务的挑战来自于分区的数据库架构。同时更新多个业务主体的事务很普遍。这种事务对于单体式应用来说很容易，因为只有一个数据库。在微服务架构应用中，需要更新不同服务所使用的不同数据库。使用分布式事务并不一定是好的选择，不仅仅是因为CAP理论，还因为当前高扩展性的NoSQL数据库和消息传递中间件并不支持这以需求。最终你不得不是用一个最终一致性的方法，从而对开发者提出了更高的要求和挑战。</p>
-<p>4.测试一个机遇微服务架构的应用也是很复杂的任务。比如，对于采用流行的Spring Boot架构的单体式web应用，测试他的REST API，是很容易的事情。反过来，同样的服务测试需要启动与它有关的所有服务（至少需要这些服务的stubs）。再重申一次，不能低估了采用微服务架构带来的复杂性。</p>
-<p>5.另外一个挑战在于，微服务架构模式应用的改变将会波及多个服务。比如，假设你在完成一个案例，需要修改服务A、B、C，而A依赖B，B依赖C。在单体应用中，你只需要改变相关模块，整合变化，部署就好了。对比之下，微服务架构模式就需要考虑相关改变对不同服务的影响。比如，你需要更新服务C，然后是B，最后才是A。幸运的是，许多改变一般只影响一个服务，需要协调多服务的改变很少。</p>
-<p>6.部署一个微服务应用也很复杂，一个单体应用只需要在负载均衡器后面部署各自的服务器就好了。每个应用实例是需要配置诸如数据库和消息中间件等基础服务。相比之下，一个微服务应用一般由大批服务构成。根据Adrian Cockcroft的分享，NetFlix则超过600个服务。每个服务都有多个实例，这就形成大量需要配置、部署、扩展和监控的部分。除此之外，你还需要完成一个服务发现机制， 以用来发现它通讯服务的地址（包括服务器地址和端口）。传统的解决问题办法并不能解决这么复杂的问题。最终，成功部署一个微服务应用需要开发者有足够的控制部署方法，并高度自动化。自动化的方法之一是使用譬如Cloud Foundery这样的PaaS服务。PaaS能让开发者轻松部署和管理微服务，让他们无需为获取并配置IT资源劳神。同时，配置PaaS的系统和网络专家可以采用最佳实践和策略来简化这些问题。另外一个自动部署微服务应用的方法是开发自己的PaaS系统。通常的起步方式是Mesos或Kubernetes这样的集群管理方案，配合Docker使用。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2019/04/24/microserviceIntroduction/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/24/microserviceIntroduction/" data-id="cjuwrhs0j001otwsk6uq6vqfk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/24/microserviceIntroduction/" data-id="cjuzqxdi7001ny0skb04584c9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,13 +132,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="HTML运行方法"><a href="#HTML运行方法" class="headerlink" title="HTML运行方法"></a>HTML运行方法</h2><p>1.浏览器打开<br>2.http-server</p>
-<h2 id="http-server"><a href="#http-server" class="headerlink" title="http-server"></a>http-server</h2><p>打开终端或者 gitbash，输入<br>npm install -g http-server<br>即安装成功（如果提示命令不存在，需要先下载安装 nodejs），安装后切换到对应目录，启动静态服务器，在html目录下输入http-server</p>
-<h2 id="命令行翻译工具"><a href="#命令行翻译工具" class="headerlink" title="命令行翻译工具"></a>命令行翻译工具</h2><p>打开终端或者 gitbash，输入<br>npm install -g fanyi<br>然后在终端下输入fanyi 你好<br>即可进行及时翻译</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2019/04/22/HTML/HTMLRun/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/22/HTML/HTMLRun/" data-id="cjuwrhs1d001qtwskz83obd10" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/22/HTML/HTMLRun/" data-id="cjuzqxdim001oy0sk0dphzrrk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -222,13 +174,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Random;</span><br><span class="line">import java.util.concurrent.ExecutionException;</span><br><span class="line">import java.util.concurrent.ExecutorService;</span><br><span class="line">import java.util.concurrent.Executors;</span><br><span class="line">import java.util.concurrent.Future;</span><br><span class="line"></span><br><span class="line">public class FutureDemo &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ExecutorService executor = Executors.newCachedThreadPool(); // 线程池</span><br><span class="line">        Future&lt;Integer&gt; result = executor.submit(() -&gt; &#123;             // Lambda</span><br><span class="line">            System.out.println(&quot;result开始.&quot;);</span><br><span class="line">            Random rand = new Random();</span><br><span class="line">            for (int i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">                if (i % 2000 == 0) &#123;</span><br><span class="line">                    System.out.println(&quot;result:&quot; + i);</span><br><span class="line">                &#125;</span><br><span class="line">                rand.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(&quot;result进入等待.&quot;);</span><br><span class="line">            Thread.sleep(5000);</span><br><span class="line">            return rand.nextInt();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Future&lt;Integer&gt; result2 = executor.submit(() -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;result2开始.&quot;);</span><br><span class="line">            Random rand = new Random();</span><br><span class="line">            for (int i = 0; i &lt; 100000; i++) &#123;</span><br><span class="line">                if (i% 20000 == 0) &#123;</span><br><span class="line">                    System.out.println(&quot;result2:&quot; + i);</span><br><span class="line">                &#125;</span><br><span class="line">                rand.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(&quot;result2进入等待.&quot;);</span><br><span class="line">            Thread.sleep(10000);</span><br><span class="line">            return rand.nextInt();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;主线程在执行任务&quot;);</span><br><span class="line">        // 执行其他的任务</span><br><span class="line">        for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(&quot;准备取结果1:&quot;);</span><br><span class="line">            System.out.println(&quot;运行结果1：&quot; + result.get());       // Future.get() 同步方法</span><br><span class="line">            System.out.println(&quot;准备取结果2:&quot;);</span><br><span class="line">            System.out.println(&quot;运行结果2：&quot; + result2.get());</span><br><span class="line">        &#125; catch (InterruptedException | ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;所有任务执行完毕&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">Output:</span><br><span class="line">主线程在执行任务</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">准备取结果1:</span><br><span class="line">result开始.</span><br><span class="line">result:0</span><br><span class="line">result2开始.</span><br><span class="line">result2:0</span><br><span class="line">result:2000</span><br><span class="line">result:4000</span><br><span class="line">result:6000</span><br><span class="line">result:8000</span><br><span class="line">result进入等待.</span><br><span class="line">result2:20000</span><br><span class="line">result2:40000</span><br><span class="line">result2:60000</span><br><span class="line">result2:80000</span><br><span class="line">result2进入等待.</span><br><span class="line">运行结果1：585751556</span><br><span class="line">准备取结果2:</span><br><span class="line">运行结果2：1483075689</span><br><span class="line">所有任务执行完毕</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从输出结果看，主线程先提交异步任务result和result2，但是异步任务Future尚未开始执行。等到主线程执行到需要Future.get()的时候，进入等待，此时异步的所有Future开始多线程执行，直至执行完毕，主程序的运行状态会持续，一定时间后停止。</p>
-
+        <h2 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h2>
+        
+          <p class="article-more-link">
+            <a href="/2019/04/12/JavaFuture/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/12/JavaFuture/" data-id="cjuwrhrxe000ftwskn359p37x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/12/JavaFuture/" data-id="cjuzqxde0000ay0sk0ori9a4a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -271,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/SQLiteDemo/" data-id="cjuwrhrya000otwskal3u5d5y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/SQLiteDemo/" data-id="cjuzqxdf2000qy0skriu34ink" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li></ul>
@@ -314,7 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/17/SQLite/" data-id="cjuwrhry4000mtwskebwodw35" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/17/SQLite/" data-id="cjuzqxdet000my0skg6517y0q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li></ul>
@@ -357,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/03/InversionOfControlDemo/" data-id="cjuwrhrx3000atwskrgggqkd9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/03/InversionOfControlDemo/" data-id="cjuzqxde6000dy0skfjwmwxvw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -400,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/28/InversionOfControl/" data-id="cjuwrhrwx0008twskbtsfz2ut" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/28/InversionOfControl/" data-id="cjuzqxddw0008y0sk3w6d71tl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
@@ -434,48 +389,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><h3 id="流的概念"><a href="#流的概念" class="headerlink" title="流的概念"></a>流的概念</h3><p>Stream是Java 8 中新增的用来补充集合类的一个新的接口，主要的目的是为了增强Java原有的集合类{Collection}的功能，<br>特别是函数式相关的功能，为了理解Java里的Stream接口，首先我们得先理解什么是Stream，即什么是流</p>
-<h3 id="什么是流"><a href="#什么是流" class="headerlink" title="什么是流"></a>什么是流</h3><p>Stream可以说就是数据流{类比水流}，然后有一个数据来源{水流的源头}，然后这个流中的数据元素有可能是有限的{杯壁下流}，<br>也可能是无限的{长江水流}，我们举几个例子：</p>
-<h4 id="有限的流"><a href="#有限的流" class="headerlink" title="有限的流"></a>有限的流</h4><ul>
-<li>一个集合，例如ArrayList中的所有元素</li>
-<li>一个固定文件（不支持更新）中的所有字符</li>
-</ul>
-<h4 id="无限的流"><a href="#无限的流" class="headerlink" title="无限的流"></a>无限的流</h4><ul>
-<li>日志更新的文件</li>
-<li>一个不关闭的监听端口传来的数据</li>
-</ul>
-<p>注意，流是可以有顺序，可以没顺序的</p>
-<h3 id="Stream接口"><a href="#Stream接口" class="headerlink" title="Stream接口"></a>Stream接口</h3><p>Java的Stream接口就集合了相关对数据流的操作。<br>这些操作大部分都是上节课我们所说的高阶函数，然后这个接口的操作有一些基本特性：</p>
-<ul>
-<li>不存储数据：流是基于数据源的映射，其本身并不存储数据元素，而是通过类似管道的机制把数据源的元素传递给操作。</li>
-<li>不修改数据源：流的操作都不会修改数据源，而是返回新的数据。（函数式编程里很重要的一个特性，immutable，不可变数据）</li>
-<li>惰性执行：流的操作分为两种，第一种为中间操作，另一种为规约和收集操作，<br>中间操作只是定义对流的响应操作链，但是不会真正执行，只有最后规约和收集的时候才会真正执行中间操作。（惰性执行）</li>
-<li>可以解绑：对于流，我们可以限制其中遍历的元素个数，比如limit(n)和findFirst()这样的操作，都会得到结构或者达到限制之后马上返回。</li>
-<li>纯消费：流的元素只能访问一次，操作没有回头路，如果需要重新操作，则重新创建一个流。</li>
-</ul>
-<p><strong>问题</strong>：为什么要把数据转换成Stream再传递给操作，直接把数据源传递给操作不是更直接？<br>为了使代码的执行有明了的一系列特性：<br>为了使程序可以惰性执行，<br>便于解绑，把数据传递给一个或若干个操作，可以得到结果或者达到限制后马上返回，<br>且一方面对数据源有保护作用<br>不修改源数据也会减少很多并发问题</p>
-<h4 id="并行流和串行流"><a href="#并行流和串行流" class="headerlink" title="并行流和串行流"></a>并行流和串行流</h4><p>在Java中，默认创建的都是串行流，比如使用Collection.stream() 返回的就是创建的串行流，<br>而调用Collction.parallelStream()则会返回创建的并行流</p>
-<h4 id="无状态"><a href="#无状态" class="headerlink" title="无状态"></a>无状态</h4><p>对于流中不同元素的操作应该是相互独立的，因为Java并不保证不同元素之间的执行顺序，甚至不保证他们的操作是在一个线程中的。</p>
-<h3 id="流的操作"><a href="#流的操作" class="headerlink" title="流的操作"></a>流的操作</h3><h4 id="流的创建"><a href="#流的创建" class="headerlink" title="流的创建"></a>流的创建</h4><p>1.通过集合的stream()方法或者parallelStream()方法；<br>2.通过Arrays.stream(Object [])方法；<br>3.使用Stream的静态方法，比如<br>    1.Stream.of(Object[]),IntStream.range(int,int)<br>    2.Stream.iterate(Object,UnaryOperator),如Stream.iterate{1,n-&gt;n*2}很明显，这是个无限流1,2,4,8,16<br>    3.Stream.generate(Suppler<t> s) 如：Stream.generate(Math::random)<br>4.BufferReader.lines()从文件中获得行的流<br>5.随机数流Random.ints()<br>6.其他一些类提供了创建流的方法<br>7.底层使用StreamSupport()，它提供了将Sliterator转换成流的方法</t></p>
-<h4 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h4><p>中间操作类似于对一个已有的流，绑定一个高阶（定义对每个元素的而操作的操作）的操作，<br>然后返回一个新的流. 其中只是绑定这个操作, 并不会马上执行, 当然也不会修改原始的数据源.</p>
-<p>forEach之前不执行中间操作</p>
-<h4 id="终点操作"><a href="#终点操作" class="headerlink" title="终点操作"></a>终点操作</h4><p>终点操作会触发中间的操作，最终生成结果<br>两个冒号表示方法引用</p>
-<p><strong>问题</strong>：为什么要有方法引用？直接用原来的方法不可以吗？</p>
-<ul>
-<li>看起来简洁一点</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure>
-<p>等同于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(&quot;a231&quot;,&quot;b281827&quot;,&quot;c2312&quot;,&quot;b11&quot;, &quot;cs&quot;)</span><br><span class="line">        .distinct()</span><br><span class="line">              .sorted((x, y) -&gt; x.length() - y.length())</span><br><span class="line">        .forEach(x-&gt;System.out.println(x));</span><br></pre></td></tr></table></figure></p>
-<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><ul>
-<li>不要去从Java去学函数式编程</li>
-<li>也不要用Java的概念去理解函数式编程</li>
-<li>Haskell, Scala, Kotlin</li>
-</ul>
-
+        <h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/15/StreamNote/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjuwrhryn000ttwskgmzvh05d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/15/StreamNote/" data-id="cjuzqxdf7000ty0ske93bz62p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -520,10 +443,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjuwrhrxa000dtwskikj1mg22" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/03/JDBC/" data-id="cjuzqxde9000fy0skgcejkghb" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/">Database</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/db/">db</a></li></ul>
 
     </footer>
   </div>
@@ -570,7 +493,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjuwrhrwl0004twsk98tc9gyj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/21/HTTP/" data-id="cjuzqxddj0004y0skdbfs8r9y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
@@ -600,7 +523,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li></ul>
     </div>
   </div>
 
@@ -610,7 +533,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/db/" style="font-size: 15px;">db</a> <a href="/tags/html/" style="font-size: 10px;">html</a>
+      <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/db/" style="font-size: 16.67px;">db</a> <a href="/tags/html/" style="font-size: 10px;">html</a>
     </div>
   </div>
 
@@ -632,7 +555,7 @@
       <ul>
         
           <li>
-            <a href="/2019/04/24/microserviceIntroduction/">microserviceIntroduction</a>
+            <a href="/2019/04/24/microserviceIntroduction/">微服务简介</a>
           </li>
         
           <li>
