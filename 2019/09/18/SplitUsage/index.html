@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>SplitUsage | Blog of wanz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="split的用法示例 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051public class Version &amp;#123;    /**     * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个&amp;quot;语">
+<meta name="keywords" content="String">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SplitUsage">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/SplitUsage/index.html">
+<meta property="og:site_name" content="Blog of wanz">
+<meta property="og:description" content="split的用法示例 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051public class Version &amp;#123;    /**     * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个&amp;quot;语">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-18T12:01:17.382Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SplitUsage">
+<meta name="twitter:description" content="split的用法示例 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051public class Version &amp;#123;    /**     * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个&amp;quot;语">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog of wanz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-SplitUsage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/18/SplitUsage/" class="article-date">
+  <time datetime="2019-09-18T12:00:22.000Z" itemprop="datePublished">2019-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SplitUsage
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>split的用法示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">public class Version &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 请根据语义化版本的要求 https://semver.org/lang/zh-CN/ ，比较两个&quot;语义化版本&quot;</span><br><span class="line">     *</span><br><span class="line">     * &lt;p&gt;传入两个形如x.y.z的字符串，比较两个语义化版本的大小。如果version1小于version2，返回-1；如果version1大于</span><br><span class="line">     * version2，返回1。如果二者相等，返回0。</span><br><span class="line">     *</span><br><span class="line">     * &lt;p&gt;注意，如果传入的字符串形如x，则其等价于x.0.0。 如果传入的字符串形如x.y，则其等价于x.y.0。</span><br><span class="line">     *</span><br><span class="line">     * @param version1 传入的版本字符串1，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本</span><br><span class="line">     * @param version2 传入的版本字符串2，支持x/x.y/x.y.z，你可以假定传入的字符串一定是合法的语义化版本</span><br><span class="line">     * @return -1/0/1 当version1 小于/等于/大于 version2时</span><br><span class="line">     */</span><br><span class="line">    public static int compare(String version1, String version2) &#123;</span><br><span class="line">        ArrayList&lt;String&gt; versionArr1 = new ArrayList&lt;&gt;(Arrays.asList(version1.split(&quot;\\.&quot;)));</span><br><span class="line">        ArrayList&lt;String&gt; versionArr2 = new ArrayList&lt;&gt;(Arrays.asList(version2.split(&quot;\\.&quot;)));</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; versionIntArr1 = new ArrayList&lt;&gt;();</span><br><span class="line">        ArrayList&lt;Integer&gt; versionIntArr2 = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        for (String v1 : versionArr1) &#123;</span><br><span class="line">            versionIntArr1.add(Integer.parseInt(v1));</span><br><span class="line">        &#125;</span><br><span class="line">        for (String v2 : versionArr2) &#123;</span><br><span class="line">            versionIntArr2.add(Integer.parseInt(v2));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int length = Math.max(versionIntArr1.size(), versionIntArr2.size());</span><br><span class="line"></span><br><span class="line">        while (versionIntArr1.size() &lt; length) &#123;</span><br><span class="line">            versionIntArr1.add(0);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        while (versionIntArr2.size()&lt;length) &#123;</span><br><span class="line">            versionIntArr2.add(0);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; length; i++) &#123;</span><br><span class="line">            if (versionIntArr1.get(i) &lt; versionIntArr2.get(i)) &#123;</span><br><span class="line">                return -1;</span><br><span class="line">            &#125; else if (versionIntArr1.get(i) &gt; versionIntArr2.get(i)) &#123;</span><br><span class="line">                return 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/18/SplitUsage/" data-id="ck0p7twac000qq4sk0xgw8yk8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/">String</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/18/StringSplice/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">字符串拼接效率问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-Thread/">Java Thread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/String/">String</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/db/">db</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/String/" style="font-size: 13.33px;">String</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/db/" style="font-size: 16.67px;">db</a> <a href="/tags/html/" style="font-size: 10px;">html</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/18/SplitUsage/">SplitUsage</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/18/StringSplice/">字符串拼接效率问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/24/microserviceIntroduction/">微服务简介</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/22/HTML/HTMLRun/">html运行方法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/12/JavaFuture/">JavaFuture实例</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 wanz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

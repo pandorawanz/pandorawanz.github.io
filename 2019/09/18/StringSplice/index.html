@@ -7,18 +7,18 @@
   
   <title>字符串拼接效率问题 | Blog of wanz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="12345678910111213141516171819202122public static void printOddNumbersBetween(int start, int end) &amp;#123;        StringBuilder result = new StringBuilder();        // 低效的写法        /*        for (int i =">
+  <meta name="description" content="由于每个String连接都复制整个String，因此通常最好使用对StringBuilder.append（）或StringBuffer.append（）的显式调用来替换它。 12345678910111213141516171819public static void printOddNumbersBetween(int start, int end) &amp;#123;        StringB">
 <meta name="keywords" content="String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符串拼接效率问题">
 <meta property="og:url" content="http://yoursite.com/2019/09/18/StringSplice/index.html">
 <meta property="og:site_name" content="Blog of wanz">
-<meta property="og:description" content="12345678910111213141516171819202122public static void printOddNumbersBetween(int start, int end) &amp;#123;        StringBuilder result = new StringBuilder();        // 低效的写法        /*        for (int i =">
+<meta property="og:description" content="由于每个String连接都复制整个String，因此通常最好使用对StringBuilder.append（）或StringBuffer.append（）的显式调用来替换它。 12345678910111213141516171819public static void printOddNumbersBetween(int start, int end) &amp;#123;        StringB">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-18T01:46:07.907Z">
+<meta property="og:updated_time" content="2019-09-18T01:47:41.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串拼接效率问题">
-<meta name="twitter:description" content="12345678910111213141516171819202122public static void printOddNumbersBetween(int start, int end) &amp;#123;        StringBuilder result = new StringBuilder();        // 低效的写法        /*        for (int i =">
+<meta name="twitter:description" content="由于每个String连接都复制整个String，因此通常最好使用对StringBuilder.append（）或StringBuffer.append（）的显式调用来替换它。 12345678910111213141516171819public static void printOddNumbersBetween(int start, int end) &amp;#123;        StringB">
   
     <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
   
@@ -87,11 +87,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static void printOddNumbersBetween(int start, int end) &#123;</span><br><span class="line">        StringBuilder result = new StringBuilder();</span><br><span class="line">        // 低效的写法</span><br><span class="line">        /*</span><br><span class="line">        for (int i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            if (i % 2 != 0) &#123;</span><br><span class="line">                result += (i + &quot;,&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        */</span><br><span class="line"></span><br><span class="line">        for (int i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            if (i % 2 != 0) &#123;</span><br><span class="line">                result.append(i).append(&quot;,&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        /*</span><br><span class="line">        报告循环中的字符串连接。 由于每个String连接都复制整个String，因此通常最好使用对StringBuilder.append（）或StringBuffer.append（）的显式调用来替换它。</span><br><span class="line">        */</span><br><span class="line"></span><br><span class="line">        System.out.println(result.subSequence(0,result.length()));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <p>由于每个String连接都复制整个String，因此通常最好使用对StringBuilder.append（）或StringBuffer.append（）的显式调用来替换它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static void printOddNumbersBetween(int start, int end) &#123;</span><br><span class="line">        StringBuilder result = new StringBuilder();</span><br><span class="line">        // 低效的写法</span><br><span class="line">        /*</span><br><span class="line">        for (int i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            if (i % 2 != 0) &#123;</span><br><span class="line">                result += (i + &quot;,&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        */</span><br><span class="line"></span><br><span class="line">        for (int i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            if (i % 2 != 0) &#123;</span><br><span class="line">                result.append(i).append(&quot;,&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(result.subSequence(0,result.length()));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/18/StringSplice/" data-id="ck0oluy9e000o3sskgcqkfcrl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/18/StringSplice/" data-id="ck0p7twao000xq4sk3v9u5p4u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/">String</a></li></ul>
@@ -101,6 +102,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/09/18/SplitUsage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          SplitUsage
+        
+      </div>
+    </a>
   
   
     <a href="/2019/04/24/microserviceIntroduction/" id="article-nav-older" class="article-nav-link-wrap">
@@ -134,7 +144,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/db/" style="font-size: 16.67px;">db</a> <a href="/tags/html/" style="font-size: 10px;">html</a>
+      <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java-Thread/" style="font-size: 10px;">Java Thread</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Other/" style="font-size: 10px;">Other</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/String/" style="font-size: 13.33px;">String</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/db/" style="font-size: 16.67px;">db</a> <a href="/tags/html/" style="font-size: 10px;">html</a>
     </div>
   </div>
 
@@ -156,6 +166,10 @@
       <ul>
         
           <li>
+            <a href="/2019/09/18/SplitUsage/">SplitUsage</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/18/StringSplice/">字符串拼接效率问题</a>
           </li>
         
@@ -169,10 +183,6 @@
         
           <li>
             <a href="/2019/04/12/JavaFuture/">JavaFuture实例</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/25/SQLiteDemo/">SQLite实例</a>
           </li>
         
       </ul>
