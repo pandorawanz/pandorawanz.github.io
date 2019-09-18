@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives | Blog of wanz</title>
+  <title>字符串拼接效率问题 | Blog of wanz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Blog of wanz">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="12345678910111213141516171819202122public static void printOddNumbersBetween(int start, int end) &amp;#123;        StringBuilder result = new StringBuilder();        // 低效的写法        /*        for (int i =">
+<meta name="keywords" content="String">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串拼接效率问题">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/StringSplice/index.html">
 <meta property="og:site_name" content="Blog of wanz">
+<meta property="og:description" content="12345678910111213141516171819202122public static void printOddNumbersBetween(int start, int end) &amp;#123;        StringBuilder result = new StringBuilder();        // 低效的写法        /*        for (int i =">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-18T01:46:07.907Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog of wanz">
+<meta name="twitter:title" content="字符串拼接效率问题">
+<meta name="twitter:description" content="12345678910111213141516171819202122public static void printOddNumbersBetween(int start, int end) &amp;#123;        StringBuilder result = new StringBuilder();        // 低效的写法        /*        for (int i =">
   
     <link rel="alternate" href="/atom.xml" title="Blog of wanz" type="application/atom+xml">
   
@@ -60,216 +65,53 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/21/HTTP/" class="archive-article-date">
-  <time datetime="2018-10-21T11:18:40.000Z" itemprop="datePublished">Oct 21</time>
+        <section id="main"><article id="post-StringSplice" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/18/StringSplice/" class="article-date">
+  <time datetime="2019-09-18T01:45:19.000Z" itemprop="datePublished">2019-09-18</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/21/HTTP/">HTTP协议和RESTful API</a>
+    <h1 class="article-title" itemprop="name">
+      字符串拼接效率问题
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/14/SpringBootStarted/" class="archive-article-date">
-  <time datetime="2018-10-14T11:11:36.000Z" itemprop="datePublished">Oct 14</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/14/SpringBootStarted/">SpringBoot入门</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/25/SynchronizedAndJoin/" class="archive-article-date">
-  <time datetime="2018-09-25T13:19:28.000Z" itemprop="datePublished">Sep 25</time>
-</a>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static void printOddNumbersBetween(int start, int end) &#123;</span><br><span class="line">        StringBuilder result = new StringBuilder();</span><br><span class="line">        // 低效的写法</span><br><span class="line">        /*</span><br><span class="line">        for (int i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            if (i % 2 != 0) &#123;</span><br><span class="line">                result += (i + &quot;,&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        */</span><br><span class="line"></span><br><span class="line">        for (int i = start; i &lt;= end; i++) &#123;</span><br><span class="line">            if (i % 2 != 0) &#123;</span><br><span class="line">                result.append(i).append(&quot;,&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        /*</span><br><span class="line">        报告循环中的字符串连接。 由于每个String连接都复制整个String，因此通常最好使用对StringBuilder.append（）或StringBuffer.append（）的显式调用来替换它。</span><br><span class="line">        */</span><br><span class="line"></span><br><span class="line">        System.out.println(result.subSequence(0,result.length()));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/25/SynchronizedAndJoin/">线程同步——synchronized修饰符和join方法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/15/maven/" class="archive-article-date">
-  <time datetime="2018-09-15T07:34:11.000Z" itemprop="datePublished">Sep 15</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/18/StringSplice/" data-id="ck0oluy9e000o3sskgcqkfcrl" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/15/maven/">maven</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/11/GenericAndCollection/" class="archive-article-date">
-  <time datetime="2018-09-11T11:21:03.000Z" itemprop="datePublished">Sep 11</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/11/GenericAndCollection/">GenericAndCollection</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/String/">String</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/24/microserviceIntroduction/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">微服务简介</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/07/sort/" class="archive-article-date">
-  <time datetime="2018-09-07T04:33:58.000Z" itemprop="datePublished">Sep 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/07/sort/">简单排序</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/04/DataStructure/" class="archive-article-date">
-  <time datetime="2018-09-04T13:26:27.000Z" itemprop="datePublished">Sep 4</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/04/DataStructure/">简单数据结构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/01/ToObject2/" class="archive-article-date">
-  <time datetime="2018-09-01T05:48:44.000Z" itemprop="datePublished">Sep 1</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/01/ToObject2/">Java面向对象编程——抽象类、接口、多态</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/08/31/PolymorphismDemo/" class="archive-article-date">
-  <time datetime="2018-08-31T11:23:15.000Z" itemprop="datePublished">Aug 31</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/31/PolymorphismDemo/">一个多态的简单实例</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/08/30/Ob-pratice-conclusion/" class="archive-article-date">
-  <time datetime="2018-08-30T02:08:45.000Z" itemprop="datePublished">Aug 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/30/Ob-pratice-conclusion/">面向对象编程练习总结</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-  </nav>
 
 </section>
         
